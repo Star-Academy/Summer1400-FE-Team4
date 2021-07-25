@@ -1,4 +1,3 @@
 # Summer1400-FE-Team4
 
-Behnam was here!
-hadiii
+Phase 1 is finished
