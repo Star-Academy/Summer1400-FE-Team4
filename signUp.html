@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>ثبت نام - آهنگیفای</title>
+</head>
+<body>
+<main>
+    <a href="landing.html">
+        <div>
+            <img src="assets/icons/logo.svg" alt="Logo" width="256" height="256">
+        </div>
+    </a>
+    <form method="POST">
+        <div>
+            <label for="username_input">نام کاربری</label><br>
+            <input type="text" id="username_input" name="username" required>
+        </div>
+        <div>
+            <label for="email_input">ایمیل</label><br>
+            <input type="email" id="email_input" name="email" required>
+        </div>
+        <div>
+            <label for="password_input">گذرواژه</label><br>
+            <input type="password" id="password_input" name="password" required minlength="8">
+        </div>
+        <div>
+            <label for="date_input">تاریخ تولد</label><br>
+            <input type="date" id="birthdate_input" name="birthdate">
+        </div>
+        <div>
+            <label for="country_input">نام کشور</label><br>
+            <select id="country_input" name="country">
+                <option value="ir">ایران</option>
+                <option value="us">ایالیات متحده</option>
+                <option value="nl">هلند</option>
+                <option value="eg">انگلستان</option>
+                <option value="fr">فرانسه</option>
+            </select>
+        </div>
+
+        <input type="submit" value="ثبت نام">
+        <a href="signIn.html">ورود به حساب کاربری</a>
+    </form>
+</main>
+
+</body>
+</html>
