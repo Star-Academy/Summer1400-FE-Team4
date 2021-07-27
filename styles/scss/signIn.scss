@@ -1,3 +1,5 @@
+
+
 body {
 
   background-color: #595260;
@@ -69,4 +71,10 @@ body {
 
   }
 
+}
+
+@media screen and (max-width: 600px) {
+  body {
+    background-color: lightblue;
+  }
 }
