@@ -3,33 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <title>ثبت نام - آهنگیفای</title>
+    <link rel="stylesheet" href="styles/css/signUp.css">
+    <link rel="stylesheet" href="styles/css/main.css">
 </head>
 <body>
-<main>
+<form method="POST" id="box">
+
     <a href="landing.html">
         <div>
             <img src="assets/icons/logo.svg" alt="Logo" width="256" height="256">
         </div>
     </a>
-    <form method="POST">
+
         <div>
-            <label for="username_input">نام کاربری</label><br>
-            <input type="text" id="username_input" name="username" required>
+
+            <input type="text" id="username_input" name="username" placeholder="نام کاربری" required>
         </div>
         <div>
-            <label for="email_input">ایمیل</label><br>
-            <input type="email" id="email_input" name="email" required>
+
+            <input type="email" id="email_input" name="email" placeholder="ایمیل" required>
         </div>
         <div>
-            <label for="password_input">گذرواژه</label><br>
-            <input type="password" id="password_input" name="password" required minlength="8">
+
+            <input type="password" id="password_input" name="password" placeholder="گذر واژه" required minlength="8">
         </div>
         <div>
-            <label for="date_input">تاریخ تولد</label><br>
-            <input type="date" id="birthdate_input" name="birthdate">
+            <label for="date_input" id="date_input_label">تاریخ تولد</label><br>
+            <input type="date" id="date_input" name="birthdate">
         </div>
         <div>
-            <label for="country_input">نام کشور</label><br>
+            <label for="country_input" id="country_input_label">نام کشور</label><br><br>
             <select id="country_input" name="country">
                 <option value="ir">ایران</option>
                 <option value="us">ایالیات متحده</option>
@@ -38,11 +41,14 @@
                 <option value="fr">فرانسه</option>
             </select>
         </div>
+    <br>
 
-        <input type="submit" value="ثبت نام">
-        <a href="signIn.html">ورود به حساب کاربری</a>
+        <input type="submit" value="ثبت نام"><br>
+        <a href="signIn.html" id="signin">ورود به حساب کاربری</a><br>
+         <p></p><br>
+
     </form>
-</main>
+
 
 </body>
 </html>
