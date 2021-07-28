@@ -21,6 +21,26 @@ $color-darkest: darken($color-dark, 10%);
 
 :root {
   --card-min-width: 20rem;
+  --font-size: 1.6rem
+}
+
+@media (max-width: 800px) {
+  :root {
+    --card-min-width: 18rem;
+  }
+}
+
+@media (max-width: 600px) {
+  :root {
+    --card-min-width: 14rem;
+    --font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 400px) {
+  :root {
+    
+  }
 }
 
 html {
@@ -54,7 +74,7 @@ body {
   box-sizing: content-box;
   min-height: 100vh;
   margin: auto;
-  font-size: 1.6rem;
+  font-size: var(--font-size);
 
   background-color: $color-dark;
   color: $color-light;
@@ -117,10 +137,11 @@ input:-webkit-autofill:focus {
     
       > .logo-image {
         display: inline;
-        width: 4rem;
-        height: 4rem;
+        width: 3em;
+        height: 3em;
       }
-      > h3 {
+
+      > .logo-title {
         font-size: 1.5em;
       }
     }
@@ -133,13 +154,46 @@ input:-webkit-autofill:focus {
         flex-direction: column;
 
         .icon {
-          width: 2.5rem;
-          height: 2.5rem;
         }
 
         .icon-desc {
           margin-right: $density-normal;
           width: max-content;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 600px) {
+  .side-bar > .side-bar-inner {
+    > .side-logo {
+      padding: $density-normal;
+      margin: 0;
+
+      > .logo-image {
+        width: 2em;
+        height: 2em;
+      }
+
+      .logo-title {
+        display: none;
+      }
+    }
+
+    > nav {
+      > ul {
+        > li > * {
+          padding: $density-normal;
+        }
+
+        .icon {
+          width: 2em;
+          height: 2em;
+        }
+
+        .icon-desc {
+          display: none;
         }
       }
     }
@@ -176,7 +230,7 @@ input:-webkit-autofill:focus {
       margin: 0 $density-normal;
 
       height: fit-content;
-      width: 20rem;
+      width: calc(min(25vw + 2rem, 15em));
       border-radius: 1000rem;
       border: 0.1rem solid $color-light;
       background-color: inherit;
@@ -261,8 +315,9 @@ footer {
 }
 
 .icon {
-  width: 2rem;
-  height: 2rem;
+  display: inline-block;
+  width: 1.2em;
+  height: 1.2em;
 }
 
 .shelf {
@@ -283,8 +338,8 @@ footer {
     grid-auto-rows: 0;
 
     // fix hidden overflow problem when hovering on cards
-    margin: -$density-normal;
-    padding: $density-normal;
+    margin: calc(-$density-normal + 2px);
+    padding: calc($density-normal - 2px);
 
     > * {
       margin: $density-normal;
