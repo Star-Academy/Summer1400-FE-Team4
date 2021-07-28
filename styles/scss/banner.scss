@@ -1,4 +1,4 @@
-@use "page" as *;
+@use "_defs" as *;
 
 .top-bar.in-banner {
   background-color: $color-darkest;
@@ -39,7 +39,11 @@
   }
 
   &.in-artist {
-    background-image: linear-gradient(to bottom,$color-darkest 0%, $color-dark 100%);
+    background-image: linear-gradient(to bottom, $color-darker 0%, $color-dark 100%);
+  }
+
+  &.in-song .banner-desc {
+    padding-bottom: 0;
   }
 }
 

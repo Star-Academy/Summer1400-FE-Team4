@@ -21,7 +21,7 @@ body #box {
 body #box #spotifyicon {
   width: 180px;
   height: 180px;
-  fill: yellow;
+  fill: var(--yellow);
 }
 body #box input[type=email], body #box input[type=password] {
   background: none;
@@ -38,7 +38,7 @@ body #box input[type=email], body #box input[type=password] {
 }
 body #box input[type=password]:focus, body #box input[type=email]:focus {
   width: 27rem;
-  border-color: yellow;
+  border-color: var(--yellow);
 }
 body #box input::placeholder {
   font-size: 1.5rem;
@@ -53,7 +53,7 @@ body #box input[type=submit] {
   margin-bottom: 1rem;
 }
 body #box input[type=submit]:hover {
-  background-color: yellow;
+  background-color: var(--yellow);
   transition: 0.5s;
 }
 body #box #create {

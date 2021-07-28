@@ -1,10 +1,10 @@
-@use "page" as *;
+@use '_defs' as *;
 
 
-main{
+.main-content {
+  background-image: linear-gradient(to bottom, $color-darker 0, $color-dark 20rem);
 
-  .songtable{
-    background-image: linear-gradient(to bottom,$color-darker 0, $color-dark 20rem);
+  .songtable {
     padding: $density-normal;
     .header{
       border-bottom: 0.15rem solid $color-medium;
@@ -13,7 +13,7 @@ main{
 
     .row, .header{
       display: grid;
-      grid-template-columns: 0.8em 5rem 1fr 2fr 8em 1.5em 3em;
+      grid-template-columns: 1.2em 5rem 1fr 2fr 8em 1.5em 3em;
       gap: $density-normal;
 
       justify-items: start;
@@ -23,14 +23,22 @@ main{
 
     &.in-album {
       .row, .header {
-        grid-template-columns: 0.8em 1fr 1.5em 3em;
+        grid-template-columns: 1.2em 1fr 1.5em 3em;
+      }
+    }
+    
+    &.in-song {
+      .row, .header {
+        grid-template-columns: 1.2em 1fr 1.5em 3em;
       }
     }
 
-
-    .row:hover{
-      background-color: $color-medium;
+    .row {
       border-radius: $density-normal;
+      &:hover{
+        background-color: $color-medium;
+        transition: 500ms;
+      }
     }
 
     img{
@@ -39,13 +47,18 @@ main{
     }
 
     .row .icon{
-      margin-top: 0.6em;
+      margin-top: 0.5em;
       cursor: pointer;
+
+      &.icon-play {
+        transform: scaleX(-1);
+      }
 
       &:hover{
         fill: $color-primary;
         transition: 300ms;
       }
+
       &.filled{
         color: $color-primary;
       }
@@ -66,3 +79,19 @@ main{
     }
   }
 }
+
+.song-lyrics {
+  padding: $density-large;
+  > summary {
+    cursor: pointer;
+    > h2 {
+      display: inline;
+    }
+  }
+
+  p {
+    margin-top: 1em;
+    margin-bottom: 1em;
+  }
+}
+

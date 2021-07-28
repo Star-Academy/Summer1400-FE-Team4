@@ -27,7 +27,7 @@ body {
     #spotifyicon{
       width: 180px;
       height: 180px;
-      fill:yellow;
+      fill:var(--yellow);
 
     }
 
@@ -51,7 +51,7 @@ body {
 
      input[type="password"]:focus, input[type="email"]:focus {
       width: 27rem;
-      border-color: yellow;
+      border-color: var(--yellow);
     }
     input::placeholder{
       font-size: 1.5rem;
@@ -65,7 +65,7 @@ body {
       padding: 0.7rem;
       margin-bottom: 1rem;
       &:hover {
-        background-color: yellow;
+        background-color: var(--yellow);
         transition: 0.5s;
       }
     }
