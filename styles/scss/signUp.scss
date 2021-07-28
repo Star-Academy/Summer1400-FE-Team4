@@ -52,7 +52,7 @@ body {
     }
 
 
-    input[type="date"] {
+    input[type="date"],select {
       margin: 1rem auto;
       width: 16rem;
       padding: 0.8rem;
@@ -81,9 +81,7 @@ body {
         transition: 0.5s;
       }
     }
-    select{
-      margin-top: 0.8rem;
-    }
+
     #signin{
 
       color: lightgray;
