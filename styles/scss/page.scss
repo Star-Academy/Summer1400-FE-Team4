@@ -94,53 +94,63 @@ input:-webkit-autofill:focus {
 .side-bar {
   grid-area: side-bar;
 
-  display: flex;
-  flex-direction: column;
-  gap: $density-normal;
-  padding: $density-small;
+  width: fit-content;
   background-color: $color-darkest;
 
-  width: fit-content;
+  > .side-bar-inner {
 
-  > .side-logo {
     display: flex;
+    flex-direction: column;
     gap: $density-normal;
-    align-items: center;
-    
-    color: $color-primary;
-    padding: $density-large;
-  
-    > img {
-      display: inline;
-      width: 4rem;
-      height: 4rem;
-    }
-    > h3 {
-      font-size: 1.5em;
-    }
-  }
+    padding: $density-small;
 
-  > nav {
-    font-weight: bold;
+    position: sticky;
+    top: 0;
 
-    > ul {
+    > .side-logo {
       display: flex;
-      flex-direction: column;
-
-      .icon {
-        width: 2.5rem;
-        height: 2.5rem;
+      gap: $density-normal;
+      align-items: center;
+      
+      color: $color-primary;
+      padding: $density-large;
+    
+      > img {
+        display: inline;
+        width: 4rem;
+        height: 4rem;
       }
+      > h3 {
+        font-size: 1.5em;
+      }
+    }
 
-      .icon-desc {
-        margin-right: $density-normal;
-        width: max-content;
+    > nav {
+      font-weight: bold;
+
+      > ul {
+        display: flex;
+        flex-direction: column;
+
+        .icon {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+
+        .icon-desc {
+          margin-right: $density-normal;
+          width: max-content;
+        }
       }
     }
   }
 }
 
 .top-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: $color-darker;
   grid-area: top-bar;
 
   > nav {
