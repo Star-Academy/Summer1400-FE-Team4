@@ -1,22 +1,55 @@
 @use "page" as *;
 
-.top-bar{
+.top-bar.in-banner {
   background-color: $color-darkest;
 }
-main{
 
+main{
+  
+
+  .banner {
+    background-image: linear-gradient(to bottom,$color-darkest 0%, $color-darker 100%);
+    
+    padding: 5%;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-rows: auto;
+    column-gap: 5%;
+
+    .banner-image {
+      width: 100%;
+      padding-bottom: 100%;
+      position: relative;
+
+      > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+    }
+    
+    .banner-desc {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding-bottom: $density-large;
+
+      h1 {
+        font-size: 250%;
+      }
+    }
+  }
 
   .songtable{
-    background-image: linear-gradient(to bottom,$color-darkest 0,$color-dark 20rem);
+    background-image: linear-gradient(to bottom,$color-darker 0, $color-dark 20rem);
     padding: $density-normal;
     .header{
       border-bottom: 0.15rem solid $color-medium;
       margin-bottom: $density-normal;
-
-
     }
 
-    .row , .header{
+    .row, .header{
       display: grid;
       grid-template-columns: 0.8em 5rem 1fr 2fr 8em 1.5em 3em;
       gap: $density-normal;
@@ -24,7 +57,12 @@ main{
       justify-items: start;
       padding: 1rem;
       align-items: center;
+    }
 
+    &.in-album {
+      .row, .header {
+        grid-template-columns: 0.8em 1fr 1.5em 3em;
+      }
     }
 
 
@@ -32,13 +70,16 @@ main{
       background-color: $color-medium;
       border-radius: $density-normal;
     }
-  img{
-    width: 5rem;
-    height: 5rem;
 
-  }
-    .icon{
+    img{
+      width: 5rem;
+      height: 5rem;
+    }
+
+    .row .icon{
       margin-top: 0.6em;
+      cursor: pointer;
+
       &:hover{
         fill: $color-primary;
         transition: 300ms;
@@ -50,12 +91,23 @@ main{
 
   }
 }
+
 @media screen and (max-width: 800px) {
-  main .songtable {
-    .row,.header {
-      grid-template-columns: 0.8em 5rem 1fr 2fr 1.5em 2em;
-      > *:nth-child(5) {
-        display: none;
+  main {
+    .banner {
+      .banner-desc {
+        > h1 {
+          font-size: 200%;
+        }
+      }
+    }
+
+    .songtable {
+      .row,.header {
+        grid-template-columns: 0.8em 5rem 1fr 2fr 1.5em 2em;
+        > *:nth-child(5) {
+          display: none;
+        }
       }
     }
   }
