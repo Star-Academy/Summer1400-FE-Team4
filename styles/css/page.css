@@ -110,7 +110,7 @@ input:-webkit-autofill:focus {
   padding: 2rem;
 }
 
-.side-bar > .side-bar-inner > .side-logo > img {
+.side-bar > .side-bar-inner > .side-logo > .logo-image {
   display: inline;
   width: 4rem;
   height: 4rem;
