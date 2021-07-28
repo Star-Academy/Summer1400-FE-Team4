@@ -62,4 +62,12 @@
       }
     }
   }
+  
+  &.in-artist {
+
+    .shelf-items {
+      overflow: visible;
+      grid-auto-rows: auto;
+    }
+  }
 }

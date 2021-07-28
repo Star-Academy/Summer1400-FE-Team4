@@ -251,38 +251,6 @@ h1, h2, h3, h4, h5, h6 {
   color: #e7e7e9;
 }
 
-.top-bar.in-banner {
-  background-color: #181924;
-}
-
-main .banner {
-  background-image: linear-gradient(to bottom, #181924 0%, #222334 100%);
-  padding: 5%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-template-rows: auto;
-  column-gap: 5%;
-}
-main .banner .banner-image {
-  width: 100%;
-  padding-bottom: 100%;
-  position: relative;
-}
-main .banner .banner-image > img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-}
-main .banner .banner-desc {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-bottom: 2rem;
-}
-main .banner .banner-desc h1 {
-  font-size: 250%;
-}
 main .songtable {
   background-image: linear-gradient(to bottom, #222334 0, #2C2E43 20rem);
   padding: 1rem;
@@ -323,9 +291,6 @@ main .songtable .row .icon.filled {
 }
 
 @media screen and (max-width: 800px) {
-  main .banner .banner-desc > h1 {
-    font-size: 200%;
-  }
   main .songtable .row, main .songtable .header {
     grid-template-columns: 0.8em 5rem 1fr 2fr 1.5em 2em;
   }
