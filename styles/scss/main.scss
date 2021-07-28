@@ -1,15 +1,18 @@
+@import url(fontiran.css);
+
 *,
 *::before,
-*::after{
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: IRANSans,sans-serif;
-
+  font-family: "IRANSans", sans-serif;
 }
-html{
+
+html {
   font-size: 62.5%;
 }
-body{
+
+body {
   min-height: 100vh;
 }
