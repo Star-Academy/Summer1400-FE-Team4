@@ -1,0 +1,62 @@
+@use "page" as *;
+
+.top-bar{
+  background-color: $color-darkest;
+}
+main{
+
+
+  .songtable{
+    background-image: linear-gradient(to bottom,$color-darkest 0,$color-dark 20rem);
+    padding: $density-normal;
+    .header{
+      border-bottom: 0.15rem solid $color-medium;
+      margin-bottom: $density-normal;
+
+
+    }
+
+    .row , .header{
+      display: grid;
+      grid-template-columns: 0.8em 5rem 1fr 2fr 8em 1.5em 3em;
+      gap: $density-normal;
+
+      justify-items: start;
+      padding: 1rem;
+      align-items: center;
+
+    }
+
+
+    .row:hover{
+      background-color: $color-medium;
+      border-radius: $density-normal;
+    }
+  img{
+    width: 5rem;
+    height: 5rem;
+
+  }
+    .icon{
+      margin-top: 0.6em;
+      &:hover{
+        fill: $color-primary;
+        transition: 300ms;
+      }
+      &.filled{
+        color: $color-primary;
+      }
+    }
+
+  }
+}
+@media screen and (max-width: 800px) {
+  main .songtable {
+    .row,.header {
+      grid-template-columns: 0.8em 5rem 1fr 2fr 1.5em 2em;
+      > *:nth-child(5) {
+        display: none;
+      }
+    }
+  }
+}

@@ -27,6 +27,7 @@ $color-darkest: darken($color-dark, 10%);
 @media (max-width: 800px) {
   :root {
     --card-min-width: 18rem;
+    --font-size:1.4rem;
   }
 }
 
@@ -309,6 +310,10 @@ footer {
   display: inline-block;
   width: 1.2em;
   height: 1.2em;
+}
+
+h1,h2,h3,h4,h5,h6{
+  color: $color-lighter;
 }
 
 
