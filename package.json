@@ -4,7 +4,8 @@
   "description": "Phase 1 is finished",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "sass --watch styles/scss:styles/css"
   },
   "repository": {
     "type": "git",
@@ -16,5 +17,10 @@
   "bugs": {
     "url": "https://github.com/Star-Academy/Summer1400-FE-Team4/issues"
   },
-  "homepage": "https://github.com/Star-Academy/Summer1400-FE-Team4#readme"
+  "homepage": "https://github.com/Star-Academy/Summer1400-FE-Team4#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "prettier": "^2.3.2",
+    "sass": "^1.36.0"
+  }
 }
