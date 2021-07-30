@@ -9,6 +9,7 @@ body {
   background-color: #595260;
   padding: 0;
 }
+
 body #box {
   width: 400px;
   position: absolute;
@@ -18,11 +19,13 @@ body #box {
   background: #2C2E43;
   text-align: center;
 }
+
 body #box #spotifyicon {
   width: 15rem;
   height: 15rem;
   fill: var(--yellow);
 }
+
 body #box input[type=text], body #box input[type=email], body #box input[type=password] {
   background: none;
   display: block;
@@ -36,14 +39,17 @@ body #box input[type=text], body #box input[type=email], body #box input[type=pa
   border-radius: 1.5rem;
   transition: 0.25s;
 }
+
 body #box #date_input_label {
   font-size: 1.3rem;
   color: gray;
 }
+
 body #box #country_input_label {
   font-size: 1.3rem;
   color: gray;
 }
+
 body #box input[type=date], body #box select {
   margin: 1rem auto;
   width: 16rem;
@@ -51,13 +57,16 @@ body #box input[type=date], body #box select {
   border: 0;
   border-radius: 1rem;
 }
+
 body #box input[type=text]:focus, body #box input[type=password]:focus, body #box input[type=email]:focus {
   width: 27rem;
   border-color: var(--yellow);
 }
+
 body #box input::placeholder {
   font-size: 1.3rem;
 }
+
 body #box input[type=submit] {
   border: none;
   border-radius: 1.5rem;
@@ -66,16 +75,21 @@ body #box input[type=submit] {
   padding: 0.7rem;
   margin: 1rem auto;
 }
+
 body #box input[type=submit]:hover {
   background-color: var(--yellow);
   transition: 0.5s;
 }
+
 body #box #signin {
   color: lightgray;
   text-decoration: none;
 }
+
 body #box #signin:hover {
   color: white;
 }
+
+/*# sourceMappingURL=signUp.css.map */
 
 /*# sourceMappingURL=signUp.css.map */

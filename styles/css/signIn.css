@@ -9,6 +9,7 @@ body {
   background-color: #595260;
   padding: 0;
 }
+
 body #box {
   width: 400px;
   position: absolute;
@@ -18,11 +19,13 @@ body #box {
   background: #2C2E43;
   text-align: center;
 }
+
 body #box #spotifyicon {
   width: 180px;
   height: 180px;
   fill: var(--yellow);
 }
+
 body #box input[type=email], body #box input[type=password] {
   background: none;
   display: block;
@@ -36,14 +39,17 @@ body #box input[type=email], body #box input[type=password] {
   border-radius: 2rem;
   transition: 0.25s;
 }
+
 body #box input[type=password]:focus, body #box input[type=email]:focus {
   width: 27rem;
   border-color: var(--yellow);
 }
+
 body #box input::placeholder {
   font-size: 1.5rem;
   color: gray;
 }
+
 body #box input[type=submit] {
   border: none;
   border-radius: 2rem;
@@ -52,10 +58,12 @@ body #box input[type=submit] {
   padding: 0.7rem;
   margin-bottom: 1rem;
 }
+
 body #box input[type=submit]:hover {
   background-color: var(--yellow);
   transition: 0.5s;
 }
+
 body #box #create {
   color: lightgray;
   margin: 1rem;
@@ -63,8 +71,11 @@ body #box #create {
   transform: translate(-50%, -50%);
   text-decoration: none;
 }
+
 body #box #create:hover {
   color: white;
 }
+
+/*# sourceMappingURL=signIn.css.map */
 
 /*# sourceMappingURL=signIn.css.map */
