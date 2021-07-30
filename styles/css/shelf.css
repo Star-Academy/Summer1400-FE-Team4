@@ -1,0 +1,55 @@
+.shelf {
+  padding: 1rem;
+}
+.shelf .shelf-title {
+  padding: 1rem;
+  color: #e7e7e9;
+}
+.shelf .shelf-items {
+  display: grid;
+  overflow: hidden;
+  grid-template-columns: repeat(auto-fill, minmax(var(--card-min-width), 1fr));
+  grid-template-rows: 1fr;
+  grid-auto-rows: 0;
+  margin: calc(-$density-normal + 2px);
+  padding: calc($density-normal - 2px);
+}
+.shelf .shelf-items > * {
+  margin: 1rem;
+}
+.shelf .shelf-items .shelf-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 1rem;
+  background-color: #222334;
+  border-radius: 0.5rem;
+  gap: 1rem;
+  transition: 200ms ease-in-out;
+}
+.shelf .shelf-items .shelf-card > .card-image {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+}
+.shelf .shelf-items .shelf-card > .card-image > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0.5rem;
+}
+.shelf .shelf-items .shelf-card > span {
+  text-align: center;
+  color: #e7e7e9;
+}
+.shelf .shelf-items .shelf-card:hover {
+  transform: scale(1.1);
+}
+.shelf.in-artist .shelf-items {
+  overflow: visible;
+  grid-auto-rows: auto;
+}
+
+/*# sourceMappingURL=shelf.css.map */

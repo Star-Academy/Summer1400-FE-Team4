@@ -1,0 +1,61 @@
+@use "_defs" as *;
+
+.top-bar.in-banner {
+  background-color: $color-darkest;
+}
+
+.banner {
+  background-image: linear-gradient(to bottom, $color-darkest 0%, $color-darker 100%);
+  
+  padding: 5%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  column-gap: 5%;
+
+  .banner-image {
+    width: 100%;
+    padding-bottom: 100%;
+    position: relative;
+
+    > img {
+      box-shadow: 0 0 5rem rgb(0 0 0 / 50%);
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+  }
+  
+  .banner-desc {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: $density-large;
+
+    h1 {
+      font-size: 250%;
+    }
+  }
+
+  &.in-artist {
+    background-image: linear-gradient(to bottom, $color-darker 0%, $color-dark 100%);
+  }
+
+  &.in-song .banner-desc {
+    padding-bottom: 0;
+  }
+}
+
+
+@media screen and (max-width: 800px) {
+  main {
+    .banner {
+      .banner-desc {
+        > h1 {
+          font-size: 200%;
+        }
+      }
+    }
+  }
+}
