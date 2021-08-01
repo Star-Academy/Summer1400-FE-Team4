@@ -1,7 +1,7 @@
 const albums = [
   {
     name: "Hall of Fame",
-    singer: "singer",
+    singer: "POP ART TOWN",
     releasedDate: "1400/01/01",
     imageAddress: "images/album/Hall of Fame.jpg",
     songs: [
@@ -16,7 +16,7 @@ const albums = [
   },
   {
     name: "Prolouge",
-    singer: "singer",
+    singer: "RAP VIET",
     releasedDate: "1400/01/01",
     imageAddress: "images/album/Prolouge.jpg",
     songs: [
@@ -31,7 +31,7 @@ const albums = [
   },
   {
     name: "Rap Game",
-    singer: "singer",
+    singer: "RAP VIET",
     releasedDate: "1400/01/01",
     imageAddress: "images/album/Rap Game.jpg",
     songs: [
@@ -46,7 +46,7 @@ const albums = [
   },
   {
     name: "Rap God",
-    singer: "singer",
+    singer: "POP",
     releasedDate: "1400/01/01",
     imageAddress: "images/album/Rap God.jpg",
     songs: [
@@ -61,7 +61,7 @@ const albums = [
   },
   {
     name: "The goat",
-    singer: "singer",
+    singer: "Pop Smoke",
     releasedDate: "1400/01/01",
     imageAddress: "images/album/The goat.jpg",
     songs: [
@@ -76,7 +76,7 @@ const albums = [
   },
   {
     name: "Rap Star",
-    singer: "singer",
+    singer: "POP ART TOWN",
     releasedDate: "1400/01/01",
     imageAddress: "images/album/Rap Star.jpg",
     songs: [
@@ -91,7 +91,7 @@ const albums = [
   },
   {
     name: "Rapper's Flow",
-    singer: "singer",
+    singer: "Pop Smoke",
     releasedDate: "1400/01/01",
     imageAddress: "images/album/Rapper's Flow.jpg",
     songs: [
@@ -106,7 +106,7 @@ const albums = [
   },
   {
     name: "Rapstar",
-    singer: "singer",
+    singer: "Poppin'Party",
     releasedDate: "1400/01/01",
     imageAddress: "images/album/Rapstar.jpg",
     songs: [
