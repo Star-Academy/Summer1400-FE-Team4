@@ -142,6 +142,6 @@ const singers = [
     name: "Poppin'Party",
     imageAddress: "images/artist/Poppin'Party.jpg",
   },
-]
+];
 
 export { albums, singers };

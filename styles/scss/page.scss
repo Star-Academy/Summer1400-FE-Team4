@@ -1,5 +1,5 @@
 @use '_defs' as *;
-@import url(main.css);
+@use 'main' as *;
 
 :root {
   --card-min-width: 20rem;
