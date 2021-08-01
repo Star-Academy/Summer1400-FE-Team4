@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="styles/css/page.css">
     <link rel="stylesheet" href="styles/css/banner.css">
     <link rel="stylesheet" href="styles/css/shelf.css">
+    <script src="scripts/artistPage.js" type="module" ></script>
 </head>
 <body class="page">
     <aside class="side-bar">
@@ -76,84 +77,84 @@
     </header>
     <section class="page-content">
         <main>
-            <div class="banner in-artist">
-                <div class="banner-image">
-                    <img id="image" src="images/artist/RAP VIET.jpg" alt="">
-                </div>
-                <div class="banner-desc">
-                    <h1 id="singerName">RAP VIET</h1>
-                    <div>
-                        <span id="albumCount">7</span>
-                        آلبوم
-                    </div>
-                </div>
+            <div class="banner in-artist" id="banner">
+<!--                <div class="banner-image">-->
+<!--                    <img id="image" src="images/artist/RAP VIET.jpg" alt="">-->
+<!--                </div>-->
+<!--                <div class="banner-desc">-->
+<!--                    <h1 id="singerName">RAP VIET</h1>-->
+<!--                    <div>-->
+<!--                        <span id="albumCount">7</span>-->
+<!--                        آلبوم-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
-            <section class="shelf in-artist" id="albumShelf">
-                <div class="shelf-items">
-                    <a href="album.html">
-                        <div class="shelf-card">
-                            <div class="card-image">
-                                <img src="images/album/Hall of Fame.jpg" alt="">
-                            </div>
-                            <span>Hall of Fame</span>
-                        </div>
-                    </a>
-                    <a href="album.html">
-                        <div class="shelf-card">
-                            <div class="card-image">
-                                <img src="images/album/Prolouge.jpg" alt="">
-                            </div>
-                            <span>Prolouge</span>
-                        </div>
-                    </a>
-                    <a href="album.html">
-                        <div class="shelf-card">
-                            <div class="card-image">
-                                <img src="images/album/Rap Game.jpg" alt="">
-                            </div>
-                            <span>Rap Game</span>
-                        </div>
-                    </a>
-                    <a href="album.html">
-                        <div class="shelf-card">
-                            <div class="card-image">
-                                <img src="images/album/Rap God.jpg" alt="">
-                            </div>
-                            <span>Rap God</span>
-                        </div>
-                    </a>
-                    <a href="album.html">
-                        <div class="shelf-card">
-                            <div class="card-image">
-                                <img src="images/album/The goat.jpg" alt="">
-                            </div>
-                            <span>The goat</span>
-                        </div>
-                    </a>
-                    <a href="album.html">
-                        <div class="shelf-card">
-                            <div class="card-image">
-                                <img src="images/album/Rap Star.jpg" alt="">
-                            </div>
-                            <span>Rap Star</span>
-                        </div>
-                    </a>
-                    <a href="album.html">
-                        <div class="shelf-card">
-                            <div class="card-image">
-                                <img src="images/album/Rapper's Flow.jpg" alt="">
-                            </div>
-                            <span>Rapper's Flow</span>
-                        </div>
-                    </a>
-                    <a href="album.html">
-                        <div class="shelf-card">
-                            <div class="card-image">
-                                <img src="images/album/Rapstar.jpg" alt="">
-                            </div>
-                            <span>Rapstar</span>
-                        </div>
-                    </a>
+            <section class="shelf in-artist" id="albumShelf" >
+                <div class="shelf-items" id="shelf">
+<!--                    <a href="album.html">-->
+<!--                        <div class="shelf-card">-->
+<!--                            <div class="card-image">-->
+<!--                                <img src="images/album/Hall of Fame.jpg" alt="">-->
+<!--                            </div>-->
+<!--                            <span>Hall of Fame</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="album.html">-->
+<!--                        <div class="shelf-card">-->
+<!--                            <div class="card-image">-->
+<!--                                <img src="images/album/Prolouge.jpg" alt="">-->
+<!--                            </div>-->
+<!--                            <span>Prolouge</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="album.html">-->
+<!--                        <div class="shelf-card">-->
+<!--                            <div class="card-image">-->
+<!--                                <img src="images/album/Rap Game.jpg" alt="">-->
+<!--                            </div>-->
+<!--                            <span>Rap Game</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="album.html">-->
+<!--                        <div class="shelf-card">-->
+<!--                            <div class="card-image">-->
+<!--                                <img src="images/album/Rap God.jpg" alt="">-->
+<!--                            </div>-->
+<!--                            <span>Rap God</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="album.html">-->
+<!--                        <div class="shelf-card">-->
+<!--                            <div class="card-image">-->
+<!--                                <img src="images/album/The goat.jpg" alt="">-->
+<!--                            </div>-->
+<!--                            <span>The goat</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="album.html">-->
+<!--                        <div class="shelf-card">-->
+<!--                            <div class="card-image">-->
+<!--                                <img src="images/album/Rap Star.jpg" alt="">-->
+<!--                            </div>-->
+<!--                            <span>Rap Star</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="album.html">-->
+<!--                        <div class="shelf-card">-->
+<!--                            <div class="card-image">-->
+<!--                                <img src="images/album/Rapper's Flow.jpg" alt="">-->
+<!--                            </div>-->
+<!--                            <span>Rapper's Flow</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
+<!--                    <a href="album.html">-->
+<!--                        <div class="shelf-card">-->
+<!--                            <div class="card-image">-->
+<!--                                <img src="images/album/Rapstar.jpg" alt="">-->
+<!--                            </div>-->
+<!--                            <span>Rapstar</span>-->
+<!--                        </div>-->
+<!--                    </a>-->
                 </div>
             </section>
         </main>
