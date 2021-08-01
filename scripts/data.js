@@ -53,7 +53,7 @@ const albums = [
       {
         name: "MUSIC",
         duration: "3:50",
-        isLiked: false,
+        isLiked: true,
         lyrics:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nobis, reprehenderit? Accusamus aliquam asperiores consequatur cumque dignissimos exercitationem facilis inventore laudantium maiores repudiandae? Ad incidunt laboriosam molestias non optio rem?\n",
       },
@@ -68,7 +68,7 @@ const albums = [
       {
         name: "MUSIC",
         duration: "3:50",
-        isLiked: false,
+        isLiked: true,
         lyrics:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nobis, reprehenderit? Accusamus aliquam asperiores consequatur cumque dignissimos exercitationem facilis inventore laudantium maiores repudiandae? Ad incidunt laboriosam molestias non optio rem?\n",
       },
@@ -113,7 +113,7 @@ const albums = [
       {
         name: "MUSIC",
         duration: "3:50",
-        isLiked: false,
+        isLiked: true,
         lyrics:
           "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore nobis, reprehenderit? Accusamus aliquam asperiores consequatur cumque dignissimos exercitationem facilis inventore laudantium maiores repudiandae? Ad incidunt laboriosam molestias non optio rem?\n",
       },
