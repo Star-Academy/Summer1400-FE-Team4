@@ -1,98 +1,98 @@
 :root {
-  --yellow: #ffd523;
-  --darkgray: #2c2e43;
-  --gray: #595260;
-  --lightgray: #b2b1b9;
+    --yellow: #ffd523;
+    --darkgray: #2c2e43;
+    --gray: #595260;
+    --lightgray: #b2b1b9;
 }
 
 body {
-  background-color: #595260;
-  padding: 0;
+    background-color: #595260;
+    padding: 0;
 }
 
 body #box {
-  width: 400px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #2c2e43;
-  text-align: center;
+    width: 400px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #2c2e43;
+    text-align: center;
 }
 
 body #box #spotifyicon {
-  width: 15rem;
-  height: 15rem;
-  fill: var(--yellow);
+    width: 15rem;
+    height: 15rem;
+    fill: var(--yellow);
 }
 
-body #box input[type=text],
-body #box input[type=email],
-body #box input[type=password] {
-  background: none;
-  display: block;
-  margin: 0.7rem auto;
-  text-align: center;
-  border: 1.5px solid lightgray;
-  padding: 0.7rem;
-  outline: none;
-  color: white;
-  width: 20rem;
-  border-radius: 1.5rem;
-  transition: 0.25s;
+body #box input[type='text'],
+body #box input[type='email'],
+body #box input[type='password'] {
+    background: none;
+    display: block;
+    margin: 0.7rem auto;
+    text-align: center;
+    border: 1.5px solid lightgray;
+    padding: 0.7rem;
+    outline: none;
+    color: white;
+    width: 20rem;
+    border-radius: 1.5rem;
+    transition: 0.25s;
 }
 
 body #box #date_input_label {
-  font-size: 1.3rem;
-  color: gray;
+    font-size: 1.3rem;
+    color: gray;
 }
 
 body #box #country_input_label {
-  font-size: 1.3rem;
-  color: gray;
+    font-size: 1.3rem;
+    color: gray;
 }
 
-body #box input[type=date],
+body #box input[type='date'],
 body #box select {
-  margin: 1rem auto;
-  width: 16rem;
-  padding: 0.8rem;
-  border: 0;
-  border-radius: 1rem;
+    margin: 1rem auto;
+    width: 16rem;
+    padding: 0.8rem;
+    border: 0;
+    border-radius: 1rem;
 }
 
-body #box input[type=text]:focus,
-body #box input[type=password]:focus,
-body #box input[type=email]:focus {
-  width: 27rem;
-  border-color: var(--yellow);
+body #box input[type='text']:focus,
+body #box input[type='password']:focus,
+body #box input[type='email']:focus {
+    width: 27rem;
+    border-color: var(--yellow);
 }
 
 body #box input::placeholder {
-  font-size: 1.3rem;
+    font-size: 1.3rem;
 }
 
-body #box input[type=submit] {
-  border: none;
-  border-radius: 1.5rem;
-  width: 27rem;
-  background-color: lightyellow;
-  padding: 0.7rem;
-  margin: 1rem auto;
+body #box input[type='submit'] {
+    border: none;
+    border-radius: 1.5rem;
+    width: 27rem;
+    background-color: lightyellow;
+    padding: 0.7rem;
+    margin: 1rem auto;
 }
 
-body #box input[type=submit]:hover {
-  background-color: var(--yellow);
-  transition: 0.5s;
+body #box input[type='submit']:hover {
+    background-color: var(--yellow);
+    transition: 0.5s;
 }
 
 body #box #signin {
-  color: lightgray;
-  text-decoration: none;
+    color: lightgray;
+    text-decoration: none;
 }
 
 body #box #signin:hover {
-  color: white;
+    color: white;
 }
 
 /*# sourceMappingURL=signUp.css.map */

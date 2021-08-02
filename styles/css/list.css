@@ -1,98 +1,98 @@
 main {
-  height: 100%;
+    height: 100%;
 }
 
 .main-content {
-  background-image: linear-gradient(to bottom, #222334 0, #2c2e43 20rem);
+    background-image: linear-gradient(to bottom, #222334 0, #2c2e43 20rem);
 }
 
 .main-content .songtable {
-  padding: 1rem;
+    padding: 1rem;
 }
 
 .main-content .songtable .header {
-  border-bottom: 0.15rem solid #595260;
-  margin-bottom: 1rem;
+    border-bottom: 0.15rem solid #595260;
+    margin-bottom: 1rem;
 }
 
 .main-content .songtable .row,
 .main-content .songtable .header {
-  display: grid;
-  grid-template-columns: 1.2em 5rem 1fr 2fr 8em 1.5em 3em;
-  gap: 1rem;
-  justify-items: start;
-  padding: 1rem;
-  align-items: center;
+    display: grid;
+    grid-template-columns: 1.2em 5rem 1fr 2fr 8em 1.5em 3em;
+    gap: 1rem;
+    justify-items: start;
+    padding: 1rem;
+    align-items: center;
 }
 
 .main-content .songtable.in-album .row,
 .main-content .songtable.in-album .header {
-  grid-template-columns: 1.2em 1fr 1.5em 3em;
+    grid-template-columns: 1.2em 1fr 1.5em 3em;
 }
 
 .main-content .songtable.in-song .row,
 .main-content .songtable.in-song .header {
-  grid-template-columns: 1.2em 1fr 1.5em 3em;
+    grid-template-columns: 1.2em 1fr 1.5em 3em;
 }
 
 .main-content .songtable .row {
-  border-radius: 1rem;
+    border-radius: 1rem;
 }
 
 .main-content .songtable .row:hover {
-  background-color: #595260;
-  transition: 500ms;
+    background-color: #595260;
+    transition: 500ms;
 }
 
 .main-content .songtable img {
-  width: 5rem;
-  height: 5rem;
+    width: 5rem;
+    height: 5rem;
 }
 
 .main-content .songtable .row .icon {
-  margin-top: 0.5em;
-  cursor: pointer;
+    margin-top: 0.5em;
+    cursor: pointer;
 }
 
 .main-content .songtable .row .icon.icon-play {
-  transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 .main-content .songtable .row .icon:hover {
-  fill: #ffd523;
-  transition: 300ms;
+    fill: #ffd523;
+    transition: 300ms;
 }
 
 .main-content .songtable .row .icon.filled {
-  color: #ffd523;
+    color: #ffd523;
 }
 
 @media screen and (max-width: 800px) {
-  .main-content .songtable .row,
-.main-content .songtable .header {
-    grid-template-columns: 0.8em 5rem 1fr 2fr 1.5em 2em;
-  }
+    .main-content .songtable .row,
+    .main-content .songtable .header {
+        grid-template-columns: 0.8em 5rem 1fr 2fr 1.5em 2em;
+    }
 
-  .main-content .songtable .row > *:nth-child(5),
-.main-content .songtable .header > *:nth-child(5) {
-    display: none;
-  }
+    .main-content .songtable .row > *:nth-child(5),
+    .main-content .songtable .header > *:nth-child(5) {
+        display: none;
+    }
 }
 .song-lyrics {
-  padding: 2rem;
+    padding: 2rem;
 }
 
 .song-lyrics > summary {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .song-lyrics > summary > h2 {
-  display: inline;
+    display: inline;
 }
 
 .song-lyrics p {
-  margin-top: 1em;
-  margin-bottom: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 /*# sourceMappingURL=list.css.map */
