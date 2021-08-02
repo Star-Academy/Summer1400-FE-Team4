@@ -1,8 +1,8 @@
 :root {
-  --yellow: #FFD523;
-  --darkgray: #2C2E43;
-  --gray:#595260;
-  --lightgray:#B2B1B9;
+  --yellow: #ffd523;
+  --darkgray: #2c2e43;
+  --gray: #595260;
+  --lightgray: #b2b1b9;
 }
 
 body {
@@ -16,7 +16,7 @@ body #box {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #2C2E43;
+  background: #2c2e43;
   text-align: center;
 }
 
@@ -26,7 +26,8 @@ body #box #spotifyicon {
   fill: var(--yellow);
 }
 
-body #box input[type=email], body #box input[type=password] {
+body #box input[type=email],
+body #box input[type=password] {
   background: none;
   display: block;
   margin: 2rem auto;
@@ -40,7 +41,8 @@ body #box input[type=email], body #box input[type=password] {
   transition: 0.25s;
 }
 
-body #box input[type=password]:focus, body #box input[type=email]:focus {
+body #box input[type=password]:focus,
+body #box input[type=email]:focus {
   width: 27rem;
   border-color: var(--yellow);
 }

@@ -1,26 +1,26 @@
 {
-  "name": "Summer1400-FE-Team4",
-  "version": "1.0.0",
-  "description": "Phase 1 is finished",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "sass --watch styles/scss:styles/css"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Star-Academy/Summer1400-FE-Team4.git"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Star-Academy/Summer1400-FE-Team4/issues"
-  },
-  "homepage": "https://github.com/Star-Academy/Summer1400-FE-Team4#readme",
-  "devDependencies": {
-    "live-server": "^1.2.1",
-    "prettier": "^2.3.2",
-    "sass": "^1.36.0"
-  }
+    "name": "Summer1400-FE-Team4",
+    "version": "1.0.0",
+    "description": "Phase 1 is finished",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "sass --watch styles/scss:styles/css"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/Star-Academy/Summer1400-FE-Team4.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/Star-Academy/Summer1400-FE-Team4/issues"
+    },
+    "homepage": "https://github.com/Star-Academy/Summer1400-FE-Team4#readme",
+    "devDependencies": {
+        "live-server": "^1.2.1",
+        "prettier": "^2.3.2",
+        "sass": "^1.36.0"
+    }
 }

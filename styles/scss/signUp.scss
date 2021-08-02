@@ -1,98 +1,94 @@
 :root {
-  --yellow: #FFD523;
-  --darkgray: #2C2E43;
-  --gray:#595260;
-  --lightgray:#B2B1B9;
+    --yellow: #ffd523;
+    --darkgray: #2c2e43;
+    --gray: #595260;
+    --lightgray: #b2b1b9;
 }
 
 body {
+    background-color: #595260;
+    padding: 0;
 
-  background-color: #595260;
-  padding: 0;
+    #box {
+        width: 400px;
 
-  #box {
-    width: 400px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #2c2e43;
+        text-align: center;
 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #2C2E43;
-    text-align: center;
+        #spotifyicon {
+            width: 15rem;
+            height: 15rem;
+            fill: var(--yellow);
+        }
+        input[type='text'],
+        input[type='email'],
+        input[type='password'] {
+            background: none;
+            display: block;
+            margin: 0.7rem auto;
+            text-align: center;
+            border: 1.5px solid lightgray;
+            padding: 0.7rem;
 
-    #spotifyicon{
-      width: 15rem;
-      height: 15rem;
-      fill: var(--yellow);
+            outline: none;
+            color: white;
+            width: 20rem;
+            border-radius: 1.5rem;
+            transition: 0.25s;
+        }
+        #date_input_label {
+            font-size: 1.3rem;
+            color: gray;
+        }
+        #country_input_label {
+            font-size: 1.3rem;
+            color: gray;
+        }
+
+        input[type='date'],
+        select {
+            margin: 1rem auto;
+            width: 16rem;
+            padding: 0.8rem;
+            border: 0;
+            border-radius: 1rem;
+        }
+
+        input[type='text']:focus,
+        input[type='password']:focus,
+        input[type='email']:focus {
+            width: 27rem;
+            border-color: var(--yellow);
+        }
+
+        input::placeholder {
+            font-size: 1.3rem;
+        }
+
+        input[type='submit'] {
+            border: none;
+            border-radius: 1.5rem;
+            width: 27rem;
+            background-color: lightyellow;
+            padding: 0.7rem;
+            margin: 1rem auto;
+            &:hover {
+                background-color: var(--yellow);
+                transition: 0.5s;
+            }
+        }
+
+        #signin {
+            color: lightgray;
+            text-decoration: none;
+
+            &:hover {
+                color: white;
+            }
+        }
     }
-    input[type="text"], input[type="email"], input[type="password"] {
-
-      background: none;
-      display: block;
-      margin: 0.7rem auto;
-      text-align: center;
-      border: 1.5px solid lightgray;
-      padding: 0.7rem;
-
-      outline: none;
-      color: white;
-      width: 20rem;
-      border-radius: 1.5rem;
-      transition: 0.25s;
-
-
-    }
-    #date_input_label {
-      font-size: 1.3rem;
-      color: gray;
-    }
-    #country_input_label{
-      font-size: 1.3rem;
-      color: gray;
-    }
-
-
-    input[type="date"],select {
-      margin: 1rem auto;
-      width: 16rem;
-      padding: 0.8rem;
-      border: 0;
-      border-radius: 1rem;
-    }
-
-    input[type="text"]:focus, input[type="password"]:focus, input[type="email"]:focus {
-      width: 27rem;
-      border-color: var(--yellow);
-    }
-
-    input::placeholder {
-      font-size: 1.3rem;
-    }
-
-    input[type="submit"]{
-      border: none;
-      border-radius: 1.5rem;
-      width: 27rem;
-      background-color: lightyellow;
-      padding: 0.7rem;
-      margin: 1rem auto;
-      &:hover {
-        background-color: var(--yellow);
-        transition: 0.5s;
-      }
-    }
-
-    #signin{
-
-      color: lightgray;
-      text-decoration: none;
-
-      &:hover{
-        color: white;
-      }
-    }
-
-
-  }
-
 }

@@ -1,8 +1,9 @@
 import { albums, singers } from './data.js';
 
 // show albums
-let albumsHtml = albums.map((album) => {
-    return `<a href="album.html?name=${album.name}" >
+const albumsHtml = albums
+    .map((album) => {
+        return `<a href="album.html?name=${album.name}" >
             <div class="shelf-card">
                 <div class="card-image">
                     <img src="${album.imageAddress}" alt="">
@@ -11,14 +12,16 @@ let albumsHtml = albums.map((album) => {
             </div>
         </a>
         `;
-}).reduce((s, a) => s + a);
+    })
+    .reduce((s, a) => s + a);
 
-let albumitems = document.getElementById("albumshelf");
+const albumitems = document.getElementById('albumshelf');
 albumitems.innerHTML = albumsHtml;
 
 // show singers
-let singersHtml = singers.map((singer) => {
-    return `<a href="artist.html?name=${singer.name}" >
+const singersHtml = singers
+    .map((singer) => {
+        return `<a href="artist.html?name=${singer.name}" >
             <div class="shelf-card">
                 <div class="card-image">
                     <img src="${singer.imageAddress}" alt="">
@@ -27,7 +30,8 @@ let singersHtml = singers.map((singer) => {
             </div>
         </a>
         `;
-}).reduce((s, a) => s + a);
+    })
+    .reduce((s, a) => s + a);
 
-let singeritems = document.getElementById("singershelf");
+const singeritems = document.getElementById('singershelf');
 singeritems.innerHTML = singersHtml;
