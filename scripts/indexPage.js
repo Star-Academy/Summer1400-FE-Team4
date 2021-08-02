@@ -13,7 +13,7 @@ const albumsHtml = albums
         </a>
         `;
     })
-    .reduce((s, a) => s + a);
+    .reduce((sum, current) => sum + current);
 
 const albumitems = document.getElementById('albumshelf');
 albumitems.innerHTML = albumsHtml;
@@ -31,7 +31,7 @@ const singersHtml = singers
         </a>
         `;
     })
-    .reduce((s, a) => s + a);
+    .reduce((sum, current) => sum + current);
 
 const singeritems = document.getElementById('singershelf');
 singeritems.innerHTML = singersHtml;

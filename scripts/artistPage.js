@@ -5,7 +5,7 @@ const params = Object.fromEntries(urlSearchParams.entries());
 
 const singer = singers.filter((s) => s.name === params.name);
 const singerAlbums = albums.filter(
-    (s) => s.singer.toLowerCase() === params.name.toLowerCase()
+    (album) => album.singer.toLowerCase() === params.name.toLowerCase()
 );
 const banner = document.getElementById('banner');
 const shelf = document.getElementById('shelf');

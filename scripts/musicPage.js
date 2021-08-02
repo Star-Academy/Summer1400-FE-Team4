@@ -1,7 +1,8 @@
 import { albums } from './data.js';
 
 const musicHTML = albums.reduce(
-    (s, c) => s.concat(c.songs.map((song) => ({ ...song, album: c }))),
+    (sum, current) =>
+        sum.concat(current.songs.map((song) => ({ ...song, album: current }))),
     []
 );
 const urlSearchParams = new URLSearchParams(window.location.search);
@@ -24,8 +25,8 @@ if (music.length < 1) {
     albumName.innerText = music.album.name;
     singerName.innerText = music.album.singer;
     songLyrics.innerText = music.lyrics;
-    if (music.isliked) {
-        notliked.style.display = 'none';
+    if (music.isLiked) {
+        notLiked.style.display = 'none';
     } else {
         liked.style.display = 'none';
     }

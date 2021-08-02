@@ -1,11 +1,12 @@
-import { albums, singers } from './data.js';
+import { albums } from './data.js';
 import { likeIcon, addSongTable } from './functions.js';
 
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
 const allMusics = albums.reduce(
-    (s, c) => s.concat(c.songs.map((song) => ({ ...song, album: c }))),
+    (sum, current) =>
+        sum.concat(current.songs.map((song) => ({ ...song, album: current }))),
     []
 );
 
@@ -15,8 +16,8 @@ if ('query' in params) {
     document.getElementById('query').value = query;
 }
 
-const results = allMusics.filter((m) =>
-    m.name.toLowerCase().includes(query.toLowerCase())
+const results = allMusics.filter((music) =>
+    music.name.toLowerCase().includes(query.toLowerCase())
 );
 
 addSongTable(results);
