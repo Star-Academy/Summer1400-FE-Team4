@@ -29,7 +29,9 @@ async function apiPost(path, data, hasResponse = true) {
 }
 
 class Page {
-    constructor() {}
+    constructor() {
+        this.audio = new Audio();
+    }
 
     // returns null if an auth token is not
     get authToken() {
@@ -138,30 +140,70 @@ class Page {
         );
     }
 
-    registerLikeButtons() {
+    updateList() {
+        function getOther(element) {
+            const otherId = element.getAttribute('data-toggle');
+            return document.getElementById(otherId);
+        }
+
         function toggleOther(element) {
             element.classList.add('hidden');
-            const otherId = element.getAttribute('data-toggle');
-            const other = document.getElementById(otherId);
-            other.classList.remove('hidden');
+            getOther(element).classList.remove('hidden');
         }
 
         for (const element of document.getElementsByClassName('like-button')) {
             element.onclick = async () => {
-                await this.likeSong(element.getAttribute('data-id'));
+                const id = element.closest('.row').getAttribute('data-id');
+                await this.likeSong(id);
                 toggleOther(element);
             };
         }
 
         for (const element of document.getElementsByClassName('dislike-button')) {
             element.onclick = async () => {
-                await this.dislikeSong(element.getAttribute('data-id'));
+                const id = element.closest('.row').getAttribute('data-id');
+                await this.dislikeSong(id);
                 toggleOther(element);
+            };
+        }
+
+        for (const element of document.getElementsByClassName('play-button')) {
+            element.onclick = async () => {
+                this.audio.src = element.closest('.row').getAttribute('data-file');
+                this.audio.play();
+                toggleOther(element);
+            };
+        }
+
+        for (const element of document.getElementsByClassName('pause-button')) {
+            element.onclick = async () => {
+                this.audio.pause();
+                toggleOther(element);
+            };
+        }
+
+        this.audio.onended = () => {
+            for (const element of document.getElementsByClassName('pause-button'))
+                toggleOther(element);
+        };
+
+        for (const element of document.getElementsByClassName('song-duration')) {
+            const src = element.closest('.row').getAttribute('data-file');
+            const audio = new Audio();
+            audio.preload = 'metadata';
+            audio.src = src;
+            audio.onloadedmetadata = () => {
+                const minutes = Math.floor(audio.duration / 60).toLocaleString('fa-IR');
+                const seconds = Math.floor(audio.duration % 60)
+                    .toLocaleString('fa-IR')
+                    .padStart(2, '۰');
+                element.innerText = `${minutes}:${seconds}`;
+                audio.remove();
             };
         }
     }
 
-    async update() {
+    async updatePage() {
         if ((await this.getUserId()) !== null) {
             // user is logged in
             const user = await this.getCurrentUser();

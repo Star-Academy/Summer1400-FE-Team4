@@ -419,7 +419,8 @@ footer {
   color: #ffd523;
 }
 
-.icon-play {
+.icon-play,
+.icon-pause {
   font-size: 1.2em;
 }
 

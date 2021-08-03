@@ -10,7 +10,7 @@ async function getSong() {
 }
 
 async function updateSong() {
-    const [song, likedSongs] = await Promise.all([getSong(), page.getLikedSongs()])
+    const [song, likedSongs] = await Promise.all([getSong(), page.getLikedSongs()]);
 
     document.getElementById('image').src = song.cover;
     document.getElementById('songName').innerText = song.name;
@@ -20,8 +20,8 @@ async function updateSong() {
     document.getElementById('singerName').innerText = song.artist;
     document.getElementById('singerName').href = 'artist.html?name=' + song.artist;
     document.getElementById('songLyrics').innerText = song.lyrics;
-    document.getElementById('likeButton').setAttribute('data-id', song.id);
-    document.getElementById('dislikeButton').setAttribute('data-id', song.id);
+    document.getElementById('songRow').setAttribute('data-id', song.id);
+    document.getElementById('songRow').setAttribute('data-file', song.file);
 
     const liked = likedSongs.find((likedSong) => likedSong.id === song.id) !== undefined;
     if (liked) {
@@ -31,10 +31,10 @@ async function updateSong() {
 }
 
 try {
-    page.update();
+    page.updatePage();
 
     await updateSong();
-    page.registerLikeButtons();
+    page.updateList();
 } catch (error) {
     if (error instanceof ApiError) alert(error.message);
     throw error;
