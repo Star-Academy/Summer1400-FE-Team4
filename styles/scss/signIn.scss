@@ -12,7 +12,6 @@ body {
     #box {
         width: 400px;
 
-        //padding: 40px;
         position: absolute;
         top: 50%;
         left: 50%;
@@ -26,7 +25,7 @@ body {
             fill: var(--yellow);
         }
 
-        input[type='email'],
+        input[type='text'],
         input[type='password'] {
             background: none;
             display: block;
@@ -43,7 +42,7 @@ body {
         }
 
         input[type='password']:focus,
-        input[type='email']:focus {
+        input[type='text']:focus {
             width: 27rem;
             border-color: var(--yellow);
         }

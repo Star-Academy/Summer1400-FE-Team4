@@ -9,9 +9,10 @@
         <title>ثبت نام - آهنگیفای</title>
         <link rel="stylesheet" href="styles/css/signUp.css" />
         <link rel="stylesheet" href="styles/css/main.css" />
+        <script src="scripts/signUpPage.js" type="module" ></script>
     </head>
     <body>
-        <form method="POST" id="box">
+        <form id="box">
             <a href="index.html">
                 <div>
                     <svg
@@ -34,7 +35,7 @@
                     type="text"
                     id="username_input"
                     name="username"
-                    placeholder="نام کاربری"
+                    placeholder=" نام کاربری *"
                     required
                 />
             </div>
@@ -43,7 +44,7 @@
                     type="email"
                     id="email_input"
                     name="email"
-                    placeholder="ایمیل"
+                    placeholder="ایمیل *"
                     required
                 />
             </div>
@@ -52,31 +53,32 @@
                     type="password"
                     id="password_input"
                     name="password"
-                    placeholder="گذر واژه"
+                    placeholder="گذر واژه *"
                     required
                     minlength="8"
                 />
             </div>
             <div>
-                <label for="date_input" id="date_input_label">تاریخ تولد</label
-                ><br />
-                <input type="date" id="date_input" name="birthdate" />
+                <input
+                        type="text"
+                        id="name_input"
+                        name="username"
+                        placeholder="نام "
+
+                />
             </div>
             <div>
-                <label for="country_input" id="country_input_label"
-                    >نام کشور</label
-                ><br />
-                <select id="country_input" name="country">
-                    <option value="ir">ایران</option>
-                    <option value="us">ایالیات متحده</option>
-                    <option value="nl">هلند</option>
-                    <option value="eg">انگلستان</option>
-                    <option value="fr">فرانسه</option>
-                </select>
+                <input
+                        type="text"
+                        id="lastName_input"
+                        name="username"
+                        placeholder="نام خانوادگی"
+
+                />
             </div>
             <br />
 
-            <input type="submit" value="ثبت نام" /><br />
+            <input type="submit" value="ثبت نام" id="submitButton" /><br />
             <a href="signIn.html" id="signin">ورود به حساب کاربری</a><br />
             <p></p>
             <br />
