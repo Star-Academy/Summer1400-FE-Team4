@@ -1,26 +1,33 @@
+import { ApiError, apiGet, Page } from './page.js';
+
 const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
-const response = await fetch(`http://130.185.120.192:5000/song/one/${params.id}`);
-if (response.ok)
-{
-    const song = (await response.json()).song;
+try {
+    const song = (await apiGet('song/one/' + params.id)).song;
 
     document.getElementById('image').src = song.cover;
-    document.getElementById('songName1').innerText = song.name;
-    document.getElementById('albumName').innerText = "تک آهنگ";
+    document.getElementById('songName').innerText = song.name;
+    document.getElementById('songNameInList').innerText = song.name;
+    document.getElementById('albumName').innerText = 'تک آهنگ';
+    document.getElementById('albumName').href = 'album.html?id=' + song.id;
     document.getElementById('singerName').innerText = song.artist;
+    document.getElementById('singerName').href = 'artist.html?name=' + song.artist;
     document.getElementById('songLyrics').innerText = song.lyrics;
+    document.getElementById('likeButton').setAttribute('data-id', song.id);
+    document.getElementById('dislikeButton').setAttribute('data-id', song.id);
 
-    // TODO: check in liked playlist
-    // if (music.isLiked) {
-    //     document.getElementById('notLiked').style.display = 'none';
-    // } else {
-    //     document.getElementById('liked').style.display = 'none';
-    // }
-}
-else
-{
-    const error = await response.json();
-    alert(error.message);
+    const page = new Page();
+
+    const likedSongs = await page.getLikedSongs();
+    const liked = likedSongs.find((likedSong) => likedSong.id === song.id) !== undefined;
+    if (liked) {
+        document.getElementById('dislikeButton').classList.remove('hidden');
+        document.getElementById('likeButton').classList.add('hidden');
+    }
+
+    page.registerLikeButtons();
+} catch (error) {
+    if (error instanceof ApiError) alert(error.message);
+    throw error;
 }

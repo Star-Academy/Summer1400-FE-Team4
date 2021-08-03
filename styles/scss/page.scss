@@ -367,6 +367,30 @@ footer {
     height: 1.2em;
 }
 
+.icon-button {
+    display: block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    .icon {
+        display: block;
+
+        &:hover {
+            fill: $color-primary;
+            transition: 300ms;
+        }
+
+        &.selected {
+            color: $color-primary;
+        }
+    }
+}
+
+.icon-play {
+    transform: scaleX(-1);
+}
+
 h1,
 h2,
 h3,

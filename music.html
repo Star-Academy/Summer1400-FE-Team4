@@ -56,10 +56,7 @@
                                     <path
                                         d="M12 13c0 1.105-1.12 2-2.5 2S7 14.105 7 13s1.12-2 2.5-2 2.5.895 2.5 2z"
                                     />
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M12 3v10h-1V3h1z"
-                                    />
+                                    <path fill-rule="evenodd" d="M12 3v10h-1V3h1z" />
                                     <path
                                         d="M11 2.82a1 1 0 0 1 .804-.98l3-.6A1 1 0 0 1 16 2.22V4l-5 1V2.82z"
                                     />
@@ -71,7 +68,7 @@
                                 <span class="icon-desc">لیست آهنگ‌ها</span>
                             </a>
                         </li>
-                        <li>
+                        <li id="likedSongsButton" class="hidden">
                             <a href="likedSongs.html" class="button-block">
                                 <svg
                                     class="icon"
@@ -83,9 +80,7 @@
                                         d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
                                     />
                                 </svg>
-                                <span class="icon-desc"
-                                    >آهنگ‌های مورد علاقه</span
-                                >
+                                <span class="icon-desc">آهنگ‌های مورد علاقه</span>
                             </a>
                         </li>
                     </ul>
@@ -109,7 +104,7 @@
                         </svg>
                     </button>
                 </form>
-                <ul>
+                <ul id="unauthedNav">
                     <li>
                         <a href="signUp.html" class="button-pill">ثبت نام</a>
                     </li>
@@ -117,24 +112,22 @@
                         <a href="signIn.html" class="button-pill">ورود</a>
                     </li>
                 </ul>
+                <a id="authedNav" href="#" class="button-pill hidden">خروج</a>
             </nav>
         </header>
         <section class="page-content">
             <main>
                 <div class="banner in-song">
                     <div class="banner-image">
-                        <img id="image" src="images/album/Rap God.jpg" alt="" />
+                        <img id="image" alt="" />
                     </div>
                     <div class="banner-desc">
-                        <h1 id="songName1">کجایی؟</h1>
+                        <h1 id="songName"></h1>
+                        <div><a id="albumName"></a></div>
                         <div>
-                            <span id="albumName">تک آهنگ</span> <br />
-                            <strong
-                                ><a id="singerName" href="artist.html"
-                                    >محسن چاوشی</a
-                                ></strong
-                            >
-                            &bullet;
+                            <strong>
+                                <a id="singerName"></a>
+                            </strong>
                         </div>
                     </div>
                 </div>
@@ -162,47 +155,59 @@
                         </div>
                         <div class="row">
                             <div>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    class="icon icon-play"
-                                    viewBox="0 0 16 16"
-                                >
-                                    <path
-                                        d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
-                                    />
-                                    <path
-                                        d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"
-                                    />
-                                </svg>
+                                <button id="playButton" class="play-button icon-button">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        class="icon icon-play"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                                        />
+                                        <path
+                                            d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"
+                                        />
+                                    </svg>
+                                </button>
                             </div>
-                            <div id="songName">MUSIC</div>
+                            <div id="songNameInList"></div>
                             <div>
-                                <svg
-                                    id="notLiked"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    class="icon"
-                                    viewBox="0 0 16 16"
+                                <button
+                                    id="likeButton"
+                                    data-toggle="dislikeButton"
+                                    class="like-button icon-button"
                                 >
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
-                                    />
-                                </svg>
-                                <svg
-                                    id="liked"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    class="icon filled hidden"
-                                    viewBox="0 0 16 16"
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        class="icon"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                                        />
+                                    </svg>
+                                </button>
+                                <button
+                                    id="dislikeButton"
+                                    data-toggle="likeButton"
+                                    class="dislike-button icon-button hidden"
                                 >
-                                    <path
-                                        fill-rule="evenodd"
-                                        d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
-                                    />
-                                </svg>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="currentColor"
+                                        class="icon selected"
+                                        viewBox="0 0 16 16"
+                                    >
+                                        <path
+                                            fill-rule="evenodd"
+                                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                                        />
+                                    </svg>
+                                </button>
                             </div>
-                            <div id="songDuration">۳:۵۰</div>
+                            <div id="songDuration"></div>
                         </div>
                     </div>
                     <details class="song-lyrics">
