@@ -1,10 +1,16 @@
 import { ApiError, apiGet, Page } from './page.js';
 
-const urlSearchParams = new URLSearchParams(window.location.search);
-const params = Object.fromEntries(urlSearchParams.entries());
+const page = new Page();
 
-try {
-    const song = (await apiGet('song/one/' + params.id)).song;
+async function getSong() {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+
+    return (await apiGet('song/one/' + params.id)).song;
+}
+
+async function updateSong() {
+    const [song, likedSongs] = await Promise.all([getSong(), page.getLikedSongs()])
 
     document.getElementById('image').src = song.cover;
     document.getElementById('songName').innerText = song.name;
@@ -17,15 +23,17 @@ try {
     document.getElementById('likeButton').setAttribute('data-id', song.id);
     document.getElementById('dislikeButton').setAttribute('data-id', song.id);
 
-    const page = new Page();
-
-    const likedSongs = await page.getLikedSongs();
     const liked = likedSongs.find((likedSong) => likedSong.id === song.id) !== undefined;
     if (liked) {
         document.getElementById('dislikeButton').classList.remove('hidden');
         document.getElementById('likeButton').classList.add('hidden');
     }
+}
 
+try {
+    page.update();
+
+    await updateSong();
     page.registerLikeButtons();
 } catch (error) {
     if (error instanceof ApiError) alert(error.message);

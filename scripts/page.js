@@ -41,21 +41,38 @@ class Page {
         localStorage.removeItem('authToken');
     }
 
-    // returns null if the user in not logged in
+    // returns null if the user is not logged in
     async getUserId() {
         if (this.authToken === null) return null;
 
-        const result = await apiPost('user/auth', {
-            token: this.authToken,
-        });
+        // cache result
+        if (this.userId === undefined) this.userId = await this.fetchUserId();
+        return this.userId;
+    }
 
-        return result.id;
+    async fetchUserId() {
+        try {
+            const result = await apiPost('user/auth', {
+                token: this.authToken,
+            });
+            return result.id;
+        } catch (error) {
+            if (error instanceof ApiError && error.code === 401) {
+                // unauthorized
+                return null;
+            }
+            throw error;
+        }
     }
 
     // throws an Exception if user is not logged in
-    async currentUser() {
-        const id = getUserId();
-        return (await apiGet(apiUrl + 'user/one' + id)).user;
+    async getCurrentUser() {
+        // cache result
+        if (this.user === undefined) {
+            const id = await this.getUserId();
+            this.user = (await apiGet('user/one/' + id)).user;
+        }
+        return this.user;
     }
 
     // throws an exception if the user is not logged in
@@ -73,8 +90,8 @@ class Page {
 
     async getLikedSongs() {
         // cache results
-        if (this.likedSongs !== undefined) return this.likedSongs;
-        return (this.likedSongs = this.fetchLikedSongs());
+        if (this.likedSongs === undefined) this.likedSongs = await this.fetchLikedSongs();
+        return this.likedSongs;
     }
 
     // returns an empty list if the user is not logged in
@@ -129,19 +146,34 @@ class Page {
             other.classList.remove('hidden');
         }
 
-        const that = this;
-
         for (const element of document.getElementsByClassName('like-button')) {
-            element.onclick = async function () {
-                await that.likeSong(element.getAttribute('data-id'));
+            element.onclick = async () => {
+                await this.likeSong(element.getAttribute('data-id'));
                 toggleOther(element);
             };
         }
 
         for (const element of document.getElementsByClassName('dislike-button')) {
-            element.onclick = async function () {
-                await that.dislikeSong(element.getAttribute('data-id'));
+            element.onclick = async () => {
+                await this.dislikeSong(element.getAttribute('data-id'));
                 toggleOther(element);
+            };
+        }
+    }
+
+    async update() {
+        if ((await this.getUserId()) !== null) {
+            // user is logged in
+            const user = await this.getCurrentUser();
+
+            document.getElementById('unauthedNav').classList.add('hidden');
+            document.getElementById('authedNav').classList.remove('hidden');
+            document.getElementById('likedSongsButton').classList.remove('hidden');
+
+            document.getElementById('helloName').innerText = user.first_name;
+            document.getElementById('logoutButton').onclick = () => {
+                this.removeAuthToken();
+                location.reload();
             };
         }
     }

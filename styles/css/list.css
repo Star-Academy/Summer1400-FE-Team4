@@ -15,7 +15,7 @@ main {
 .main-content .songtable .row,
 .main-content .songtable .header {
   display: grid;
-  grid-template-columns: 1.2em 5rem 1fr 2fr 8em 1.5em 3em;
+  grid-template-columns: 2em 5rem 1fr 2fr 8em 1.5em 3em;
   gap: 1rem;
   justify-items: start;
   padding: 1rem;
@@ -23,11 +23,11 @@ main {
 }
 .main-content .songtable.in-album .row,
 .main-content .songtable.in-album .header {
-  grid-template-columns: 1.2em 1fr 1.5em 3em;
+  grid-template-columns: 2em 1fr 1.5em 3em;
 }
 .main-content .songtable.in-song .row,
 .main-content .songtable.in-song .header {
-  grid-template-columns: 1.2em 1fr 1.5em 3em;
+  grid-template-columns: 2em 1fr 1.5em 3em;
 }
 .main-content .songtable .row {
   border-radius: 1rem;

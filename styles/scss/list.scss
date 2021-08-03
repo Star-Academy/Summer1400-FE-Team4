@@ -17,7 +17,7 @@ main {
         .row,
         .header {
             display: grid;
-            grid-template-columns: 1.2em 5rem 1fr 2fr 8em 1.5em 3em;
+            grid-template-columns: 2em 5rem 1fr 2fr 8em 1.5em 3em;
             gap: $density-normal;
 
             justify-items: start;
@@ -28,14 +28,14 @@ main {
         &.in-album {
             .row,
             .header {
-                grid-template-columns: 1.2em 1fr 1.5em 3em;
+                grid-template-columns: 2em 1fr 1.5em 3em;
             }
         }
 
         &.in-song {
             .row,
             .header {
-                grid-template-columns: 1.2em 1fr 1.5em 3em;
+                grid-template-columns: 2em 1fr 1.5em 3em;
             }
         }
 

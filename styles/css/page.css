@@ -196,15 +196,6 @@ video {
   vertical-align: baseline;
 }
 
-body {
-  box-sizing: content-box;
-  min-height: 100vh;
-  margin: auto;
-  font-size: var(--font-size);
-  background-color: #2c2e43;
-  color: #b2b1b9;
-}
-
 input,
 button {
   color: inherit;
@@ -221,6 +212,15 @@ input[type=search]::-webkit-search-results-decoration {
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
   transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+body {
+  box-sizing: content-box;
+  min-height: 100vh;
+  margin: auto;
+  font-size: var(--font-size);
+  background-color: #2c2e43;
+  color: #b2b1b9;
 }
 
 .page {
@@ -312,7 +312,8 @@ input:-webkit-autofill:focus {
 }
 .top-bar > nav > ul {
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
+  align-items: center;
 }
 .top-bar > nav > ul > li {
   margin: 0 1rem;
@@ -416,6 +417,10 @@ footer {
 }
 .icon-button .icon.selected {
   color: #ffd523;
+}
+
+.icon-play {
+  font-size: 1.2em;
 }
 
 .icon-play {
