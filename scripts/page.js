@@ -91,9 +91,9 @@ class Song {
 
         html += `
             <div>
-                <h5>
+                <h4>
                     <a href="music.html?id=${this.id}">${this.name}</a>
-                </h5>`;
+                </h4>`;
 
         if (this.showArtist)
             html += `
