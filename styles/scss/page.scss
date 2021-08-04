@@ -1,6 +1,7 @@
 @use '_defs' as *;
 @use 'main' as *;
 
+// set runtime variables
 :root {
     --card-min-width: 20rem;
     --font-size: 1.6rem;
@@ -20,6 +21,7 @@
     }
 }
 
+// reset everything
 html {
     scroll-behavior: smooth;
 }
@@ -120,16 +122,6 @@ video {
     vertical-align: baseline;
 }
 
-body {
-    box-sizing: content-box;
-    min-height: 100vh;
-    margin: auto;
-    font-size: var(--font-size);
-
-    background-color: $color-dark;
-    color: $color-light;
-}
-
 input,
 button {
     color: inherit;
@@ -147,6 +139,17 @@ input[type='search']::-webkit-search-results-decoration {
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
     transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+// main styles
+body {
+    box-sizing: content-box;
+    min-height: 100vh;
+    margin: auto;
+    font-size: var(--font-size);
+
+    background-color: $color-dark;
+    color: $color-light;
 }
 
 .page {
@@ -263,7 +266,8 @@ input:-webkit-autofill:focus {
 
         > ul {
             display: flex;
-            flex-direction: row-reverse;
+            flex-direction: row;
+            align-items: center;
 
             > li {
                 margin: 0 $density-normal;
@@ -365,6 +369,35 @@ footer {
     display: inline-block;
     width: 1.2em;
     height: 1.2em;
+}
+
+.icon-button {
+    display: block;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    .icon {
+        display: block;
+
+        &:hover {
+            fill: $color-primary;
+            transition: 300ms;
+        }
+
+        &.selected {
+            color: $color-primary;
+        }
+    }
+}
+
+.icon-play,
+.icon-pause {
+    font-size: 1.2em;
+}
+
+.icon-play {
+    transform: scaleX(-1);
 }
 
 h1,

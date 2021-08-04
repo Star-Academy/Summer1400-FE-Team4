@@ -1,26 +1,41 @@
-const urlSearchParams = new URLSearchParams(window.location.search);
-const params = Object.fromEntries(urlSearchParams.entries());
+import { ApiError, apiGet, Page } from './page.js';
 
-const response = await fetch(`http://130.185.120.192:5000/song/one/${params.id}`);
-if (response.ok)
-{
-    const song = (await response.json()).song;
+const page = new Page();
+
+async function getSong() {
+    const urlSearchParams = new URLSearchParams(window.location.search);
+    const params = Object.fromEntries(urlSearchParams.entries());
+
+    return (await apiGet('song/one/' + params.id)).song;
+}
+
+async function updateSong() {
+    const [song, likedSongs] = await Promise.all([getSong(), page.getLikedSongs()]);
 
     document.getElementById('image').src = song.cover;
-    document.getElementById('songName1').innerText = song.name;
-    document.getElementById('albumName').innerText = "تک آهنگ";
+    document.getElementById('songName').innerText = song.name;
+    document.getElementById('songNameInList').innerText = song.name;
+    document.getElementById('albumName').innerText = 'تک آهنگ';
+    document.getElementById('albumName').href = 'album.html?id=' + song.id;
     document.getElementById('singerName').innerText = song.artist;
+    document.getElementById('singerName').href = 'artist.html?name=' + song.artist;
     document.getElementById('songLyrics').innerText = song.lyrics;
+    document.getElementById('songRow').setAttribute('data-id', song.id);
+    document.getElementById('songRow').setAttribute('data-file', song.file);
 
-    // TODO: check in liked playlist
-    // if (music.isLiked) {
-    //     document.getElementById('notLiked').style.display = 'none';
-    // } else {
-    //     document.getElementById('liked').style.display = 'none';
-    // }
+    const liked = likedSongs.find((likedSong) => likedSong.id === song.id) !== undefined;
+    if (liked) {
+        document.getElementById('dislikeButton').classList.remove('hidden');
+        document.getElementById('likeButton').classList.add('hidden');
+    }
 }
-else
-{
-    const error = await response.json();
-    alert(error.message);
+
+try {
+    page.updatePage();
+
+    await updateSong();
+    page.updateList();
+} catch (error) {
+    if (error instanceof ApiError) alert(error.message);
+    throw error;
 }
