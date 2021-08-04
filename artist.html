@@ -68,7 +68,7 @@
                                 <span class="icon-desc">لیست آهنگ‌ها</span>
                             </a>
                         </li>
-                        <li>
+                        <li id="likedSongsButton" class="hidden">
                             <a href="likedSongs.html" class="button-block">
                                 <svg
                                     class="icon"
@@ -90,7 +90,7 @@
         <header class="top-bar">
             <nav>
                 <form class="search-box" action="list.html" method="GET">
-                    <input type="search" name="query" placeholder="جستجو" />
+                    <input type="search" id="query" name="query" placeholder="جستجو" />
                     <button aria-label="Search">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -104,21 +104,40 @@
                         </svg>
                     </button>
                 </form>
-                <ul>
+                <ul id="unauthedNav">
+                    <li>
+                        <a href="signIn.html" class="button-pill">ورود</a>
+                    </li>
                     <li>
                         <a href="signUp.html" class="button-pill">ثبت نام</a>
                     </li>
+                </ul>
+                <ul id="authedNav" class="hidden">
                     <li>
-                        <a href="signIn.html" class="button-pill">ورود</a>
+                        سلام
+                        <span id="helloName"></span>!
+                    </li>
+                    <li>
+                        <a id="logoutButton" href="#" class="button-pill">خروج</a>
                     </li>
                 </ul>
             </nav>
         </header>
         <section class="page-content">
             <main>
-                <div class="banner in-artist" id="banner"></div>
-                <section class="shelf in-artist" id="albumShelf">
-                    <div class="shelf-items" id="shelf"></div>
+                <div class="banner in-artist" id="banner">
+                    <div class="banner-image">
+                        <img id="image" alt="" />
+                    </div>
+                    <div class="banner-desc">
+                        <h1 id="singerName"></h1>
+                        <div>
+                            <span id="albumCount"></span>
+                        </div>
+                    </div>
+                </div>
+                <section class="shelf in-artist">
+                    <div class="shelf-items" id="albumShelf"></div>
                 </section>
             </main>
             <footer>حق انتشار &copy; ۲۰۲۱ آهنگیفای&trade;</footer>

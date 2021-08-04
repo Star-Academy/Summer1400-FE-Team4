@@ -158,7 +158,30 @@ class Song {
         return html;
     }
 
-    get shelfItem() {}
+    get artistCard() {
+        return `
+            <a href="artist.html?name=${this.artist}" >
+                <div class="shelf-card">
+                    <div class="card-image">
+                        <img src="${this.cover}" alt="">
+                    </div>
+                    <span>${this.artist}</span>
+                </div>
+            </a>`;
+    }
+
+    get albumCard()
+    {
+        return `
+            <a href="album.html?id=${this.id}" >
+                <div class="shelf-card">
+                    <div class="card-image">
+                        <img src="${this.cover}" alt="">
+                    </div>
+                    <span>${this.name}</span>
+                </div>
+            </a>`;
+    }
 }
 
 class Page {
