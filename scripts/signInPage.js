@@ -27,7 +27,7 @@ async function submit(event) {
     const result = await response.json();
     if (response.status === 200) {
         alert('You logged in successfully!');
-        localStorage.setItem('token', result.token);
+        localStorage.setItem('authToken', result.token);
         window.location.href = './index.html';
     } else if (response.status === 400) {
         alert('Bad Request!');

@@ -35,8 +35,7 @@ class Page {
 
     // returns null if an auth token is not
     get authToken() {
-        //return localStorage.getItem('authToken');
-        return 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTYsImlhdCI6MTYyNzk5MDYxM30._4hpcq790rLVQP_nMAQtkxCWKHh7Hw3WD5oVILGwQ5g';
+        return localStorage.getItem('authToken');
     }
 
     removeAuthToken() {
@@ -211,7 +210,6 @@ class Page {
             document.getElementById('unauthedNav').classList.add('hidden');
             document.getElementById('authedNav').classList.remove('hidden');
             document.getElementById('likedSongsButton').classList.remove('hidden');
-
             document.getElementById('helloName').innerText = user.first_name;
             document.getElementById('logoutButton').onclick = () => {
                 this.removeAuthToken();

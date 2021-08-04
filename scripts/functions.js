@@ -2,9 +2,7 @@ function likeIcon() {
     for (const element of document.getElementsByClassName('like-icon')) {
         element.onclick = function () {
             element.classList.add('hidden');
-            let other = document.getElementById(
-                'dislike' + element.getAttribute('data-index')
-            );
+            let other = document.getElementById('dislike' + element.getAttribute('data-index'));
             other.classList.remove('hidden');
         };
     }
@@ -12,9 +10,7 @@ function likeIcon() {
     for (const element of document.getElementsByClassName('dislike-icon')) {
         element.onclick = function () {
             element.classList.add('hidden');
-            let other = document.getElementById(
-                'like' + element.getAttribute('data-index')
-            );
+            let other = document.getElementById('like' + element.getAttribute('data-index'));
             other.classList.remove('hidden');
         };
     }
@@ -26,16 +22,12 @@ function addSongTable(results) {
             return `<div class="row">
                 <div>${index + 1}</div>
                 <div><img src="${song.album.imageAddress}" alt="" ></div>
-                <div><a href="music.html?name=${song.name}">${
-                song.name
-            }</a> <br>
+                <div><a href="music.html?name=${song.name}">${song.name}</a> <br>
                     <a href="artist.html?name=${song.album.singer}"><small>${
                 song.album.singer
             }</small></a>
                 </div>
-                <div><a href="album.html?name=${song.album.name}">${
-                song.album.name
-            }</a></div>
+                <div><a href="album.html?name=${song.album.name}">${song.album.name}</a></div>
                 <div>${song.album.releasedDate}</div>
                 <div>
                     <svg id="dislike${index}" data-index="${index}" xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="dislike-icon icon ${
@@ -63,9 +55,7 @@ function albumHtml(album1, song) {
                         <div>${album1.songs.indexOf(song) + 1}</div>
                         <div><a href="music.html?name=${song.name}">${
         song.name
-    }</a> <br> <a href="artist.html?name=${album1.singer}"><small>${
-        album1.singer
-    }</small></a></div>
+    }</a> <br> <a href="artist.html?name=${album1.singer}"><small>${album1.singer}</small></a></div>
                         <div>
                             <svg id="dislike${album1.songs.indexOf(
                                 song

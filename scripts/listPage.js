@@ -5,8 +5,7 @@ const urlSearchParams = new URLSearchParams(window.location.search);
 const params = Object.fromEntries(urlSearchParams.entries());
 
 const allMusics = albums.reduce(
-    (sum, current) =>
-        sum.concat(current.songs.map((song) => ({ ...song, album: current }))),
+    (sum, current) => sum.concat(current.songs.map((song) => ({ ...song, album: current }))),
     []
 );
 
@@ -16,9 +15,7 @@ if ('query' in params) {
     document.getElementById('query').value = query;
 }
 
-const results = allMusics.filter((music) =>
-    music.name.toLowerCase().includes(query.toLowerCase())
-);
+const results = allMusics.filter((music) => music.name.toLowerCase().includes(query.toLowerCase()));
 
 addSongTable(results);
 likeIcon();

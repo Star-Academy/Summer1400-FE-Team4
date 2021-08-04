@@ -343,8 +343,9 @@ footer {
     transition: 100ms ease-in-out;
 
     &:hover {
-        color: $color-lighter;
+        color: $color-darkest;
         border-color: $color-lighter;
+        background-color: $color-primary;
     }
 }
 

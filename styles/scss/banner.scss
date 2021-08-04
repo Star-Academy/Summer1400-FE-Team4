@@ -5,11 +5,7 @@
 }
 
 .banner {
-    background-image: linear-gradient(
-        to bottom,
-        $color-darkest 0%,
-        $color-darker 100%
-    );
+    background-image: linear-gradient(to bottom, $color-darkest 0%, $color-darker 100%);
 
     padding: 5%;
     display: grid;
@@ -43,11 +39,7 @@
     }
 
     &.in-artist {
-        background-image: linear-gradient(
-            to bottom,
-            $color-darker 0%,
-            $color-dark 100%
-        );
+        background-image: linear-gradient(to bottom, $color-darker 0%, $color-dark 100%);
     }
 
     &.in-song .banner-desc {
