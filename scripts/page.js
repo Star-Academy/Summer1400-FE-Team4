@@ -28,6 +28,136 @@ async function apiPost(path, data, hasResponse = true) {
     } else throw new ApiError((await response.json()).message, response.code);
 }
 
+class Song {
+    constructor(data, liked, showCover = true, showArtist = true, showAlbum = true) {
+        this.id = data.id;
+        this.name = data.name;
+        this.artist = data.artist;
+        this.lyrics = data.lyrics;
+        this.file = data.file;
+        this.cover = data.cover;
+        this.liked = liked;
+        this.showCover = showCover;
+        this.showArtist = showArtist;
+        this.showAlbum = showAlbum;
+    }
+
+    get listItem() {
+        let html = `
+        <div data-id="${this.id}" data-file="${this.file}" class="row">
+            <div>
+                <button
+                    id="playButton${this.id}"
+                    data-toggle="pauseButton${this.id}"
+                    class="play-button icon-button"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        class="icon icon-play"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                        />
+                        <path
+                            d="M6.271 5.055a.5.5 0 0 1 .52.038l3.5 2.5a.5.5 0 0 1 0 .814l-3.5 2.5A.5.5 0 0 1 6 10.5v-5a.5.5 0 0 1 .271-.445z"
+                        />
+                    </svg>
+                </button>
+                <button
+                    id="pauseButton${this.id}"
+                    data-toggle="playButton${this.id}"
+                    class="pause-button icon-button hidden"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        class="icon icon-pause selected"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+                        />
+                        <path
+                            d="M5 6.25a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0v-3.5zm3.5 0a1.25 1.25 0 1 1 2.5 0v3.5a1.25 1.25 0 1 1-2.5 0v-3.5z"
+                        />
+                    </svg>
+                </button>
+            </div>`;
+        if (this.showCover)
+            html += `
+            <div>
+                <img src="${this.cover}" alt=""></img>
+            </div>`;
+
+        html += `
+            <div>
+                <div>
+                    <a href="music.html?name=${this.id}">${this.name}</a>
+                </div>`;
+
+        if (this.showArtist)
+            html += `
+                <div>
+                    <a href="artist.html?name=${this.singer}">
+                        <small>${this.singer}</small>
+                    </a>
+                </div>`;
+
+        html += `
+            </div>`;
+
+        if (this.showAlbum)
+            html += `
+            <div>
+                <a href="album.html?name=${this.id}">${this.name}</a>
+            </div>`;
+
+        html += `
+            <div>
+                <button
+                    id="likeButton${this.id}"
+                    data-toggle="dislikeButton${this.id}"
+                    class="like-button icon-button ${this.liked ? 'hidden' : ''}"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        class="icon"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"
+                        />
+                    </svg>
+                </button>
+                <button
+                    id="dislikeButton${this.id}"
+                    data-toggle="likeButton${this.id}"
+                    class="dislike-button icon-button ${this.liked ? '' : 'hidden'}"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        class="icon selected"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            fill-rule="evenodd"
+                            d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
+                        />
+                    </svg>
+                </button>
+            </div>
+            <div class="song-duration"></div>
+        </div>`;
+        return html;
+    }
+
+    get shelfItem() {}
+}
+
 class Page {
     constructor() {
         this.audio = new Audio();
@@ -219,4 +349,4 @@ class Page {
     }
 }
 
-export { ApiError, apiGet, apiPost, Page };
+export { ApiError, Song, apiGet, apiPost, Page };
