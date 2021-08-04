@@ -87,9 +87,7 @@ class Song {
             </div>`;
         if (this.showCover)
             html += `
-            <div>
-                <img src="${this.cover}" alt=""></img>
-            </div>`;
+                <img src="${this.cover}" alt=""></img>`;
 
         html += `
             <div>
@@ -112,7 +110,9 @@ class Song {
             html += `
             <div>
                 <a href="album.html?id=${this.id}">${this.name}</a>
-            </div>
+            </div>`
+
+        html += `
             <div>`;
 
         if (this.liked !== null)

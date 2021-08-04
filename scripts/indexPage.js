@@ -1,37 +1,46 @@
-import { albums, singers } from './data.js';
+import { ApiError, apiGet, apiPost, Page, Song } from './page.js';
 
-// show albums
-const albumsHtml = albums
-    .map((album) => {
-        return `<a href="album.html?name=${album.name}" >
-            <div class="shelf-card">
-                <div class="card-image">
-                    <img src="${album.imageAddress}" alt="">
-                </div>
-                <span>${album.name}</span>
-            </div>
-        </a>
-        `;
-    })
-    .reduce((sum, current) => sum + current);
+const page = new Page();
 
-const albumitems = document.getElementById('albumshelf');
-albumitems.innerHTML = albumsHtml;
+async function getSongs(current = 1) {
+    return (
+        await apiPost('song/page', {
+            size: 20,
+            current: current,
+            sorter: 'name',
+            desc: true,
+        })
+    ).songs;
+}
 
-// show singers
-const singersHtml = singers
-    .map((singer) => {
-        return `<a href="artist.html?name=${singer.name}" >
-            <div class="shelf-card">
-                <div class="card-image">
-                    <img src="${singer.imageAddress}" alt="">
-                </div>
-                <span>${singer.name}</span>
-            </div>
-        </a>
-        `;
-    })
-    .reduce((sum, current) => sum + current);
+async function updateSongs() {
+    const songs = await getSongs(1);
 
-const singeritems = document.getElementById('singershelf');
-singeritems.innerHTML = singersHtml;
+    const songRenders = songs.map((song) => {
+        return new Song(song, null, true, true, true);
+    });
+
+    for (const songRender of songRenders)
+        document.getElementById('albumShelf').innerHTML += songRender.albumCard;
+}
+
+async function updateArtists() {
+    const songs = await getSongs(2);
+
+    const songRenders = songs.map((song) => {
+        return new Song(song, null, true, true, true);
+    });
+
+    for (const songRender of songRenders)
+        document.getElementById('singerShelf').innerHTML += songRender.artistCard;
+}
+
+try {
+    page.updatePage();
+
+    updateSongs();
+    updateArtists();
+} catch (error) {
+    if (error instanceof ApiError) alert(error.message);
+    throw error;
+}

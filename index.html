@@ -67,7 +67,7 @@
                                 <span class="icon-desc">لیست آهنگ‌ها</span>
                             </a>
                         </li>
-                        <li>
+                        <li id="likedSongsButton" class="hidden">
                             <a href="likedSongs.html" class="button-block">
                                 <svg
                                     class="icon"
@@ -86,10 +86,10 @@
                 </nav>
             </div>
         </aside>
-        <header class="top-bar">
+        <header class="top-bar in-banner">
             <nav>
                 <form class="search-box" action="list.html" method="GET">
-                    <input type="search" name="query" placeholder="جستجو" />
+                    <input type="search" id="query" name="query" placeholder="جستجو" />
                     <button aria-label="Search">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -103,12 +103,21 @@
                         </svg>
                     </button>
                 </form>
-                <ul>
+                <ul id="unauthedNav">
+                    <li>
+                        <a href="signIn.html" class="button-pill">ورود</a>
+                    </li>
                     <li>
                         <a href="signUp.html" class="button-pill">ثبت نام</a>
                     </li>
+                </ul>
+                <ul id="authedNav" class="hidden">
                     <li>
-                        <a href="signIn.html" class="button-pill">ورود</a>
+                        سلام
+                        <span id="helloName"></span>!
+                    </li>
+                    <li>
+                        <a id="logoutButton" href="#" class="button-pill">خروج</a>
                     </li>
                 </ul>
             </nav>
@@ -117,11 +126,11 @@
             <main>
                 <section class="shelf">
                     <h1 class="shelf-title">آلبوم‌های برتر</h1>
-                    <div class="shelf-items" id="albumshelf"></div>
+                    <div class="shelf-items" id="albumShelf"></div>
                 </section>
                 <section class="shelf">
                     <h1 class="shelf-title">خوانندگان برتر</h1>
-                    <div class="shelf-items" id="singershelf"></div>
+                    <div class="shelf-items" id="singerShelf"></div>
                 </section>
             </main>
             <footer>حق انتشار &copy; ۲۰۲۱ آهنگیفای&trade;</footer>
