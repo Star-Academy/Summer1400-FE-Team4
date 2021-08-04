@@ -5,6 +5,7 @@
 }
 
 .banner {
+    grid-area: banner;
     background-image: linear-gradient(to bottom, $color-darkest 0%, $color-darker 100%);
 
     padding: 5%;

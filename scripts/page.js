@@ -93,15 +93,15 @@ class Song {
 
         html += `
             <div>
-                <div>
-                    <a href="music.html?name=${this.id}">${this.name}</a>
-                </div>`;
+                <h5>
+                    <a href="music.html?id=${this.id}">${this.name}</a>
+                </h5>`;
 
         if (this.showArtist)
             html += `
                 <div>
-                    <a href="artist.html?name=${this.singer}">
-                        <small>${this.singer}</small>
+                    <a href="artist.html?name=${this.artist}">
+                        <small>${this.artist}</small>
                     </a>
                 </div>`;
 
@@ -111,11 +111,12 @@ class Song {
         if (this.showAlbum)
             html += `
             <div>
-                <a href="album.html?name=${this.id}">${this.name}</a>
-            </div>`;
+                <a href="album.html?id=${this.id}">${this.name}</a>
+            </div>
+            <div>`;
 
-        html += `
-            <div>
+        if (this.liked !== null)
+            html += `
                 <button
                     id="likeButton${this.id}"
                     data-toggle="dislikeButton${this.id}"
@@ -148,7 +149,9 @@ class Song {
                             d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314z"
                         />
                     </svg>
-                </button>
+                </button>`;
+
+        html += `
             </div>
             <div class="song-duration"></div>
         </div>`;
@@ -300,6 +303,8 @@ class Page {
             element.onclick = async () => {
                 this.audio.src = element.closest('.row').getAttribute('data-file');
                 this.audio.play();
+                for (const element of document.getElementsByClassName('pause-button'))
+                    toggleOther(element);
                 toggleOther(element);
             };
         }

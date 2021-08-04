@@ -1,12 +1,30 @@
-import { albums, singers } from './data.js';
-import { likeIcon, addSongTable } from './functions.js';
+import { ApiError, apiGet, apiPost, Page, Song } from './page.js';
 
-const allMusics = albums.reduce(
-    (sum, current) => sum.concat(current.songs.map((song) => ({ ...song, album: current }))),
-    []
-);
+const page = new Page();
 
-const results = allMusics.filter((song) => song.isLiked);
+async function updateSongs() {
+    const likedSongs = await page.getLikedSongs();
 
-addSongTable(results);
-likeIcon();
+    const songRenders = likedSongs.map((song) => {
+        return new Song(song, true, true, true, true);
+    });
+
+    for (const songRender of songRenders)
+        document.getElementById('songTable').innerHTML += songRender.listItem;
+
+    if (songRenders.length === 0)
+        document.getElementById('songTableEmpty').classList.remove('hidden');
+}
+
+try {
+    if ((await page.getUserId()) === null) location.href = 'index.html';
+    else {
+        page.updatePage();
+
+        await updateSongs();
+        page.updateList();
+    }
+} catch (error) {
+    if (error instanceof ApiError) alert(error.message);
+    throw error;
+}

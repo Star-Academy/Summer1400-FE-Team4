@@ -20,7 +20,9 @@ async function updateSong() {
     document.getElementById('singerName').href = 'artist.html?name=' + song.artist;
     document.getElementById('songLyrics').innerText = song.lyrics;
 
-    const liked = likedSongs.find((likedSong) => likedSong.id === song.id) !== undefined;
+    let liked = null;
+    if ((await page.getUserId()) !== null)
+        liked = likedSongs.find((likedSong) => likedSong.id === song.id) !== undefined;
     const songRender = new Song(song, liked, false, false, false);
     document.getElementById('songTable').innerHTML += songRender.listItem;
 }

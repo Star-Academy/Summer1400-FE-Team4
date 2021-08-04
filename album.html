@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="styles/css/page.css" />
         <link rel="stylesheet" href="styles/css/banner.css" />
         <link rel="stylesheet" href="styles/css/list.css" />
-        <script src="scripts/albumPage.js" type="module"></script>
+        <script src="scripts/musicPage.js" type="module"></script>
     </head>
     <body class="page">
         <aside class="side-bar">
@@ -68,7 +68,7 @@
                                 <span class="icon-desc">لیست آهنگ‌ها</span>
                             </a>
                         </li>
-                        <li>
+                        <li id="likedSongsButton" class="hidden">
                             <a href="likedSongs.html" class="button-block">
                                 <svg
                                     class="icon"
@@ -90,7 +90,7 @@
         <header class="top-bar in-banner">
             <nav>
                 <form class="search-box" action="list.html" method="GET">
-                    <input type="search" name="query" placeholder="جستجو" />
+                    <input type="search" id="query" name="query" placeholder="جستجو" />
                     <button aria-label="Search">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -104,23 +104,45 @@
                         </svg>
                     </button>
                 </form>
-                <ul>
+                <ul id="unauthedNav">
+                    <li>
+                        <a href="signIn.html" class="button-pill">ورود</a>
+                    </li>
                     <li>
                         <a href="signUp.html" class="button-pill">ثبت نام</a>
                     </li>
+                </ul>
+                <ul id="authedNav" class="hidden">
                     <li>
-                        <a href="signIn.html" class="button-pill">ورود</a>
+                        سلام
+                        <span id="helloName"></span>!
+                    </li>
+                    <li>
+                        <a id="logoutButton" href="#" class="button-pill">خروج</a>
                     </li>
                 </ul>
             </nav>
         </header>
         <section class="page-content">
             <main>
-                <div class="banner" id="banner"></div>
+                <div class="banner in-song">
+                    <div class="banner-image">
+                        <img id="image" alt="" />
+                    </div>
+                    <div class="banner-desc">
+                        <h1 id="songName"></h1>
+                        <div><a id="albumName"></a></div>
+                        <div>
+                            <strong>
+                                <a id="singerName"></a>
+                            </strong>
+                        </div>
+                    </div>
+                </div>
                 <div class="main-content">
-                    <div class="songtable in-album" id="songTable">
+                    <div id="songTable" class="songtable in-song">
                         <div class="header">
-                            <div>#</div>
+                            <div></div>
                             <div>آهنگ</div>
                             <div></div>
                             <div>
@@ -140,6 +162,10 @@
                             </div>
                         </div>
                     </div>
+                    <details class="song-lyrics hidden">
+                        <summary><h2>متن آهنگ</h2></summary>
+                        <p id="songLyrics"></p>
+                    </details>
                 </div>
             </main>
             <footer>حق انتشار &copy; ۲۰۲۱ آهنگیفای&trade;</footer>
