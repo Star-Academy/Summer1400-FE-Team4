@@ -33,7 +33,7 @@ async function getSongs() {
 async function updateSongs() {
     const [songs, likedSongs] = await Promise.all([getSongs(), page.getLikedSongs()]);
 
-    let loggedIn = await page.getUserId() !== null;
+    let loggedIn = (await page.getUserId()) !== null;
     const songRenders = songs.map((song) => {
         let liked = null;
         if (loggedIn)

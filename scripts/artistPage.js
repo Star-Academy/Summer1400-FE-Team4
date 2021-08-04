@@ -15,20 +15,21 @@ async function getSongs() {
         })
     ).songs;
 
-    return results.filter(song => song.artist.search(params.name) > -1)
+    return results.filter((song) => song.artist.search(params.name) > -1);
 }
 
 async function updateSongs() {
     const songs = await getSongs();
 
     if (songs.length === 0) {
-        alert('خواننده وجود ندارد!')
+        alert('خواننده وجود ندارد!');
         return;
     }
-    
+
     document.getElementById('image').src = songs[songs.length - 1].cover;
     document.getElementById('singerName').innerText = songs[songs.length - 1].artist;
-    document.getElementById('albumCount').innerText = songs.length.toLocaleString('fa-IR') + ' آلبوم';
+    document.getElementById('albumCount').innerText =
+        songs.length.toLocaleString('fa-IR') + ' آلبوم';
 
     const songRenders = songs.map((song) => {
         return new Song(song, null, true, true, true);

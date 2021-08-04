@@ -110,7 +110,7 @@ class Song {
             html += `
             <div>
                 <a href="album.html?id=${this.id}">${this.name}</a>
-            </div>`
+            </div>`;
 
         html += `
             <div>`;
@@ -170,8 +170,7 @@ class Song {
             </a>`;
     }
 
-    get albumCard()
-    {
+    get albumCard() {
         return `
             <a href="album.html?id=${this.id}" >
                 <div class="shelf-card">
