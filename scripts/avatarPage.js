@@ -17,7 +17,7 @@ const lastNameInput = document.getElementById('lastName_input');
 const form = document.getElementById('box');
 
 const page = new Page();
-let avatar = null;
+let avatar = 'null';
 
 try {
     if ((await page.getUserId()) === null) location.href = 'index.html';
@@ -26,14 +26,13 @@ try {
         page.updateTitle('ویرایش حساب کاربری');
         let user = await page.getCurrentUser();
 
-        if (user.avatar === null) {
-        } else {
+        if (user.avatar !== null && user.avatar !== 'null') {
             image.src = user.avatar;
             image.classList.remove('hidden');
             emptyAvatar.classList.add('hidden');
         }
-        name.innerText = user.first_name;
-        userName.innerText = user.username;
+        name.innerText = user.first_name + ' ' + user.last_name;
+        userName.innerText = '@' + user.username;
         email.innerText = user.email;
 
         form.addEventListener('submit', submit);
@@ -56,7 +55,7 @@ try {
 
             emptyAvatar.classList.remove('hidden');
             image.classList.add('hidden');
-            avatar = null;
+            avatar = 'null';
         });
 
         async function submit(event) {
@@ -69,13 +68,14 @@ try {
             user.password = passwordInput.value;
             user.username = userNameInput.value;
             user.token = page.authToken;
-            if (avatar !== null) user.avatar = avatar;
+            user.avatar = avatar;
 
             try {
                 await apiPost('user/alter', user, false);
                 location.reload();
             } catch (e) {
                 if (e instanceof ApiError) alert(e.message);
+                else alert('مشکلی در ارتباط با سرور به وجود آمده');
                 throw e;
             }
         }

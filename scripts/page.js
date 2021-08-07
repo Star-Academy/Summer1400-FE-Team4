@@ -377,7 +377,7 @@ class Page {
                 document.getElementById('helloName').dir = 'ltr';
             }
 
-            if (user.avatar !== null) {
+            if (user.avatar !== null && user.avatar !== 'null') {
                 for (const element of document.getElementsByClassName('profile-empty-image')) {
                     element.classList.add('invisible');
                 }
