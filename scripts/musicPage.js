@@ -12,6 +12,8 @@ async function getSong() {
 async function updateSong() {
     const [song, likedSongs] = await Promise.all([getSong(), page.getLikedSongs()]);
 
+    page.updateTitle(song.name);
+
     document.getElementById('image').src = song.cover;
     document.getElementById('songName').innerText = song.name;
     document.getElementById('albumName').innerText = 'تک آهنگ';

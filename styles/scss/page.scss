@@ -16,7 +16,7 @@
 
 @media (max-width: 600px) {
     :root {
-        --card-min-width: 14rem;
+        --card-min-width: 12rem;
         --font-size: 1.2rem;
     }
 }
@@ -264,13 +264,100 @@ body {
         justify-content: space-between;
         padding: $density-normal;
 
-        > ul {
+        ul {
             display: flex;
             flex-direction: row;
             align-items: center;
 
             > li {
                 margin: 0 $density-normal;
+            }
+        }
+
+        .icon-profile {
+            display: flex;
+            background-color: inherit;
+            border: none;
+            cursor: pointer;
+
+            margin: 0 $density-normal;
+            padding: $density-small;
+            background-color: $color-primary;
+            background-size: cover;
+            color: $color-dark;
+            border-radius: 100%;
+            border: 0.1rem solid $color-lighter;
+
+            > svg {
+                width: 1.6em;
+                height: 1.6em;
+            }
+        }
+
+        .profile-popup-container {
+            position: relative;
+            transition: opacity 200ms;
+
+            &.invisible {
+                opacity: 0;
+                height: 0;
+                overflow: hidden;
+            }
+
+            > .profile-popup {
+                position: absolute;
+                top: $density-normal;
+                padding: $density-large $density-normal 0 $density-normal;
+
+                background-color: $color-medium-dark;
+                border-radius: $density-small;
+                border: 0.1rem solid $color-medium-light;
+                color: $color-lighter;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: $density-normal;
+
+                width: max-content;
+                transition: 1s;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    border: calc(0.5em + 0.1rem) solid transparent;
+                    border-bottom-color: $color-medium-light;
+                    width: calc(1em + 0.2rem);
+                    height: calc(1em + 0.2rem);
+                    top: calc(-1em - 0.2rem);
+                    right: calc(#{$density-large} - 0.1rem);
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    border: 0.5em solid transparent;
+                    border-bottom-color: $color-medium-dark;
+                    width: 1em;
+                    height: 1em;
+                    top: -1em;
+                    right: $density-large;
+                }
+
+                .icon-profile {
+                    cursor: inherit;
+
+                    > svg {
+                        width: 6em;
+                        height: 6em;
+                    }
+                }
+
+                > ul {
+                    border-top: 0.1rem solid $color-medium-light;
+
+                    padding: $density-normal;
+                }
             }
         }
 
@@ -338,13 +425,14 @@ footer {
 .button-pill {
     display: inline-block;
     border-radius: 1000rem;
-    border: 0.1rem solid $color-light;
+    border: 0.1rem solid currentColor;
     padding: $density-small $density-normal;
     transition: 100ms ease-in-out;
+    background-color: inherit;
+    cursor: pointer;
 
     &:hover {
-        color: $color-darkest;
-        border-color: $color-lighter;
+        color: $color-darker;
         background-color: $color-primary;
     }
 }
@@ -356,6 +444,7 @@ footer {
     padding: $density-normal $density-large;
     border-radius: $density-small;
     transition: 100ms ease-in-out;
+    cursor: pointer;
 
     &:hover {
         background-color: $color-darker;
@@ -374,7 +463,7 @@ footer {
 
 .icon-button {
     display: block;
-    background-color: transparent;
+    background-color: inherit;
     border: none;
     cursor: pointer;
 

@@ -19,12 +19,17 @@
         padding-bottom: 100%;
         position: relative;
 
-        > img {
+        > img,
+        svg {
             box-shadow: 0 0 5rem rgb(0 0 0 / 50%);
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
+        }
+
+        > svg {
+            background-color: $color-darkest;
         }
     }
 

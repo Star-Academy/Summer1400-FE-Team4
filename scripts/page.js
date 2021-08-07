@@ -367,12 +367,43 @@ class Page {
             document.getElementById('unauthedNav').classList.add('hidden');
             document.getElementById('authedNav').classList.remove('hidden');
             document.getElementById('likedSongsButton').classList.remove('hidden');
-            document.getElementById('helloName').innerText = user.first_name;
+
+            if (user.first_name || user.last_name) {
+                document.getElementById('helloName').innerText =
+                    user.first_name + ' ' + user.last_name;
+                document.getElementById('helloUserName').innerText = '@' + user.username;
+            } else {
+                document.getElementById('helloName').innerText = '@' + user.username;
+                document.getElementById('helloName').dir = 'ltr';
+            }
+
+            if (user.avatar !== null) {
+                for (const element of document.getElementsByClassName('profile-empty-image')) {
+                    element.classList.add('invisible');
+                }
+                for (const element of document.getElementsByClassName('icon-profile')) {
+                    element.style.backgroundImage = 'url(' + user.avatar + ')';
+                }
+            }
+
+            document.getElementById('profileButton').onclick = () => {
+                document.getElementById('profilePopup').classList.toggle('invisible');
+            };
+
+            document.body.addEventListener('click', (event) => {
+                if (event.target.closest('#authedNav') === null)
+                    document.getElementById('profilePopup').classList.add('invisible');
+            });
+
             document.getElementById('logoutButton').onclick = () => {
                 this.removeAuthToken();
                 location.reload();
             };
         }
+    }
+
+    updateTitle(title) {
+        document.title = title + ' - آهنگیفای';
     }
 }
 

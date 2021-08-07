@@ -2,10 +2,10 @@ import { ApiError, apiGet, apiPost, Page, Song } from './page.js';
 
 const page = new Page();
 
-async function getSongs() {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    const params = Object.fromEntries(urlSearchParams.entries());
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
 
+async function getSongs() {
     const results = (
         await apiPost('song/find', {
             phrase: params.name,
@@ -44,6 +44,7 @@ async function updateSongs() {
 
 try {
     page.updatePage();
+    page.updateTitle(params.name);
 
     await updateSongs();
 } catch (error) {

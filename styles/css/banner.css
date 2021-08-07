@@ -16,12 +16,16 @@
   padding-bottom: 100%;
   position: relative;
 }
-.banner .banner-image > img {
+.banner .banner-image > img,
+.banner .banner-image svg {
   box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+}
+.banner .banner-image > svg {
+  background-color: #181924;
 }
 .banner .banner-desc {
   display: flex;

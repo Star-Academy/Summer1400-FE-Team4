@@ -37,7 +37,7 @@ main {
             justify-items: start;
             padding: $density-normal;
             align-items: center;
-            
+
             @media (max-width: 1000px) {
                 grid-template-columns: 2em 5rem 1fr 1fr 1.5em 2em;
             }
