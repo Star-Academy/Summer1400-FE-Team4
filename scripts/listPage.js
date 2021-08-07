@@ -2,10 +2,10 @@ import { ApiError, apiGet, apiPost, Page, Song } from './page.js';
 
 const page = new Page();
 
-async function getSongs() {
-    const urlSearchParams = new URLSearchParams(window.location.search);
-    const params = Object.fromEntries(urlSearchParams.entries());
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
 
+async function getSongs() {
     if ('query' in params && params.query.trim().length > 0) {
         const query = params.query;
         document.getElementById('query').value = query;
@@ -50,6 +50,7 @@ async function updateSongs() {
 
 try {
     page.updatePage();
+    page.updateTitle('جستجو ' + params.query);
 
     await updateSongs();
     page.updateList();
