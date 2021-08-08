@@ -50,7 +50,8 @@ async function updateSongs() {
 
 try {
     page.updatePage();
-    page.updateTitle('جستجو ' + params.query);
+    if ('query' in params && params.query.trim().length > 0)
+        page.updateTitle('جستجو ' + params.query);
 
     await updateSongs();
     page.updateList();
