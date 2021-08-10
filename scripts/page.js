@@ -1,4 +1,4 @@
-const apiUrl = 'http://130.185.120.192:5000/';
+const apiUrl = 'https://songs.code-star.ir/';
 
 class ApiError extends Error {
     constructor(message, code) {

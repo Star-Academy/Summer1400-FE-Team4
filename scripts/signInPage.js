@@ -17,7 +17,7 @@ async function submit(event) {
         user.username = user_info.value;
     }
 
-    const response = await fetch('http://130.185.120.192:5000/user/login', {
+    const response = await fetch('https://songs.code-star.ir/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json;charset=utf-8',
