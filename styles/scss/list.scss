@@ -2,17 +2,27 @@
 
 main {
     height: 100%;
+
+    display: grid;
+    grid-template-rows: auto 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        'banner'
+        'table';
+    justify-items: stretch;
 }
 
 .main-content {
-    background-image: linear-gradient(
-        to bottom,
-        $color-darker 0,
-        $color-dark 20rem
-    );
+    grid-area: table;
+    background-image: linear-gradient(to bottom, $color-darker 0, $color-dark 20rem);
 
     .songtable {
         padding: $density-normal;
+
+        .list-empty {
+            padding: $density-normal;
+        }
+
         .header {
             border-bottom: 0.15rem solid $color-medium;
             margin-bottom: $density-normal;
@@ -21,33 +31,38 @@ main {
         .row,
         .header {
             display: grid;
-            grid-template-columns: 1.2em 5rem 1fr 2fr 8em 1.5em 3em;
+            grid-template-columns: 2em 5rem 1fr 2fr 1.5em 2em;
             gap: $density-normal;
 
             justify-items: start;
-            padding: 1rem;
+            padding: $density-normal;
             align-items: center;
+
+            @media (max-width: 1000px) {
+                grid-template-columns: 2em 5rem 1fr 1fr 1.5em 2em;
+            }
         }
 
         &.in-album {
             .row,
             .header {
-                grid-template-columns: 1.2em 1fr 1.5em 3em;
+                grid-template-columns: 2em 1fr 1.5em 3em;
             }
         }
 
         &.in-song {
             .row,
             .header {
-                grid-template-columns: 1.2em 1fr 1.5em 3em;
+                grid-template-columns: 2em 1fr 1.5em 3em;
             }
         }
 
         .row {
             border-radius: $density-normal;
+            transition: 200ms ease-in-out;
+
             &:hover {
                 background-color: $color-medium;
-                transition: 500ms;
             }
         }
 
@@ -55,44 +70,13 @@ main {
             width: 5rem;
             height: 5rem;
         }
-
-        .row .icon {
-            margin-top: 0.5em;
-            cursor: pointer;
-
-            &.icon-play {
-                transform: scaleX(-1);
-            }
-
-            &:hover {
-                fill: $color-primary;
-                transition: 300ms;
-            }
-
-            &.filled {
-                color: $color-primary;
-            }
-        }
-    }
-}
-
-@media screen and (max-width: 800px) {
-    .main-content {
-        .songtable {
-            .row,
-            .header {
-                grid-template-columns: 0.8em 5rem 1fr 2fr 1.5em 2em;
-                > *:nth-child(5) {
-                    display: none;
-                }
-            }
-        }
     }
 }
 
 .song-lyrics {
     padding: $density-large;
     > summary {
+        width: fit-content;
         cursor: pointer;
         > h2 {
             display: inline;

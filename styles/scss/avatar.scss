@@ -1,0 +1,88 @@
+@use "_defs" as *;
+:root {
+    --yellow: #ffd523;
+    --darkgray: #2c2e43;
+    --gray: #595260;
+    --lightgray: #b2b1b9;
+}
+
+body {
+    section {
+        main {
+            display: flex;
+            justify-items: center;
+            justify-content: center;
+
+            #box {
+                padding: $density-larger;
+
+                text-align: center;
+
+                #spotifyicon {
+                    width: 15rem;
+                    height: 15rem;
+                    fill: var(--yellow);
+                }
+
+                input[type='text'],
+                input[type='email'],
+                input[type='password'] {
+                    background: none;
+                    display: block;
+                    margin: 1.2rem auto;
+                    text-align: center;
+                    border: 1.5px solid lightgray;
+                    padding: 0.7rem;
+
+                    outline: none;
+                    color: white;
+                    width: 20rem;
+                    border-radius: 1.5rem;
+                    transition: 0.25s;
+                }
+
+                input[type='text']:focus,
+                input[type='password']:focus,
+                input[type='email']:focus {
+                    width: 27rem;
+                    border-color: var(--yellow);
+                }
+
+                input::placeholder {
+                    font-size: 1.3rem;
+                }
+
+                .button,
+                input[type='submit'] {
+                    display: block;
+                    border: none;
+                    border-radius: 1.5rem;
+                    width: 27rem;
+                    background-color: lightyellow;
+                    padding: 0.7rem;
+                    margin: 1rem auto;
+                    color: black;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: var(--yellow);
+                        transition: 0.5s;
+                    }
+                }
+
+                .button {
+                    width: 20rem;
+                }
+
+                #signin {
+                    color: lightgray;
+                    text-decoration: none;
+
+                    &:hover {
+                        color: white;
+                    }
+                }
+            }
+        }
+    }
+}

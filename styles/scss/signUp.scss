@@ -29,7 +29,7 @@ body {
         input[type='password'] {
             background: none;
             display: block;
-            margin: 0.7rem auto;
+            margin: 1.2rem auto;
             text-align: center;
             border: 1.5px solid lightgray;
             padding: 0.7rem;
@@ -39,23 +39,6 @@ body {
             width: 20rem;
             border-radius: 1.5rem;
             transition: 0.25s;
-        }
-        #date_input_label {
-            font-size: 1.3rem;
-            color: gray;
-        }
-        #country_input_label {
-            font-size: 1.3rem;
-            color: gray;
-        }
-
-        input[type='date'],
-        select {
-            margin: 1rem auto;
-            width: 16rem;
-            padding: 0.8rem;
-            border: 0;
-            border-radius: 1rem;
         }
 
         input[type='text']:focus,

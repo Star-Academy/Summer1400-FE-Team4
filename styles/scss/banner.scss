@@ -5,11 +5,8 @@
 }
 
 .banner {
-    background-image: linear-gradient(
-        to bottom,
-        $color-darkest 0%,
-        $color-darker 100%
-    );
+    grid-area: banner;
+    background-image: linear-gradient(to bottom, $color-darkest 0%, $color-darker 100%);
 
     padding: 5%;
     display: grid;
@@ -22,12 +19,17 @@
         padding-bottom: 100%;
         position: relative;
 
-        > img {
+        > img,
+        svg {
             box-shadow: 0 0 5rem rgb(0 0 0 / 50%);
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
+        }
+
+        > svg {
+            background-color: $color-darkest;
         }
     }
 
@@ -35,6 +37,7 @@
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
+        align-items: flex-start;
         padding-bottom: $density-large;
 
         h1 {
@@ -43,11 +46,7 @@
     }
 
     &.in-artist {
-        background-image: linear-gradient(
-            to bottom,
-            $color-darker 0%,
-            $color-dark 100%
-        );
+        background-image: linear-gradient(to bottom, $color-darker 0%, $color-dark 100%);
     }
 
     &.in-song .banner-desc {

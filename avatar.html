@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="en" dir="rtl">
+<html dir="rtl" lang="fa">
     <head>
-        <meta charset="UTF-8" />
-        <title>آلبوم Rap God - آهنگیفای</title>
+        <title>خانه - آهنگیفای</title>
+        <meta charset="utf-8" />
         <meta
             name="viewport"
             content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
         />
+
+        <link rel="stylesheet" href="styles/css/main.css" />
         <link rel="stylesheet" href="styles/css/page.css" />
+        <link rel="stylesheet" href="styles/css/avatar.css" />
         <link rel="stylesheet" href="styles/css/banner.css" />
-        <link rel="stylesheet" href="styles/css/list.css" />
-        <script src="scripts/musicPage.js" type="module"></script>
+        <script src="scripts/avatarPage.js" type="module"></script>
     </head>
     <body class="page">
         <aside class="side-bar">
@@ -87,7 +89,7 @@
                 </nav>
             </div>
         </aside>
-        <header class="top-bar in-banner">
+        <header class="top-bar">
             <nav>
                 <form class="search-box" action="list.html" method="GET">
                     <input type="search" id="query" name="query" placeholder="جستجو" />
@@ -155,49 +157,72 @@
             </nav>
         </header>
         <section class="page-content">
+            <div class="banner in-artist">
+                <div class="banner-image">
+                    <img class="hidden" src="images/album/Hall%20of%20Fame.jpg" id="image" alt="" />
+                    <svg
+                        id="emptyAvatar"
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="currentColor"
+                        viewBox="0 0 16 16"
+                    >
+                        <path
+                            d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"
+                        />
+                    </svg>
+                </div>
+                <div class="banner-desc">
+                    <h1 id="name"></h1>
+                    <div id="email" dir="ltr"></div>
+                    <div>
+                        <strong id="userName" dir="ltr"></strong>
+                    </div>
+                </div>
+            </div>
+
             <main>
-                <div class="banner in-song">
-                    <div class="banner-image">
-                        <img id="image" alt="" />
+                <form id="box">
+                    <div>
+                        <label for="image_input" class="button">تغییر عکس پروفایل</label>
+                        <input
+                            type="file"
+                            id="image_input"
+                            name="avatar"
+                            accept="image/*"
+                            class="hidden"
+                        />
                     </div>
-                    <div class="banner-desc">
-                        <h1 id="songName"></h1>
-                        <div><a id="albumName"></a></div>
-                        <div>
-                            <strong>
-                                <a id="singerName"></a>
-                            </strong>
-                        </div>
+                    <button id="removeAvatar" class="button">حذف عکس پروفایل</button>
+                    <div>
+                        <label for="username_input">تغییر نام کاربری : </label>
+                        <input type="text" id="username_input" name="username" dir="ltr" />
                     </div>
-                </div>
-                <div class="main-content">
-                    <div id="songTable" class="songtable in-song">
-                        <div class="header">
-                            <div></div>
-                            <div>آهنگ</div>
-                            <div></div>
-                            <div>
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="currentColor"
-                                    class="icon"
-                                    viewBox="0 0 16 16"
-                                >
-                                    <path
-                                        d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"
-                                    />
-                                    <path
-                                        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"
-                                    />
-                                </svg>
-                            </div>
-                        </div>
+                    <div>
+                        <label for="email_input">تغییر ایمیل : </label>
+                        <input type="email" id="email_input" name="email" dir="ltr" />
                     </div>
-                    <details class="song-lyrics hidden">
-                        <summary><h2>متن آهنگ</h2></summary>
-                        <p id="songLyrics"></p>
-                    </details>
-                </div>
+                    <div>
+                        <label for="password_input">تغییر گذر واژه :</label>
+                        <input
+                            autocomplete="new-password"
+                            type="password"
+                            id="password_input"
+                            name="password"
+                            minlength="8"
+                            dir="ltr"
+                        />
+                    </div>
+                    <div>
+                        <label for="name_input">تغییر نام :</label>
+                        <input type="text" id="name_input" name="username" />
+                    </div>
+                    <div>
+                        <label for="lastName_input">تغییر نام خانوادگی :</label>
+                        <input type="text" id="lastName_input" name="username" />
+                    </div>
+                    <br />
+                    <input type="submit" value="ویرایش اطلاعات " id="submitButton" /><br />
+                </form>
             </main>
             <footer>حق انتشار &copy; ۲۰۲۱ آهنگیفای&trade;</footer>
         </section>

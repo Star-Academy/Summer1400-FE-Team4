@@ -1,6 +1,7 @@
 @use '_defs' as *;
 @use 'main' as *;
 
+// set runtime variables
 :root {
     --card-min-width: 20rem;
     --font-size: 1.6rem;
@@ -15,11 +16,12 @@
 
 @media (max-width: 600px) {
     :root {
-        --card-min-width: 14rem;
+        --card-min-width: 12rem;
         --font-size: 1.2rem;
     }
 }
 
+// reset everything
 html {
     scroll-behavior: smooth;
 }
@@ -120,16 +122,6 @@ video {
     vertical-align: baseline;
 }
 
-body {
-    box-sizing: content-box;
-    min-height: 100vh;
-    margin: auto;
-    font-size: var(--font-size);
-
-    background-color: $color-dark;
-    color: $color-light;
-}
-
 input,
 button {
     color: inherit;
@@ -147,6 +139,17 @@ input[type='search']::-webkit-search-results-decoration {
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
     transition: background-color 600000s 0s, color 600000s 0s;
+}
+
+// main styles
+body {
+    box-sizing: content-box;
+    min-height: 100vh;
+    margin: auto;
+    font-size: var(--font-size);
+
+    background-color: $color-dark;
+    color: $color-light;
 }
 
 .page {
@@ -261,12 +264,99 @@ input:-webkit-autofill:focus {
         justify-content: space-between;
         padding: $density-normal;
 
-        > ul {
+        ul {
             display: flex;
-            flex-direction: row-reverse;
+            flex-direction: row;
+            align-items: center;
 
             > li {
                 margin: 0 $density-normal;
+            }
+        }
+
+        .icon-profile {
+            display: flex;
+            background-color: inherit;
+            border: none;
+            cursor: pointer;
+
+            margin: 0 $density-normal;
+            padding: $density-small;
+            background-color: $color-primary;
+            background-size: cover;
+            color: $color-dark;
+            border-radius: 100%;
+            border: 0.1rem solid $color-lighter;
+
+            > svg {
+                width: 1.6em;
+                height: 1.6em;
+            }
+        }
+
+        .profile-popup-container {
+            position: relative;
+            transition: opacity 200ms;
+
+            &.invisible {
+                opacity: 0;
+                height: 0;
+                overflow: hidden;
+            }
+
+            > .profile-popup {
+                position: absolute;
+                top: $density-normal;
+                padding: $density-large $density-normal 0 $density-normal;
+
+                background-color: $color-medium-dark;
+                border-radius: $density-small;
+                border: 0.1rem solid $color-medium-light;
+                color: $color-lighter;
+
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                gap: $density-normal;
+
+                width: max-content;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    border: calc(0.5em + 0.1rem) solid transparent;
+                    border-bottom-color: $color-medium-light;
+                    width: calc(1em + 0.2rem);
+                    height: calc(1em + 0.2rem);
+                    top: calc(-1em - 0.2rem);
+                    right: calc(#{$density-large} - 0.1rem);
+                }
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    border: 0.5em solid transparent;
+                    border-bottom-color: $color-medium-dark;
+                    width: 1em;
+                    height: 1em;
+                    top: -1em;
+                    right: $density-large;
+                }
+
+                .icon-profile {
+                    cursor: inherit;
+
+                    > svg {
+                        width: 6em;
+                        height: 6em;
+                    }
+                }
+
+                > ul {
+                    border-top: 0.1rem solid $color-medium-light;
+
+                    padding: $density-normal;
+                }
             }
         }
 
@@ -334,13 +424,15 @@ footer {
 .button-pill {
     display: inline-block;
     border-radius: 1000rem;
-    border: 0.1rem solid $color-light;
+    border: 0.1rem solid currentColor;
     padding: $density-small $density-normal;
     transition: 100ms ease-in-out;
+    background-color: inherit;
+    cursor: pointer;
 
     &:hover {
-        color: $color-lighter;
-        border-color: $color-lighter;
+        color: $color-darker;
+        background-color: $color-primary;
     }
 }
 
@@ -351,6 +443,7 @@ footer {
     padding: $density-normal $density-large;
     border-radius: $density-small;
     transition: 100ms ease-in-out;
+    cursor: pointer;
 
     &:hover {
         background-color: $color-darker;
@@ -365,6 +458,35 @@ footer {
     display: inline-block;
     width: 1.2em;
     height: 1.2em;
+}
+
+.icon-button {
+    display: block;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
+
+    .icon {
+        display: block;
+
+        &:hover {
+            fill: $color-primary;
+            transition: 300ms;
+        }
+
+        &.selected {
+            color: $color-primary;
+        }
+    }
+}
+
+.icon-play,
+.icon-pause {
+    font-size: 1.2em;
+}
+
+.icon-play {
+    transform: scaleX(-1);
 }
 
 h1,
