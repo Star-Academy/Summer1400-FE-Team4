@@ -1,30 +1,8 @@
-@import "../../styles";
-
-body {
-  box-sizing: content-box;
-  min-height: 100vh;
-  margin: auto;
-  font-size: var(--font-size);
-
-  background-color: $color-dark;
-  color: $color-light;
-}
-
-.page {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-        'top-bar      side-bar'
-        'page-content side-bar';
-
-  > .page-inner {
-    width: 100%;
-  }
-}
+@use "../../styles/defs" as *;
 
 .side-bar {
   grid-area: side-bar;
+  height: 100%;
 
   width: fit-content;
   background-color: $color-darkest;
