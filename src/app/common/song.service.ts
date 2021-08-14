@@ -1,30 +1,30 @@
-// import { injectable } from "@angular/core";
-// import { httpclient } from '@angular/common/http';
-// import { observable, of } from "rxjs";
-// import { catcherror } from "rxjs/operators";
-// import { song } from "./song.model";
+import {Injectable } from "@angular/core";
+import {HttpClient} from "@angular/common/http";
 
 
-// @injectable()
-// export class songservice {
-//     api_url = 'https://songs.code-star.ir/';
 
-//     constructor (private http: httpclient) {
+@Injectable()
+export class songservice {
+  constructor(private http:HttpClient) {
+  }
+  getSongs(){
+    return SONGS;
+  }
+  getSong(id:number){
 
-//     }
+    return SONGS.find(song => song.id ===id)
 
-//     getsong(id: number) : observable<song> {
-//         return this.http.get<object>(api_url + `song/one/${id}`)
-//             .pipe(catcherror(this.handleerror<object>('getsong', {})))
-//             .pipe((result: object) : song => {
+  }
 
-//             });
-//     }
+}
+const SONGS=[
+  {
+    id:1,
+    name: "Something",
+    artist: "Someone",
+    lyrics: "Lots of things",
+    file: "some url",
+    cover: "some url"
+  }
 
-//     handleerror<t> (operation = 'operation', result?: t) {
-//         return (error: any): observable<t> => {
-//             console.error(error);
-//             return of(result as t);
-//         }
-//     }
-// }
+]
