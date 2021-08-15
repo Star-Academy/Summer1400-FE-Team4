@@ -1,12 +1,12 @@
 <section class="shelf">
-    <h1 class="shelf-title">{{title}}</h1>
+    <h1 class="shelf-title">{{ title }}</h1>
     <div class="shelf-items" id="albumShelf">
-        <a *ngFor="let card of cards" (click)="cardClick(card.id)">
+        <a *ngFor="let card of cards" [routerLink]="card.link" (click)="cardClick(card.id)">
             <div class="shelf-card">
                 <div class="card-image">
-                    <img [src]="card.image" alt="">
+                    <img [src]="card.image" alt="" />
                 </div>
-                <span>{{card.title}}</span>
+                <span>{{ card.title }}</span>
             </div>
         </a>
     </div>

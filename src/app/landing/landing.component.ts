@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SongService } from '../common';
 import { ShelfCard } from '../shelf/shelf.component';
 
@@ -11,13 +12,13 @@ export class LandingComponent implements OnInit {
     albumCards: ShelfCard[] = [];
     singerCards: ShelfCard[] = [];
 
-    constructor(private songService: SongService) {}
+    constructor(private songService: SongService, private route: Router) {}
 
     ngOnInit(): void {
         this.songService.getSongs().subscribe(
             (songs) =>
                 (this.albumCards = songs.map((song) => ({
-                    id: song.id,
+                    link: ['album', song.id],
                     title: song.name,
                     image: song.cover,
                 }))),
@@ -27,17 +28,16 @@ export class LandingComponent implements OnInit {
         this.songService.getSongs('name', undefined, 20, 2).subscribe(
             (songs) =>
                 (this.singerCards = songs
-                    .map((song) => ({
-                        id: song.artist,
-                        title: song.artist,
-                        image: song.cover,
-                    }))
                     .filter((value, index, self) => {
                         return (
                             self.findIndex((other) => other.id === value.id) ===
                             index
                         );
-                    })),
+                    })
+                    .map((song) => ({
+                        title: song.artist,
+                        image: song.cover,
+                    }))),
             (error) => alert(error.message) // Use toaster instead
         );
     }

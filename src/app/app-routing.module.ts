@@ -6,7 +6,10 @@ import { SongListComponent } from './song-list/song-list.component';
 export const routes: Routes = [
     { path: 'list/:term', component: SongListComponent },
     { path: 'list', component: SongListComponent },
+    { path: 'album/:id', component: SongListComponent },
+    { path: 'singer/:name', component: SongListComponent },
     { path: '', component: LandingComponent },
+    { path: '**', redirectTo: '' },
 ];
 
 @NgModule({

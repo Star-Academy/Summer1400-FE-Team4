@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { SearchTermService } from '../song-list/search-term.service';
 
 @Component({
     selector: 'app-header',
@@ -7,12 +8,14 @@ import { Router } from '@angular/router';
     styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit {
-    searchTerm: string = '';
-    constructor(private route: Router) {}
+    query: string = '';
+    constructor(private router: Router, private searchTermService: SearchTermService) {}
 
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.searchTermService.current.subscribe((current) => (this.query = current));
+    }
 
     search(value: any) {
-        this.route.navigate(['list', value.query]);
+        this.router.navigate(['list', value.query]);
     }
 }
