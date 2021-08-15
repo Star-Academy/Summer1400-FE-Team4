@@ -1,30 +1,70 @@
-import {Injectable } from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Song } from './song.model';
+import { ApiService } from './api.service';
 
-
+type Sorter = 'name' | 'artist';
 
 @Injectable()
-export class songservice {
-  constructor(private http:HttpClient) {
-  }
-  getSongs(){
-    return SONGS;
-  }
-  getSong(id:number){
+export class SongService {
+    API_URL = 'https://songs.code-star.ir/';
 
-    return SONGS.find(song => song.id ===id)
+    constructor(private api: ApiService) {}
 
-  }
+    getSong(id: number): Observable<Song> {
+        return this.api.get<any>(`song/one/${id}`).pipe(map(this.parseSong));
+    }
 
+    getSongs(
+        sortBy?: Sorter,
+        descending?: boolean,
+        pageSize: number = 10,
+        currentPage = 1
+    ): Observable<Song[]> {
+        return this.api
+            .post<any>('song/page', {
+                size: pageSize,
+                current: currentPage,
+                sorter: sortBy,
+                desc: descending,
+            })
+            .pipe(
+                map((result: any): Song[] => {
+                    return result.songs.map(this.parseSong);
+                })
+            );
+    }
+
+    findSongs(
+        phrase: string,
+        sortBy?: Sorter,
+        descending?: boolean,
+        pageSize: number = 10
+    ): Observable<Song[]> {
+        return this.api
+            .post<any>('song/page', {
+                phrase: phrase,
+                size: pageSize,
+                sorter: sortBy,
+                desc: descending,
+            })
+            .pipe(
+                map((result: any): Song[] => {
+                    return result.songs.map(this.parseSong);
+                })
+            );
+    }
+
+    private parseSong(song: any): Song {
+        return {
+            id: song.id,
+            name: song.name,
+            artist: song.artist,
+            lyrics: song.lyrics,
+            file: song.file,
+            cover: song.cover,
+            publishDate: song.publish_date,
+        };
+    }
 }
-const SONGS=[
-  {
-    id:1,
-    name: "Something",
-    artist: "Someone",
-    lyrics: "Lots of things",
-    file: "some url",
-    cover: "some url"
-  }
-
-]
