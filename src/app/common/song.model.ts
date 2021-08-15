@@ -1,4 +1,3 @@
-
 export interface Song {
     id: number;
     name: string;
@@ -8,5 +7,3 @@ export interface Song {
     cover: string;
     publishDate: Date;
 }
-
-

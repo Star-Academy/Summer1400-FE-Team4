@@ -8,12 +8,14 @@ import { AsideComponent } from './aside/aside.component';
 import { SongListComponent } from './song-list/song-list.component';
 import { LandingComponent } from './landing/landing.component';
 import { ShelfComponent } from './shelf/shelf.component';
-import { SongComponent } from './song/song.component';
+//import { SongComponent } from './song/song.component';
 import {RouterModule} from "@angular/router";
-import {songservice} from "./common/song.service";
-import { BannerComponent } from './banner/banner.component';
+import { SongService } from "./common/song.service";
+//import { BannerComponent } from './banner/banner.component';
 import {HttpClientModule} from "@angular/common/http";
-import {UserModule} from "./user/user.module";
+import { ApiService } from './common';
+import { FormsModule } from '@angular/forms';
+//import {UserModule} from "./user/user.module";
 
 @NgModule({
   declarations: [
@@ -23,17 +25,16 @@ import {UserModule} from "./user/user.module";
     SongListComponent,
     LandingComponent,
     ShelfComponent,
-    SongComponent,
-    BannerComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    RouterModule.forRoot(routes),
-    UserModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
-    songservice
+    ApiService,
+    SongService,
   ],
   bootstrap: [AppComponent]
 })
