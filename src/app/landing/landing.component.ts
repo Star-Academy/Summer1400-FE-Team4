@@ -11,6 +11,7 @@ import { ShelfCard } from '../shelf/shelf.component';
 export class LandingComponent implements OnInit {
     albumCards: ShelfCard[] = [];
     singerCards: ShelfCard[] = [];
+    newAlbumCards: ShelfCard[] = [];
 
     constructor(private songService: SongService, private route: Router) {}
 
@@ -28,16 +29,25 @@ export class LandingComponent implements OnInit {
         this.songService.getSongs('name', undefined, 20, 2).subscribe(
             (songs) =>
                 (this.singerCards = songs
+                    // remove duplicates
                     .filter((value, index, self) => {
-                        return (
-                            self.findIndex((other) => other.id === value.id) ===
-                            index
-                        );
+                        return self.findIndex((other) => other.artist === value.artist) === index;
                     })
                     .map((song) => ({
+                        link: ['singer', song.artist],
                         title: song.artist,
                         image: song.cover,
                     }))),
+            (error) => alert(error.message) // Use toaster instead
+        );
+
+        this.songService.getSongs(undefined, undefined, 10, 2).subscribe(
+            (songs) =>
+                (this.newAlbumCards = songs.map((song) => ({
+                    link: ['album', song.id],
+                    title: song.name,
+                    image: song.cover,
+                }))),
             (error) => alert(error.message) // Use toaster instead
         );
     }
