@@ -14,6 +14,7 @@ import { SongService } from "./common/song.service";
 //import { BannerComponent } from './banner/banner.component';
 import {HttpClientModule} from "@angular/common/http";
 import { ApiService } from './common';
+import { FormsModule } from '@angular/forms';
 //import {UserModule} from "./user/user.module";
 
 @NgModule({
@@ -29,6 +30,7 @@ import { ApiService } from './common';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [
     ApiService,
