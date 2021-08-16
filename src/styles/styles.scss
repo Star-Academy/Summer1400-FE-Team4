@@ -307,3 +307,7 @@ h6 {
   color: $color-lighter;
 }
 
+// remove toastr box-shadow
+.toast-container .ngx-toastr {
+  box-shadow: none;
+}
