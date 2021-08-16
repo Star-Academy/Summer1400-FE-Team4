@@ -8,11 +8,14 @@ type Sorter = 'name' | 'artist';
 
 @Injectable()
 export class SongService {
-
     constructor(private api: ApiService) {}
 
     getSong(id: number): Observable<Song> {
-        return this.api.get<any>(`song/one/${id}`).pipe(map(this.parseSong));
+        return this.api.get<any>(`song/one/${id}`).pipe(
+            map((result: any): Song => {
+                return this.parseSong(result.song);
+            })
+        );
     }
 
     getSongs(

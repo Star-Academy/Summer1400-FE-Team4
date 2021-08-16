@@ -1,10 +1,10 @@
-<div class="songtable">
+<div class="songtable" [ngClass]="{ 'remove-album': removeAlbum }">
     <div class="header">
         <div>&nbsp;#</div>
         <div>آهنگ</div>
-        <div></div>
-        <div>آلبوم</div>
-        <div class="publish-date">تاریخ انتشار</div>
+        <div *ngIf="!removeAlbum"></div>
+        <div *ngIf="!removeAlbum">آلبوم</div>
+        <div *ngIf="!removeAlbum" class="publish-date">تاریخ انتشار</div>
         <div></div>
         <div>
             <svg
@@ -53,21 +53,23 @@
                 </svg>
             </button>
         </div>
-        <img [src]="song.cover" alt="" />
+        <img *ngIf="!removeAlbum" [src]="song.cover" alt="" />
         <div>
             <h4>
                 <a [routerLink]="['/song', song.id]">{{ song.name }}</a>
             </h4>
-            <div>
+            <div *ngIf="!removeAlbum">
                 <a [routerLink]="['/artist', song.artist]">
                     <small>{{ song.artist }}</small>
                 </a>
             </div>
         </div>
-        <div>
+        <div *ngIf="!removeAlbum">
             <a [routerLink]="['/album', song.id]">{{ song.name }}</a>
         </div>
-        <div class="publish-date">{{ song.publishDate | date: 'MMM yyyy' | persianNumeral }}</div>
+        <div *ngIf="!removeAlbum" class="publish-date">
+            {{ song.publishDate | date: 'MMM yyyy' | persianNumeral }}
+        </div>
         <div>
             <button class="icon-button">
                 <svg
@@ -97,5 +99,5 @@
         </div>
         <div>{{ songDuration[song.id] | duration | persianNumeral }}</div>
     </div>
-    <h1 class="list-empty" [hidden]="songs.length > 0">آهنگی وجود ندارد!</h1>
+    <h1 class="list-empty" [hidden]="!loaded || songs.length > 0">آهنگی وجود ندارد!</h1>
 </div>

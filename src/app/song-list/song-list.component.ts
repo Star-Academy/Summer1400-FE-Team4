@@ -10,6 +10,7 @@ import { SearchTermService } from '../common/search-term.service';
 })
 export class SongListComponent implements OnInit {
     songs: Song[] = [];
+    loaded = false;
 
     constructor(
         private songService: SongService,
@@ -23,21 +24,22 @@ export class SongListComponent implements OnInit {
             .subscribe(this.searchTermService.current);
 
         this.route.paramMap.subscribe((params) => {
+            this.loaded = false;
+            
             let term = params.get('term');
-            if (term !== null) {
+            if (term !== null && (term as string).trim()) {
                 term = (term as string).trim();
-                if (term) {
-                    this.songService
-                        .findSongs(term, undefined, undefined, 20)
-                        .subscribe((songs) => {
-                            this.songs = songs;
-                        });
-                    return;
-                }
+
+                this.songService.findSongs(term, undefined, undefined, 20).subscribe((songs) => {
+                    this.songs = songs;
+                    this.loaded = true;
+                });
+            } else {
+                this.songService.getSongs(undefined, undefined, 20).subscribe((songs) => {
+                    this.songs = songs;
+                    this.loaded = true;
+                });
             }
-            this.songService.getSongs(undefined, undefined, 20).subscribe((songs) => {
-                this.songs = songs;
-            });
         });
     }
 }

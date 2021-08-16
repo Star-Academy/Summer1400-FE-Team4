@@ -8,6 +8,8 @@ import { Song } from '../common';
 })
 export class SongTableComponent implements OnInit, OnChanges {
     @Input() songs: Song[] = [];
+    @Input() loaded = false;
+    @Input() removeAlbum = false;
     songDuration: { [id: number]: number } = {};
 
     constructor() {}
