@@ -39,12 +39,12 @@ export class SongService {
         phrase: string,
         sortBy?: Sorter,
         descending?: boolean,
-        pageSize: number = 10
+        count: number = 10
     ): Observable<Song[]> {
         return this.api
-            .post<any>('song/page', {
+            .post<any>('song/find', {
                 phrase: phrase,
-                size: pageSize,
+                count: count,
                 sorter: sortBy,
                 desc: descending,
             })

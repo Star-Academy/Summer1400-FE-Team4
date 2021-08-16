@@ -1,14 +1,8 @@
 <div class="banner in-song">
-  <div class="banner-image">
-    <img [src]="" alt="" />
-  </div>
-  <div class="banner-desc">
-    <h1 ></h1>
-    <div><a ></a></div>
-    <div>
-      <strong>
-        <a ></a>
-      </strong>
+    <div class="banner-image">
+        <img [src]="image" alt="" />
     </div>
-  </div>
+    <div class="banner-desc">
+        <ng-content></ng-content>
+    </div>
 </div>

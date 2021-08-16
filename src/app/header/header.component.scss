@@ -1,12 +1,6 @@
 @use '../../styles/defs' as *;
 
-
 .top-bar {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-    background-color: $color-darker;
-
     > nav {
         display: flex;
         flex-direction: row;

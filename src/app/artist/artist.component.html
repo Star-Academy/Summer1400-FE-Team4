@@ -1,2 +1,8 @@
-<a>
-<app-banner></app-banner>
+<app-banner [image]="artistImage">
+    <h1>{{ artistName }}</h1>
+    <div>
+        <span>{{ cards.length.toLocaleString('fa-IR') }} آلبوم</span>
+    </div>
+</app-banner>
+
+<app-shelf [cards]="cards"></app-shelf>
