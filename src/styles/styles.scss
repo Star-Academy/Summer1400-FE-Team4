@@ -268,3 +268,7 @@ h6 {
   display: grid;
 }
 
+// remove toastr box-shadow
+.toast-container .ngx-toastr {
+  box-shadow: none;
+}

@@ -3,8 +3,6 @@
         <form
             #searchBox="ngForm"
             class="search-box"
-            action="list.html"
-            method="GET"
             (ngSubmit)="search(searchBox.value)"
         >
             <input
@@ -28,10 +26,10 @@
         </form>
         <ul id="unauthedNav">
             <li>
-                <a routerLink="/login" class="button-pill">ورود</a>
+                <a routerLink="/user/login" class="button-pill">ورود</a>
             </li>
             <li>
-                <a routerLink="/signUp" class="button-pill">ثبت نام</a>
+                <a routerLink="/user/signUp" class="button-pill">ثبت نام</a>
             </li>
         </ul>
         <div id="authedNav" class="hidden">

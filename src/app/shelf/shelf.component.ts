@@ -24,6 +24,10 @@ export class ShelfComponent implements OnInit {
 
     ngOnInit(): void {}
 
+    expandItems(): void {
+        
+    }
+
     cardClick(id: any) {
         if (this.click) this.click.emit(id);
     }
