@@ -29,6 +29,7 @@ import { SongTableComponent } from './song-table/song-table.component';
 
 import localeFa from '@angular/common/locales/fa';
 import { AlbumComponent } from './album/album.component';
+import { SongComponent } from './song/song.component';
 registerLocaleData(localeFa);
 
 @NgModule({
@@ -46,6 +47,7 @@ registerLocaleData(localeFa);
         PersianNumeralPipe,
         DurationPipe,
         AlbumComponent,
+        SongComponent,
     ],
     imports: [
         BrowserModule,

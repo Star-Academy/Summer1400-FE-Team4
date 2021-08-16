@@ -6,6 +6,7 @@ import { UserModule } from './user/user.module';
 import { PageComponent } from './page/page.component';
 import { ArtistComponent } from './artist/artist.component';
 import { AlbumComponent } from './album/album.component';
+import { SongComponent } from './song/song.component';
 
 export const routes: Routes = [
     {
@@ -19,7 +20,7 @@ export const routes: Routes = [
             { path: 'list', component: SongListComponent },
             { path: 'artist/:name', component: ArtistComponent },
             { path: 'album/:id', component: AlbumComponent },
-            { path: 'song/:id', component: SongListComponent },
+            { path: 'song/:id', component: SongComponent },
             { path: '', component: LandingComponent },
         ],
         component: PageComponent,
