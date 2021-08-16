@@ -8,7 +8,6 @@ type Sorter = 'name' | 'artist';
 
 @Injectable()
 export class SongService {
-    API_URL = 'https://songs.code-star.ir/';
 
     constructor(private api: ApiService) {}
 
