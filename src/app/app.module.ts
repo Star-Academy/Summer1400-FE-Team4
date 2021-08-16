@@ -1,10 +1,19 @@
-import { NgModule } from '@angular/core';
+import { NgModule, LOCALE_ID } from '@angular/core';
+import { registerLocaleData } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+import {
+    ApiService,
+    ArtistService,
+    DurationPipe,
+    PersianNumeralPipe,
+    SearchTermService,
+    SongService,
+} from './common';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -13,11 +22,13 @@ import { SongListComponent } from './song-list/song-list.component';
 import { LandingComponent } from './landing/landing.component';
 import { ShelfComponent } from './shelf/shelf.component';
 import { BannerComponent } from './banner/banner.component';
-import { ApiService, ArtistService, SongService } from './common';
 import { UserModule } from './user/user.module';
-import { SearchTermService } from './song-list/search-term.service';
 import { ArtistComponent } from './artist/artist.component';
 import { PageComponent } from './page/page.component';
+import { SongTableComponent } from './song-table/song-table.component';
+
+import localeFa from '@angular/common/locales/fa';
+registerLocaleData(localeFa);
 
 @NgModule({
     declarations: [
@@ -30,6 +41,9 @@ import { PageComponent } from './page/page.component';
         ShelfComponent,
         ArtistComponent,
         PageComponent,
+        SongTableComponent,
+        PersianNumeralPipe,
+        DurationPipe,
     ],
     imports: [
         BrowserModule,
@@ -45,7 +59,13 @@ import { PageComponent } from './page/page.component';
         }),
         UserModule,
     ],
-    providers: [ApiService, SongService, ArtistService, SearchTermService],
+    providers: [
+        { provide: LOCALE_ID, useValue: 'fa-IR' },
+        ApiService,
+        SongService,
+        ArtistService,
+        SearchTermService,
+    ],
     bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -9,7 +9,7 @@ export class ArtistService {
     constructor(private songService: SongService) {}
 
     getSongsBy(artistName: string): Observable<Song[]> {
-        return this.songService.findSongs(artistName, 'name', false, undefined).pipe(
+        return this.songService.findSongs(artistName, 'name', false, 100000).pipe(
             map((songs: Song[]): Song[] => {
                 return songs.filter((song: Song) => song.artist.indexOf(artistName) > -1);
             })

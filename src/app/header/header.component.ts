@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { SearchTermService } from '../song-list/search-term.service';
+import { Router } from '@angular/router';
+import { SearchTermService } from '../common';
 
 @Component({
     selector: 'app-header',
