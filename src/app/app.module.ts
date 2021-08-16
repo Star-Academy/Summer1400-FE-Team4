@@ -1,5 +1,5 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
 
 import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,8 @@ import { SearchTermService } from './song-list/search-term.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { ArtistComponent } from './artist/artist.component';
+import { UserComponent } from "./user/user.component";
+import { PageComponent } from './page/page.component';
 
 @NgModule({
     declarations: [
@@ -30,6 +32,7 @@ import { ArtistComponent } from './artist/artist.component';
         LandingComponent,
         ShelfComponent,
         ArtistComponent,
+        PageComponent,
     ],
     imports: [
         BrowserModule,
@@ -48,4 +51,5 @@ import { ArtistComponent } from './artist/artist.component';
     providers: [ApiService, SongService, SearchTermService],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

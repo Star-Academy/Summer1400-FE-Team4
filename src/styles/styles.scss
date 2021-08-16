@@ -180,50 +180,7 @@ body {
   color: $color-light;
 }
 
-.page {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-template-rows: auto 1fr;
-  grid-template-areas:
-      'side-bar top-bar     '
-      'side-bar page-content';
 
-  > .top-bar-container {
-    grid-area: top-bar;
-  }
-
-  > .side-bar-container {
-    grid-area: side-bar;
-
-    width: fit-content;
-  }
-}
-
-
-.page-content {
-  grid-area: page-content;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-footer {
-  background-color: $color-darkest;
-  padding: $density-normal $density-large;
-}
-
-main {
-  height: 100%;
-
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr;
-  grid-template-areas:
-      'banner'
-      'table';
-  justify-items: stretch;
-}
 
 .main-content {
   grid-area: table;
@@ -305,6 +262,10 @@ h4,
 h5,
 h6 {
   color: $color-lighter;
+}
+
+.stretch-child{
+  display: grid;
 }
 
 // remove toastr box-shadow

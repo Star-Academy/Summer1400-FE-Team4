@@ -1,28 +1,22 @@
-:root {
-  --yellow: #ffd523;
-  --darkgray: #2c2e43;
-  --gray: #595260;
-  --lightgray: #b2b1b9;
-}
+@use "../../../styles/defs" as *;
 
-body {
-  background-color: #595260;
-  padding: 0;
+.outerForm {
+  background-color: $color-medium-dark;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
 
   #box {
-    width: 400px;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    border-radius: 2rem;
+    width: calc(min(35rem,100%));
     background: #2c2e43;
     text-align: center;
 
     #spotifyicon {
       width: 180px;
       height: 180px;
-      fill: var(--yellow);
+      fill: $color-primary;
     }
 
     input[type='text'],
@@ -36,40 +30,45 @@ body {
 
       outline: none;
       color: white;
-      width: 20rem;
+      width: 50%;
       border-radius: 2rem;
       transition: 0.25s;
     }
 
     input[type='password']:focus,
     input[type='text']:focus {
-      width: 27rem;
-      border-color: var(--yellow);
+      width: 67.5%;
+      border-color: $color-primary;
     }
+
     input::placeholder {
       font-size: 1.5rem;
       color: gray;
     }
+
     input[type='submit'] {
+      color: $color-dark;
       border: none;
       border-radius: 2rem;
-      width: 27rem;
+      width: 67.5%;
       background-color: lightyellow;
       padding: 0.7rem;
       margin-bottom: 1rem;
+
       &:hover {
-        background-color: var(--yellow);
+        background-color: $color-primary;
         transition: 0.5s;
       }
     }
 
     #create {
-      color: lightgray;
+      color: $color-light;
 
       margin: 1rem;
       left: 50%;
       transform: translate(-50%, -50%);
       text-decoration: none;
+
       &:hover {
         color: white;
       }
