@@ -5,3 +5,6 @@ export { SearchTermService } from './search-term.service';
 export { ApiService, ApiError } from './api.service';
 export { PersianNumeralPipe } from './persian-numeral.pipe';
 export { DurationPipe } from './duration.pipe';
+export { AuthService } from './auth.service';
+export { User, UserInfo } from './user.model';
+export { UserSignUpModel } from './userSignUp.model';

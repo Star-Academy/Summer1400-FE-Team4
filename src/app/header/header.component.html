@@ -15,7 +15,7 @@
                 </svg>
             </button>
         </form>
-        <ul id="unauthedNav">
+        <ul *ngIf="(auth.isAuthenticated()| async)===false"  >
             <li>
                 <a routerLink="/user/login" class="button-pill">ورود</a>
             </li>
@@ -23,8 +23,8 @@
                 <a routerLink="/user/signUp" class="button-pill">ثبت نام</a>
             </li>
         </ul>
-        <div id="authedNav" class="hidden">
-            <button id="profileButton" class="icon-profile">
+        <div *ngIf="(auth.isAuthenticated()| async)===true" >
+            <button  (click)="showPopUp=!showPopUp" class="icon-profile">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor"
@@ -36,7 +36,7 @@
                     />
                 </svg>
             </button>
-            <div id="profilePopup" class="profile-popup-container invisible">
+            <div  class="profile-popup-container" [class.invisible]="!showPopUp">
                 <div class="profile-popup">
                     <div class="icon-profile">
                         <svg
@@ -50,14 +50,15 @@
                             />
                         </svg>
                     </div>
-                    <h3 id="helloName"></h3>
-                    <div dir="ltr" id="helloUserName"></div>
+                    <h3 >{{(auth.currentUser| async)?.username}}</h3>
+                    <h3 ></h3>
+                    <div dir="ltr" ></div>
                     <ul>
                         <li>
-                            <a href="avatar.html" class="button-pill">مدیریت حساب</a>
+                            <button routerLink="/user/profile" class="button-pill">مدیریت حساب</button>
                         </li>
                         <li>
-                            <a id="logoutButton" href="#" class="button-pill">خروج</a>
+                            <button (click)="logOut()"  class="button-pill">خروج</button>
                         </li>
                     </ul>
                 </div>
