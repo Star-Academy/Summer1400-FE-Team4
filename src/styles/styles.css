@@ -227,6 +227,7 @@ body {
   font-size: var(--font-size);
   background-color: #2c2e43;
   color: #b2b1b9;
+  grid-template-rows: 1fr;
 }
 
 .main-content {
@@ -265,7 +266,7 @@ body {
 }
 
 .icon {
-  display: inline-block;
+  display: block;
   width: 1.2em;
   height: 1.2em;
 }
@@ -287,11 +288,6 @@ body {
   color: #ffd523;
 }
 
-.icon-play,
-.icon-pause {
-  font-size: 1.2em;
-}
-
 .icon-play {
   transform: scaleX(-1);
 }
@@ -307,6 +303,10 @@ h6 {
 
 .stretch-child {
   display: grid;
+}
+
+.toast-container .ngx-toastr {
+  box-shadow: none;
 }
 
 /*# sourceMappingURL=styles.css.map */

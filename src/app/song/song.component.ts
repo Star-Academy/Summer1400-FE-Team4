@@ -20,7 +20,7 @@ export class SongComponent implements OnInit {
             this.songService.getSong(id).subscribe((song) => {
                 this.song = song;
                 console.log(song);
-                
+
                 const audio = new Audio();
                 audio.preload = 'metadata';
                 audio.src = song.file;

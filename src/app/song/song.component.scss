@@ -16,9 +16,9 @@
 
     .banner {
         grid-area: banner;
-        
+
         position: sticky;
-        
+
         top: $density-largest + $density-large;
         @media screen and (max-width: 800px) {
             top: $density-largest;

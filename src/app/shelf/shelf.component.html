@@ -1,20 +1,46 @@
 <section class="shelf">
     <div class="shelf-header">
         <h1 class="shelf-title">{{ title }}</h1>
-        <button *ngIf="collapsed && collapsible" class="shelf-more" (click)="collapsed = false" title="بیشتر">
+        <button
+            *ngIf="collapsed && collapsible"
+            class="shelf-more"
+            (click)="collapsed = false"
+            title="بیشتر"
+        >
             <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z"/>
             </svg> -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"/>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                class="icon"
+                viewBox="0 0 16 16"
+            >
+                <path
+                    fill-rule="evenodd"
+                    d="M1.553 6.776a.5.5 0 0 1 .67-.223L8 9.44l5.776-2.888a.5.5 0 1 1 .448.894l-6 3a.5.5 0 0 1-.448 0l-6-3a.5.5 0 0 1-.223-.67z"
+                />
             </svg>
         </button>
-        <button *ngIf="!collapsed && collapsible" class="shelf-more" (click)="collapsed = true" title="کمتر">
+        <button
+            *ngIf="!collapsed && collapsible"
+            class="shelf-more"
+            (click)="collapsed = true"
+            title="کمتر"
+        >
             <!-- <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon" viewBox="0 0 16 16">
                 <path fill-rule="evenodd" d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
             </svg> -->
-            <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="icon" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"/>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                class="icon"
+                viewBox="0 0 16 16"
+            >
+                <path
+                    fill-rule="evenodd"
+                    d="M7.776 5.553a.5.5 0 0 1 .448 0l6 3a.5.5 0 1 1-.448.894L8 6.56 2.224 9.447a.5.5 0 1 1-.448-.894l6-3z"
+                />
             </svg>
         </button>
     </div>

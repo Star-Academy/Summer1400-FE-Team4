@@ -4,61 +4,60 @@
 *,
 *::before,
 *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'IRANSans', sans-serif;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'IRANSans', sans-serif;
 }
 
 html {
-  font-size: 62.5%;
+    font-size: 62.5%;
 }
 
 body {
-  min-height: 100vh;
+    min-height: 100vh;
 }
 
 .hidden {
-  display: none !important;
+    display: none !important;
 }
 
 .invisible {
-  visibility: hidden;
+    visibility: hidden;
 }
-
 
 // set runtime variables
 :root {
-  --card-min-width: 20rem;
-  --font-size: 1.6rem;
+    --card-min-width: 20rem;
+    --font-size: 1.6rem;
 }
 
 @media (max-width: 800px) {
-  :root {
-    --card-min-width: 18rem;
-    --font-size: 1.4rem;
-  }
+    :root {
+        --card-min-width: 18rem;
+        --font-size: 1.4rem;
+    }
 }
 
 @media (max-width: 600px) {
-  :root {
-    --card-min-width: 12rem;
-    --font-size: 1.2rem;
-  }
+    :root {
+        --card-min-width: 12rem;
+        --font-size: 1.2rem;
+    }
 }
 
 // reset everything
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 ul {
-  list-style: none;
+    list-style: none;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    color: inherit;
+    text-decoration: none;
 }
 
 a,
@@ -142,112 +141,110 @@ u,
 ul,
 var,
 video {
-  border: 0;
-  margin: 0;
-  padding: 0;
-  vertical-align: baseline;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    vertical-align: baseline;
 }
 
 input,
 button {
-  color: inherit;
-  font-size: inherit;
+    color: inherit;
+    font-size: inherit;
 }
 
 input[type='search']::-webkit-search-decoration,
 input[type='search']::-webkit-search-cancel-button,
 input[type='search']::-webkit-search-results-button,
 input[type='search']::-webkit-search-results-decoration {
-  -webkit-appearance: none;
+    -webkit-appearance: none;
 }
 
 // to get rid of chrome's autocomplete styles, this trick "just works" (tm):
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-  transition: background-color 600000s 0s, color 600000s 0s;
+    transition: background-color 600000s 0s, color 600000s 0s;
 }
-
 
 // main styles
 body {
-  display: grid;
-  box-sizing: content-box;
-  min-height: 100vh;
-  margin: auto;
-  font-size: var(--font-size);
+    display: grid;
+    box-sizing: content-box;
+    min-height: 100vh;
+    margin: auto;
+    font-size: var(--font-size);
 
-  background-color: $color-dark;
-  color: $color-light;
+    background-color: $color-dark;
+    color: $color-light;
+    grid-template-rows: 1fr;
 }
 
-
-
 .main-content {
-  grid-area: table;
-  background-image: linear-gradient(to bottom, $color-darker 0, $color-dark 20rem);
+    grid-area: table;
+    background-image: linear-gradient(to bottom, $color-darker 0, $color-dark 20rem);
 }
 
 .button-pill {
-  display: inline-block;
-  border-radius: 1000rem;
-  border: 0.1rem solid currentColor;
-  padding: $density-small $density-normal;
-  transition: 100ms ease-in-out;
-  background-color: inherit;
-  cursor: pointer;
+    display: inline-block;
+    border-radius: 1000rem;
+    border: 0.1rem solid currentColor;
+    padding: $density-small $density-normal;
+    transition: 100ms ease-in-out;
+    background-color: inherit;
+    cursor: pointer;
 
-  &:hover {
-      color: $color-darker;
-      background-color: $color-primary;
-  }
+    &:hover {
+        color: $color-darker;
+        background-color: $color-primary;
+    }
 }
 
 .button-block {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: $density-normal $density-large;
-  border-radius: $density-small;
-  transition: 100ms ease-in-out;
-  cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: $density-normal $density-large;
+    border-radius: $density-small;
+    transition: 100ms ease-in-out;
+    cursor: pointer;
 
-  &:hover {
-      background-color: $color-darker;
-  }
+    &:hover {
+        background-color: $color-darker;
+    }
 
-  &.selected {
-      background-color: $color-dark;
-  }
+    &.selected {
+        background-color: $color-dark;
+    }
 }
 
 .icon {
-  display: block;
-  width: 1.2em;
-  height: 1.2em;
+    display: block;
+    width: 1.2em;
+    height: 1.2em;
 }
 
 .icon-button {
-  display: block;
-  background-color: inherit;
-  border: none;
-  cursor: pointer;
+    display: block;
+    background-color: inherit;
+    border: none;
+    cursor: pointer;
 
-  .icon {
-      display: block;
+    .icon {
+        display: block;
 
-      &:hover {
-          fill: $color-primary;
-          transition: 300ms;
-      }
+        &:hover {
+            fill: $color-primary;
+            transition: 300ms;
+        }
 
-      &.selected {
-          color: $color-primary;
-      }
-  }
+        &.selected {
+            color: $color-primary;
+        }
+    }
 }
 
 .icon-play {
-  transform: scaleX(-1);
+    transform: scaleX(-1);
 }
 
 h1,
@@ -256,14 +253,14 @@ h3,
 h4,
 h5,
 h6 {
-  color: $color-lighter;
+    color: $color-lighter;
 }
 
-.stretch-child{
-  display: grid;
+.stretch-child {
+    display: grid;
 }
 
 // remove toastr box-shadow
 .toast-container .ngx-toastr {
-  box-shadow: none;
+    box-shadow: none;
 }

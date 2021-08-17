@@ -6,21 +6,21 @@
     .shelf-header {
         display: flex;
         flex-direction: row;
-        
+
         padding: $density-normal;
 
         .shelf-more {
             display: flex;
             flex-direction: row;
             align-items: center;
-            
+
             border: none;
             margin: $density-small $density-normal;
             transition: color 200ms;
             background-color: inherit;
             cursor: pointer;
             font-size: 1.2em;
-        
+
             &:hover {
                 color: $color-lighter;
             }

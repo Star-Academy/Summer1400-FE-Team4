@@ -1,77 +1,77 @@
 @use "../../../styles/defs" as *;
 
 .outerForm {
-  background-color: $color-medium-dark;
-  height: 100%;
-  width: 100%;
-  display: grid;
-  place-items: center;
+    background-color: $color-medium-dark;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
 
-  #box {
-    border-radius: 2rem;
-    width: calc(min(35rem,100%));
-    background: #2c2e43;
-    text-align: center;
+    #box {
+        border-radius: 2rem;
+        width: calc(min(35rem, 100%));
+        background: #2c2e43;
+        text-align: center;
 
-    #spotifyicon {
-      width: 180px;
-      height: 180px;
-      fill: $color-primary;
+        #spotifyicon {
+            width: 180px;
+            height: 180px;
+            fill: $color-primary;
+        }
+
+        input[type='text'],
+        input[type='password'] {
+            background: none;
+            display: block;
+            margin: 1.2rem auto 0 auto;
+            text-align: center;
+            border: 1.5px solid lightgray;
+            padding: 0.7rem;
+
+            outline: none;
+            color: white;
+            width: 20rem;
+            border-radius: 1.5rem;
+            transition: 0.25s;
+        }
+
+        input[type='password']:focus,
+        input[type='text']:focus {
+            width: 67.5%;
+            border-color: $color-primary;
+        }
+
+        input::placeholder {
+            font-size: 1.3rem;
+            color: gray;
+        }
+
+        input[type='submit'] {
+            color: $color-dark;
+            border: none;
+            border-radius: 2rem;
+            width: 67.5%;
+            background-color: lightyellow;
+            padding: 0.7rem;
+            margin: 2rem auto 1rem auto;
+
+            &:hover {
+                background-color: $color-primary;
+                transition: 0.5s;
+            }
+        }
+
+        #create {
+            color: $color-light;
+
+            margin: 1rem;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-decoration: none;
+
+            &:hover {
+                color: white;
+            }
+        }
     }
-
-    input[type='text'],
-    input[type='password'] {
-      background: none;
-      display: block;
-      margin: 2rem auto;
-      text-align: center;
-      border: 2px solid lightgray;
-      padding: 1.4rem;
-
-      outline: none;
-      color: white;
-      width: 50%;
-      border-radius: 2rem;
-      transition: 0.25s;
-    }
-
-    input[type='password']:focus,
-    input[type='text']:focus {
-      width: 67.5%;
-      border-color: $color-primary;
-    }
-
-    input::placeholder {
-      font-size: 1.5rem;
-      color: gray;
-    }
-
-    input[type='submit'] {
-      color: $color-dark;
-      border: none;
-      border-radius: 2rem;
-      width: 67.5%;
-      background-color: lightyellow;
-      padding: 0.7rem;
-      margin-bottom: 1rem;
-
-      &:hover {
-        background-color: $color-primary;
-        transition: 0.5s;
-      }
-    }
-
-    #create {
-      color: $color-light;
-
-      margin: 1rem;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-decoration: none;
-
-      &:hover {
-        color: white;
-      }
-    }
-  }
 }

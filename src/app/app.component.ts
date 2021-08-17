@@ -1,17 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
-
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
+    ngOnInit() {}
 
-  ngOnInit() {
-
-  }
-
-  title = 'ahangify';
+    title = 'ahangify';
 }

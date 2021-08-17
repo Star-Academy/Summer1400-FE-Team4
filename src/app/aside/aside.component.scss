@@ -1,87 +1,87 @@
 @use "../../styles/defs" as *;
 
 .side-bar {
-  grid-area: side-bar;
-  height: 100%;
+    grid-area: side-bar;
+    height: 100%;
 
-  width: fit-content;
-  background-color: $color-darkest;
+    width: fit-content;
+    background-color: $color-darkest;
 
-  > .side-bar-inner {
-    display: flex;
-    flex-direction: column;
-    gap: $density-normal;
-    padding: $density-small;
-
-    position: sticky;
-    top: 0;
-
-    > .side-logo {
-      display: flex;
-      gap: $density-normal;
-      align-items: center;
-
-      color: $color-primary;
-      padding: $density-large;
-
-      > .logo-image {
-        display: inline;
-        width: 3em;
-        height: 3em;
-      }
-
-      > .logo-title {
-        font-size: 1.5em;
-      }
-    }
-
-    > nav {
-      font-weight: bold;
-
-      > ul {
+    > .side-bar-inner {
         display: flex;
         flex-direction: column;
+        gap: $density-normal;
+        padding: $density-small;
 
-        .icon-desc {
-          margin-right: $density-normal;
-          width: max-content;
+        position: sticky;
+        top: 0;
+
+        > .side-logo {
+            display: flex;
+            gap: $density-normal;
+            align-items: center;
+
+            color: $color-primary;
+            padding: $density-large;
+
+            > .logo-image {
+                display: inline;
+                width: 3em;
+                height: 3em;
+            }
+
+            > .logo-title {
+                font-size: 1.5em;
+            }
         }
-      }
+
+        > nav {
+            font-weight: bold;
+
+            > ul {
+                display: flex;
+                flex-direction: column;
+
+                .icon-desc {
+                    margin-right: $density-normal;
+                    width: max-content;
+                }
+            }
+        }
     }
-  }
 }
 
 @media (max-width: 600px) {
-  .side-bar > .side-bar-inner {
-    > .side-logo {
-      padding: $density-normal;
-      margin: 0;
+    .side-bar > .side-bar-inner {
+        > .side-logo {
+            padding: $density-normal;
+            margin: 0;
 
-      > .logo-image {
-        width: 2em;
-        height: 2em;
-      }
+            > .logo-image {
+                width: 2em;
+                height: 2em;
+            }
 
-      .logo-title {
-        display: none;
-      }
+            .logo-title {
+                display: none;
+            }
+        }
+
+        > nav {
+            > ul {
+                > li > * {
+                    padding: $density-normal;
+                }
+
+                .icon {
+                    width: 2em;
+                    height: 2em;
+                }
+
+                .icon-desc {
+                    display: none;
+                }
+            }
+        }
     }
-
-    > nav {
-      > ul {
-        > li > * {
-          padding: $density-normal;
-        }
-
-        .icon {
-          width: 2em;
-          height: 2em;
-        }
-
-        .icon-desc {
-          display: none;
-        }
-      }
-    }
-  }
 }

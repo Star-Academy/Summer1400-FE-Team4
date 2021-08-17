@@ -7,6 +7,10 @@
 }
 .page > .top-bar-container {
   grid-area: top-bar;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #222334;
 }
 .page > .side-bar-container {
   grid-area: side-bar;

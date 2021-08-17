@@ -1,3 +1,5 @@
-
+.main-content {
+  background-image: linear-gradient(to bottom, #222334 0, #2c2e43 20rem);
+}
 
 /*# sourceMappingURL=song-list.component.css.map */

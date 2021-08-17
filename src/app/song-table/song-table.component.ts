@@ -18,7 +18,7 @@ export class SongTableComponent implements OnInit, OnChanges {
 
     ngOnChanges(): void {
         this.songDuration = {};
-        this.songs.forEach(song => {
+        this.songs.forEach((song) => {
             const audio = new Audio();
             audio.preload = 'metadata';
             audio.src = song.file;

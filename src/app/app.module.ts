@@ -30,6 +30,7 @@ import { SongTableComponent } from './song-table/song-table.component';
 import localeFa from '@angular/common/locales/fa';
 import { AlbumComponent } from './album/album.component';
 import { SongComponent } from './song/song.component';
+import { AuthService } from './common/auth.service';
 registerLocaleData(localeFa);
 
 @NgModule({
@@ -59,7 +60,7 @@ registerLocaleData(localeFa);
             positionClass: 'toast-bottom-right',
             preventDuplicates: true,
             resetTimeoutOnDuplicate: true,
-            disableTimeOut: true,
+            progressBar: true,
         }),
         UserModule,
     ],
@@ -69,6 +70,7 @@ registerLocaleData(localeFa);
         SongService,
         ArtistService,
         SearchTermService,
+        AuthService,
     ],
     bootstrap: [AppComponent],
 })

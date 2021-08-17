@@ -1,0 +1,55 @@
+.songtable {
+  padding: 1rem;
+}
+.songtable .list-empty {
+  padding: 1rem;
+}
+.songtable .header {
+  border-bottom: 0.15rem solid #595260;
+  margin-bottom: 1rem;
+}
+.songtable .row,
+.songtable .header {
+  display: grid;
+  grid-template-columns: 2em 5rem 1fr 2fr 7em 1.5em 3em;
+  gap: 1rem;
+  justify-items: start;
+  padding: 1rem;
+  align-items: center;
+}
+@media (max-width: 1000px) {
+  .songtable .row,
+.songtable .header {
+    grid-template-columns: 2em 5rem 1fr 1fr 1.5em 3em;
+  }
+  .songtable .row .publish-date,
+.songtable .header .publish-date {
+    display: none;
+  }
+}
+.songtable.remove-album .row,
+.songtable.remove-album .header {
+  grid-template-columns: 2em 1fr 1.5em 3em;
+}
+.songtable.remove-album .row .publish-date,
+.songtable.remove-album .header .publish-date {
+  display: hidden;
+}
+.songtable .row {
+  border-radius: 1rem;
+  transition: background-color 200ms ease-in-out;
+}
+.songtable .row:hover {
+  background-color: #434052;
+}
+.songtable img {
+  width: 5rem;
+  height: 5rem;
+}
+
+.icon-play,
+.icon-pause {
+  font-size: 1.2em;
+}
+
+/*# sourceMappingURL=song-table.component.css.map */

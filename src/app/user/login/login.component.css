@@ -7,7 +7,7 @@
 }
 .outerForm #box {
   border-radius: 2rem;
-  width: calc(min(35rem,100%));
+  width: calc(min(35rem, 100%));
   background: #2c2e43;
   text-align: center;
 }
@@ -20,14 +20,14 @@
 .outerForm #box input[type=password] {
   background: none;
   display: block;
-  margin: 2rem auto;
+  margin: 1.2rem auto 0 auto;
   text-align: center;
-  border: 2px solid lightgray;
-  padding: 1.4rem;
+  border: 1.5px solid lightgray;
+  padding: 0.7rem;
   outline: none;
   color: white;
-  width: 50%;
-  border-radius: 2rem;
+  width: 20rem;
+  border-radius: 1.5rem;
   transition: 0.25s;
 }
 .outerForm #box input[type=password]:focus,
@@ -36,7 +36,7 @@
   border-color: #ffd523;
 }
 .outerForm #box input::placeholder {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: gray;
 }
 .outerForm #box input[type=submit] {
@@ -46,7 +46,7 @@
   width: 67.5%;
   background-color: lightyellow;
   padding: 0.7rem;
-  margin-bottom: 1rem;
+  margin: 2rem auto 1rem auto;
 }
 .outerForm #box input[type=submit]:hover {
   background-color: #ffd523;

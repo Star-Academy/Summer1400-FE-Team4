@@ -1,15 +1,32 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { AuthService } from '../../common/auth.service';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
+    email: string = '';
+    password: string = '';
+    username: string = '';
 
-  constructor() { }
+    constructor(
+        private authService: AuthService,
+        private router: Router,
+        private toastr: ToastrService
+    ) {}
 
-  ngOnInit(): void {
-  }
-
+    login(formValues: any) {
+        this.authService.signIn(formValues.email, formValues.password).subscribe(
+            () => {
+                this.router.navigate(['/']);
+            },
+            (response) => {
+                this.toastr.error(response.message);
+            }
+        );
+    }
 }

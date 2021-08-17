@@ -1,3 +1,80 @@
-
+.song-page {
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-areas: "banner lyrics";
+  align-items: start;
+  padding: 4rem 10%;
+  column-gap: 10%;
+}
+@media screen and (max-width: 800px) {
+  .song-page {
+    grid-template-columns: 1fr 2fr;
+    padding: 2rem 5%;
+    column-gap: 5%;
+  }
+}
+.song-page .banner {
+  grid-area: banner;
+  position: sticky;
+  top: 10rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media screen and (max-width: 800px) {
+  .song-page .banner {
+    top: 8rem;
+  }
+}
+.song-page .banner .banner-image {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+}
+.song-page .banner .banner-image > img,
+.song-page .banner .banner-image svg {
+  box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.song-page .banner .banner-image > svg {
+  background-color: #181924;
+}
+.song-page .banner .banner-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding-bottom: 2rem;
+}
+.song-page .banner .banner-desc .button-row {
+  font-size: 150%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 2rem;
+  gap: 2rem;
+}
+.song-page .banner .banner-desc .button-row .icon-play,
+.song-page .banner .banner-desc .button-row .icon-pause {
+  font-size: 200%;
+  transition: transform 200ms ease-in-out;
+}
+.song-page .banner .banner-desc .button-row .icon-play:hover,
+.song-page .banner .banner-desc .button-row .icon-pause:hover {
+  transform: scaleX(-110%) scaleY(110%);
+}
+.song-page .song-lyrics {
+  grid-area: lyrics;
+}
+.song-page .song-lyrics h2 {
+  margin-bottom: 1rem;
+}
+.song-page .song-lyrics p {
+  white-space: pre-line;
+}
 
 /*# sourceMappingURL=song.component.css.map */

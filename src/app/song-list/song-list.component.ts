@@ -25,7 +25,7 @@ export class SongListComponent implements OnInit {
 
         this.route.paramMap.subscribe((params) => {
             this.loaded = false;
-            
+
             let term = params.get('term');
             if (term !== null && (term as string).trim()) {
                 term = (term as string).trim();

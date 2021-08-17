@@ -1,0 +1,72 @@
+@use "../../../styles/defs" as *;
+
+.outerForm {
+    background-color: $color-medium-dark;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+
+    #box {
+        border-radius: 2rem;
+        width: calc(min(35rem, 100%));
+        background: #2c2e43;
+        text-align: center;
+
+        #spotifyicon {
+            width: 15rem;
+            height: 15rem;
+            fill: $color-primary;
+        }
+        input[type='text'],
+        input[type='email'],
+        input[type='password'] {
+            background: none;
+            display: block;
+            margin: 1.2rem auto 0 auto;
+            text-align: center;
+            border: 1.5px solid lightgray;
+            padding: 0.7rem;
+
+            outline: none;
+            color: white;
+            width: 20rem;
+            border-radius: 1.5rem;
+            transition: 0.25s;
+        }
+
+        input[type='text']:focus,
+        input[type='password']:focus,
+        input[type='email']:focus {
+            width: 27rem;
+            border-color: $color-primary;
+        }
+
+        input::placeholder {
+            font-size: 1.3rem;
+        }
+
+        input[type='submit'] {
+            color: $color-dark;
+            border: none;
+            border-radius: 2rem;
+            width: 27rem;
+            background-color: lightyellow;
+            padding: 0.7rem;
+            margin-bottom: 1rem;
+            &:hover {
+                background-color: $color-primary;
+                transition: 0.5s;
+            }
+        }
+
+        #signin {
+            color: lightgray;
+            text-decoration: none;
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
+}

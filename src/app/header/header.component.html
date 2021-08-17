@@ -1,16 +1,7 @@
 <header class="top-bar in-banner">
     <nav>
-        <form
-            #searchBox="ngForm"
-            class="search-box"
-            (ngSubmit)="search(searchBox.value)"
-        >
-            <input
-                [(ngModel)]="query"
-                type="search"
-                name="query"
-                placeholder="جستجو"
-            />
+        <form #searchBox="ngForm" class="search-box" (ngSubmit)="search(searchBox.value)">
+            <input [(ngModel)]="query" type="search" name="query" placeholder="جستجو" />
             <button aria-label="Search">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -63,14 +54,10 @@
                     <div dir="ltr" id="helloUserName"></div>
                     <ul>
                         <li>
-                            <a href="avatar.html" class="button-pill"
-                                >مدیریت حساب</a
-                            >
+                            <a href="avatar.html" class="button-pill">مدیریت حساب</a>
                         </li>
                         <li>
-                            <a id="logoutButton" href="#" class="button-pill"
-                                >خروج</a
-                            >
+                            <a id="logoutButton" href="#" class="button-pill">خروج</a>
                         </li>
                     </ul>
                 </div>
