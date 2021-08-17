@@ -30,29 +30,9 @@ export class ApiService {
     handleError<T>() {
         return (error: any): Observable<T> => {
             console.error(error);
-            if (error instanceof HttpErrorResponse)
+            if (error instanceof HttpErrorResponse && error.status)
                 return throwError(new ApiError(error.error.message, error.status));
-            return throwError(new ApiError('مشکل در ارتباط با سرور'));
+            return throwError(new ApiError('اشکال در ارتباط با سرور', undefined));
         };
-    }
-    public static async sendRequest(url: string, body?: object): Promise<any> {
-        const init: RequestInit = {
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        };
-
-        if (body) {
-            init.method = 'POST';
-            init.body = JSON.stringify(body);
-        }
-
-        return fetch(url, init).then((res) => {
-            if (res.ok) {
-                return res.json();
-            }
-
-            throw res.json();
-        });
     }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { SearchTermService } from '../common';
 import { AuthService } from '../common';
 
@@ -15,7 +16,8 @@ export class HeaderComponent implements OnInit {
     constructor(
         public auth: AuthService,
         private router: Router,
-        private searchTermService: SearchTermService
+        private searchTermService: SearchTermService,
+        private toastr: ToastrService
     ) {}
 
     ngOnInit(): void {
@@ -25,8 +27,10 @@ export class HeaderComponent implements OnInit {
     search(value: any) {
         this.router.navigate(['/list', value.query]);
     }
+
     logOut() {
-        this.router.navigate(['/user/login']);
         this.auth.logOut();
+        this.showPopUp = false;
+        this.toastr.info('شما از حساب کاربری خود خارج شدید')
     }
 }

@@ -1,4 +1,5 @@
 @use '../../styles/defs' as *;
+
 .page {
     min-height: 100%;
     display: grid;
@@ -48,3 +49,8 @@ main {
         'table';
     justify-items: stretch;
 }
+
+// TODO: fix me
+// ::ng-deep .toast-container.toast-top-left {
+//     top: calc(1.8em + #{$density-larger});
+// }

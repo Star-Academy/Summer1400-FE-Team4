@@ -189,7 +189,7 @@ body {
     border-radius: 1000rem;
     border: 0.1rem solid currentColor;
     padding: $density-small $density-normal;
-    transition: 100ms ease-in-out;
+    transition: color 100ms ease-in-out, background-color 100ms ease-in-out;
     background-color: inherit;
     cursor: pointer;
 
@@ -205,7 +205,7 @@ body {
     align-items: center;
     padding: $density-normal $density-large;
     border-radius: $density-small;
-    transition: 100ms ease-in-out;
+    transition: background-color 100ms ease-in-out;
     cursor: pointer;
 
     &:hover {
@@ -234,7 +234,7 @@ body {
 
         &:hover {
             fill: $color-primary;
-            transition: 300ms;
+            transition: fill 200ms ease-in-out;
         }
 
         &.selected {
@@ -260,7 +260,15 @@ h6 {
     display: grid;
 }
 
-// remove toastr box-shadow
-.toast-container .ngx-toastr {
-    box-shadow: none;
+// style toastr
+.toast-container {
+    &.toast-top-left {
+        top: $density-normal;
+        left: $density-normal;
+    }
+
+    .ngx-toastr {
+        width: 20em;
+        box-shadow: none;
+    }
 }

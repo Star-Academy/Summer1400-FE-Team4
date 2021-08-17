@@ -12,15 +12,8 @@
                 <strong>
                     <a [routerLink]="['/artist', song?.artist]">{{ song?.artist }}</a>
                 </strong>
-            </div>
-            <div>
-                <span>
-                    {{ song?.publishDate | date: 'MMM yyyy' | persianNumeral }}
-                </span>
-                &bullet;
-                <span>
-                    {{ duration | duration | persianNumeral }}
-                </span>
+                &bullet;&nbsp;<span>{{ song?.publishDate | date: 'MMM y' | persianNumeral }}</span>
+                &bullet;&nbsp;<span>{{ duration | duration | persianNumeral }}</span>
             </div>
             <diV class="button-row">
                 <div>

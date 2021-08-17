@@ -57,7 +57,7 @@ registerLocaleData(localeFa);
         FormsModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot({
-            positionClass: 'toast-bottom-right',
+            positionClass: 'toast-top-left',
             preventDuplicates: true,
             resetTimeoutOnDuplicate: true,
             progressBar: true,

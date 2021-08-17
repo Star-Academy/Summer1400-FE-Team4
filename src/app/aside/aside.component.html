@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li>
-                    <a routerLink="list" routerLinkActive="selected" class="button-block">
+                    <a routerLink="/list" routerLinkActive="selected" class="button-block">
                         <svg
                             class="icon"
                             xmlns="http://www.w3.org/2000/svg"
@@ -58,8 +58,8 @@
                         <span class="icon-desc">لیست آهنگ‌ها</span>
                     </a>
                 </li>
-                <li id="likedSongsButton" class="hidden">
-                    <a routerLink="favorites" routerLinkActive="selected" class="button-block">
+                <li *ngIf="auth.isAuthenticated | async" id="likedSongsButton">
+                    <a routerLink="/favorites" routerLinkActive="selected" class="button-block">
                         <svg
                             class="icon"
                             xmlns="http://www.w3.org/2000/svg"
