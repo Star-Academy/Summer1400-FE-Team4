@@ -17,61 +17,67 @@
             </div>
         </a>
 
-        <div>
+        <div class="inputs">
+            <label for="username_input" >نام کاربری</label>
             <input
                     [(ngModel)]="user.username"
                     type="text"
                     id="username_input"
                     name="username"
-                    placeholder=" نام کاربری *"
+
                     dir="ltr"
                     required
             />
         </div>
-        <div>
+        <div class="inputs">
+            <label for="email_input" >ایمیل</label>
             <input
                     [(ngModel)]="user.email"
                     type="email"
                     id="email_input"
                     name="email"
-                    placeholder="ایمیل *"
+
                     dir="ltr"
                     required
             />
         </div>
-        <div>
+        <div class="inputs">
+            <label for="password_input" >گذرواژه</label>
             <input
                     [(ngModel)]="user.password"
                     type="password"
                     id="password_input"
                     name="password"
-                    placeholder="گذر واژه *"
+
                     dir="ltr"
                     required
                     minlength="8"
             />
         </div>
-        <div>
+        <div class="inputs">
+            <label for="name_input" >نام</label>
             <input
                     [(ngModel)]="user.firstName"
                     type="text"
                     id="name_input"
                     name="firsName"
-                    placeholder="نام "
+
             />
         </div>
-        <div>
+        <div class="inputs" >
+            <label for="lastName_input" >نام خانوادگی</label>
             <input
                     [(ngModel)]="user.lastName"
                     type="text"
                     id="lastName_input"
                     name="lastName"
-                    placeholder="نام خانوادگی"
+
             />
+
         </div>
         <br />
         <div class="buttons">
-            <div><input type="submit" value="ثبت نام"  /><br /></div>
+            <div><input type="submit" value="ویرایش پروفایل"  /><br /></div>
             <div><input type="submit" value=" تغییر عکس"  /><br /></div>
         </div>
 
