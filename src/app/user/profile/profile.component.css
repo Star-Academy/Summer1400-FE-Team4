@@ -12,8 +12,8 @@
   text-align: center;
 }
 .outerForm #box #spotifyicon {
-  width: 15rem;
-  height: 15rem;
+  width: 10rem;
+  height: 10rem;
   fill: #ffd523;
 }
 .outerForm #box input[type=text],
@@ -21,12 +21,11 @@
 .outerForm #box input[type=password] {
   background: none;
   display: block;
-  margin: 1.2rem auto 0 auto;
   text-align: center;
   border: 1.5px solid lightgray;
   padding: 0.7rem;
+  margin: auto;
   outline: none;
-  color: white;
   width: 20rem;
   border-radius: 1.5rem;
   transition: 0.25s;
@@ -34,19 +33,26 @@
 .outerForm #box input[type=text]:focus,
 .outerForm #box input[type=password]:focus,
 .outerForm #box input[type=email]:focus {
-  width: 27rem;
   border-color: #ffd523;
+  width: 62%;
 }
-.outerForm #box input::placeholder {
-  font-size: 1.3rem;
+.outerForm #box .inputs {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+.outerForm #box .inputs > label {
+  padding: 1rem 7.5rem 0.5rem 1rem;
+  font-size: 1.4rem;
+  text-align: right;
 }
 .outerForm #box .buttons {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding: 0 3rem;
+  padding: 0 2rem;
+  font-size: 1.4rem;
 }
 .outerForm #box .buttons input[type=submit] {
-  color: #2c2e43;
+  color: #434052;
   border: none;
   border-radius: 2rem;
   width: 90%;
@@ -57,6 +63,7 @@
 .outerForm #box .buttons input[type=submit]:hover {
   background-color: #ffd523;
   transition: 0.5s;
+  color: #2c2e43;
 }
 
 /*# sourceMappingURL=profile.component.css.map */

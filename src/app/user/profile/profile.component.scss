@@ -14,8 +14,8 @@
         text-align: center;
 
         #spotifyicon {
-            width: 15rem;
-            height: 15rem;
+            width: 10rem;
+            height: 10rem;
             fill: $color-primary;
         }
         input[type='text'],
@@ -23,13 +23,12 @@
         input[type='password'] {
             background: none;
             display: block;
-            margin: 1.2rem auto 0 auto;
+
             text-align: center;
             border: 1.5px solid lightgray;
             padding: 0.7rem;
-
+            margin: auto;
             outline: none;
-            color: white;
             width: 20rem;
             border-radius: 1.5rem;
             transition: 0.25s;
@@ -38,20 +37,27 @@
         input[type='text']:focus,
         input[type='password']:focus,
         input[type='email']:focus {
-            width: 27rem;
             border-color: $color-primary;
+            width: 62%;
+        }
+        .inputs {
+            display: grid;
+            grid-template-rows: 1fr;
+            > label {
+                padding: 1rem 7.5rem 0.5rem 1rem;
+                font-size: 1.4rem;
+                text-align: right;
+            }
         }
 
-        input::placeholder {
-            font-size: 1.3rem;
-        }
         .buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            padding: 0 3rem;
+            padding: 0 2rem;
+            font-size: 1.4rem;
 
             input[type='submit'] {
-                color: $color-dark;
+                color: $color-medium-dark;
                 border: none;
                 border-radius: 2rem;
                 width: 90%;
@@ -62,6 +68,7 @@
                 &:hover {
                     background-color: $color-primary;
                     transition: 0.5s;
+                    color: $color-dark;
                 }
             }
         }
