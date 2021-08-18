@@ -32,7 +32,7 @@ export class ApiService {
             console.error(error);
             if (error instanceof HttpErrorResponse && error.status)
                 return throwError(new ApiError(error.error.message, error.status));
-            return throwError(new ApiError('اشکال در ارتباط با سرور', undefined));
+            return throwError(new ApiError('اشکال در برقراری ارتباط با سرور', undefined));
         };
     }
 }

@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ArtistService } from '../common';
+import { ArtistService, SharedCommonService } from '../common';
 import { ShelfCard } from '../shelf/shelf.component';
 
 @Component({
@@ -13,9 +13,15 @@ export class ArtistComponent implements OnInit {
     artistImage: string = '';
     cards: ShelfCard[] = [];
 
-    constructor(private artistService: ArtistService, private route: ActivatedRoute) {}
+    constructor(
+        private sharedCommon: SharedCommonService,
+        private artistService: ArtistService,
+        private route: ActivatedRoute
+    ) {}
 
     ngOnInit(): void {
+        this.sharedCommon.topBarDark.next(true);
+
         this.route.paramMap.subscribe((params) => {
             const artistName = params.get('name') as string;
             this.artistName = artistName;

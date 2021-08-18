@@ -1,9 +1,5 @@
 @use '../../styles/defs' as *;
 
-::ng-deep .top-bar {
-    background-color: $color-darkest;
-}
-
 app-banner {
     display: block;
     background-image: linear-gradient(to bottom, $color-darkest 0%, $color-dark 100%);

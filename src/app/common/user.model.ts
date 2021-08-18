@@ -7,6 +7,7 @@ export interface UserInfo {
     avatar: string;
     gender: boolean;
 }
+
 export interface User extends UserInfo {
     id: number;
 }

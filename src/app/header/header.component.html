@@ -1,4 +1,4 @@
-<header class="top-bar in-banner">
+<header class="top-bar" [class.dark]="sharedCommon.topBarDark | async">
     <nav>
         <form #searchBox="ngForm" class="search-box" (ngSubmit)="search(searchBox.value)">
             <input [(ngModel)]="query" type="search" name="query" placeholder="جستجو" />

@@ -11,7 +11,7 @@ import {
     ArtistService,
     DurationPipe,
     PersianNumeralPipe,
-    SearchTermService,
+    SharedCommonService,
     SongService,
 } from './common';
 import { AppRoutingModule } from './app-routing.module';
@@ -57,7 +57,7 @@ registerLocaleData(localeFa);
         FormsModule,
         BrowserAnimationsModule,
         ToastrModule.forRoot({
-            positionClass: 'toast-top-left',
+            positionClass: 'toast-top-left-page',
             preventDuplicates: true,
             resetTimeoutOnDuplicate: true,
             progressBar: true,
@@ -69,8 +69,8 @@ registerLocaleData(localeFa);
         ApiService,
         SongService,
         ArtistService,
-        SearchTermService,
         AuthService,
+        SharedCommonService,
     ],
     bootstrap: [AppComponent],
 })

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs/operators';
-import { Song, SongService } from '../common';
-import { SearchTermService } from '../common/search-term.service';
+import { Song, SongService, SharedCommonService } from '../common';
 
 @Component({
     templateUrl: './song-list.component.html',
@@ -13,15 +11,17 @@ export class SongListComponent implements OnInit {
     loaded = false;
 
     constructor(
+        private sharedCommon: SharedCommonService,
         private songService: SongService,
-        private route: ActivatedRoute,
-        private searchTermService: SearchTermService
+        private route: ActivatedRoute
     ) {}
 
     ngOnInit(): void {
-        this.route.paramMap
-            .pipe(map((params) => params.get('term') as string))
-            .subscribe(this.searchTermService.current);
+        this.sharedCommon.topBarDark.next(false);
+
+        this.route.paramMap.subscribe((params) =>
+            this.sharedCommon.currentSearchTerm.next(params.get('term') as string)
+        );
 
         this.route.paramMap.subscribe((params) => {
             this.loaded = false;

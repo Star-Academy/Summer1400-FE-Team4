@@ -25,7 +25,9 @@ export class LoginComponent {
                 this.router.navigate(['/']);
             },
             (response) => {
-                this.toastr.error(response.message);
+                this.toastr.error(response.message, undefined, {
+                    positionClass: 'toast-top-left'
+                });
             }
         );
     }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Song, SongService } from '../common';
+import { SharedCommonService, Song, SongService } from '../common';
 
 @Component({
     templateUrl: './song.component.html',
@@ -10,9 +10,15 @@ export class SongComponent implements OnInit {
     song?: Song;
     duration?: number;
 
-    constructor(private songService: SongService, private route: ActivatedRoute) {}
+    constructor(
+        public sharedCommon: SharedCommonService,
+        private songService: SongService,
+        private route: ActivatedRoute
+    ) {}
 
     ngOnInit(): void {
+        this.sharedCommon.topBarDark.next(true);
+
         this.route.paramMap.subscribe((params) => {
             this.duration = undefined;
 

@@ -1,6 +1,6 @@
 @use '../../styles/defs' as *;
 
-.song-page {
+:host {
     display: grid;
     grid-template-columns: 2fr 3fr;
     grid-template-areas: 'banner lyrics';
@@ -8,82 +8,85 @@
     padding: $density-larger 10%;
     column-gap: 10%;
 
+    background-image: linear-gradient(to bottom, $color-darkest 10rem, $color-dark 100%);
+    background-attachment: fixed;
+
     @media screen and (max-width: 800px) {
         grid-template-columns: 1fr 2fr;
         padding: $density-large 5%;
         column-gap: 5%;
     }
+}
 
-    .banner {
-        grid-area: banner;
+.banner {
+    grid-area: banner;
 
-        position: sticky;
+    position: sticky;
 
-        top: $density-largest + $density-large;
-        @media screen and (max-width: 800px) {
-            top: $density-largest;
+    top: $density-largest + $density-large;
+    @media screen and (max-width: 800px) {
+        top: $density-largest;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: $density-normal;
+
+    .banner-image {
+        width: 100%;
+        padding-bottom: 100%;
+        position: relative;
+
+        > img,
+        svg {
+            box-shadow: 0 0 5rem rgb(0 0 0 / 50%);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
         }
 
+        > svg {
+            background-color: $color-darkest;
+        }
+    }
+
+    .banner-desc {
         display: flex;
         flex-direction: column;
-        gap: $density-normal;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: $density-small;
 
-        .banner-image {
-            width: 100%;
-            padding-bottom: 100%;
-            position: relative;
-
-            > img,
-            svg {
-                box-shadow: 0 0 5rem rgb(0 0 0 / 50%);
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-            }
-
-            > svg {
-                background-color: $color-darkest;
-            }
-        }
-
-        .banner-desc {
+        .button-row {
+            font-size: 150%;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
-            gap: $density-small;
+            flex-direction: row;
+            align-items: center;
+            margin-top: $density-large;
+            gap: $density-large;
 
-            .button-row {
-                font-size: 150%;
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                margin-top: $density-large;
-                gap: $density-large;
+            .icon-play,
+            .icon-pause {
+                font-size: 200%;
+                transition: transform 200ms ease-in-out;
 
-                .icon-play,
-                .icon-pause {
-                    font-size: 200%;
-                    transition: transform 200ms ease-in-out;
-
-                    &:hover {
-                        transform: scaleX(-110%) scaleY(110%);
-                    }
+                &:hover {
+                    transform: scaleX(-110%) scaleY(110%);
                 }
             }
         }
     }
+}
 
-    .song-lyrics {
-        grid-area: lyrics;
+.song-lyrics {
+    grid-area: lyrics;
 
-        h2 {
-            margin-bottom: $density-normal;
-        }
+    h2 {
+        margin-bottom: $density-normal;
+    }
 
-        p {
-            white-space: pre-line;
-        }
+    p {
+        white-space: pre-line;
     }
 }

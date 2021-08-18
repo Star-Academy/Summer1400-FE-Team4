@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { SearchTermService } from '../common';
-import { AuthService } from '../common';
+import { SharedCommonService, AuthService } from '../common';
 
 @Component({
     selector: 'app-header',
@@ -14,14 +13,14 @@ export class HeaderComponent implements OnInit {
     showPopUp: boolean = false;
 
     constructor(
+        public sharedCommon: SharedCommonService,
         public auth: AuthService,
         private router: Router,
-        private searchTermService: SearchTermService,
         private toastr: ToastrService
     ) {}
 
     ngOnInit(): void {
-        this.searchTermService.current.subscribe((current) => (this.query = current));
+        this.sharedCommon.currentSearchTerm.subscribe((current) => (this.query = current));
     }
 
     search(value: any) {
@@ -31,6 +30,6 @@ export class HeaderComponent implements OnInit {
     logOut() {
         this.auth.logOut();
         this.showPopUp = false;
-        this.toastr.info('شما از حساب کاربری خود خارج شدید')
+        this.toastr.info('شما از حساب کاربری خود خارج شدید');
     }
 }

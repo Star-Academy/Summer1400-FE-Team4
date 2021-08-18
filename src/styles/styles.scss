@@ -267,6 +267,11 @@ h6 {
         left: $density-normal;
     }
 
+    &.toast-top-left-page {
+        top: calc(1.8em + #{$density-larger});
+        left: $density-normal;
+    }
+
     .ngx-toastr {
         width: 20em;
         box-shadow: none;

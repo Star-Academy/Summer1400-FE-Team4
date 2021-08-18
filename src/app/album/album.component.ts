@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Song, SongService } from '../common';
+import { SharedCommonService, Song, SongService } from '../common';
 
 @Component({
     selector: 'app-album',
@@ -10,9 +10,15 @@ import { Song, SongService } from '../common';
 export class AlbumComponent implements OnInit {
     song?: Song;
 
-    constructor(private songService: SongService, private route: ActivatedRoute) {}
+    constructor(
+        public sharedCommon: SharedCommonService,
+        private songService: SongService,
+        private route: ActivatedRoute
+    ) {}
 
     ngOnInit(): void {
+        this.sharedCommon.topBarDark.next(true);
+
         this.route.paramMap.subscribe((params) => {
             const id = parseInt(params.get('id') as string);
             this.songService.getSong(id).subscribe((song) => {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../common/auth.service';
 import { Router } from '@angular/router';
-import { UserSignUpModel } from '../../common/userSignUp.model';
+import { UserSignUpModel } from '../../common';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -37,7 +37,9 @@ export class SignUpComponent implements OnInit {
                 this.router.navigate(['/']);
             },
             (response) => {
-                this.toastr.error(response.message);
+                this.toastr.error(response.message, undefined, {
+                    positionClass: 'toast-top-left',
+                });
             }
         );
     }

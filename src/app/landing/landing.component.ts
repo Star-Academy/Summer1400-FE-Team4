@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { SongService } from '../common';
+import { SharedCommonService, SongService } from '../common';
 import { ShelfCard } from '../shelf/shelf.component';
 
 @Component({
@@ -15,12 +15,15 @@ export class LandingComponent implements OnInit {
     newAlbumCards: ShelfCard[] = [];
 
     constructor(
+        public sharedCommon: SharedCommonService,
         private songService: SongService,
         private toastr: ToastrService,
         private route: Router
     ) {}
 
     ngOnInit(): void {
+        this.sharedCommon.topBarDark.next(false);
+
         this.songService.getSongs().subscribe(
             (songs) => {
                 this.albumCards = songs.map((song) => ({

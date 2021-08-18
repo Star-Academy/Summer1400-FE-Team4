@@ -1,4 +1,4 @@
-import { UserSignUpModel } from './userSignUp.model';
+import { UserSignUpModel } from './user-signup.model';
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { User } from './user.model';

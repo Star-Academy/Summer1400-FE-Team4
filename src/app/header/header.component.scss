@@ -1,6 +1,12 @@
 @use '../../styles/defs' as *;
 
 .top-bar {
+    background-color: $color-darker;
+
+    &.dark {
+        background-color: $color-darkest;
+    }
+
     > nav {
         display: flex;
         flex-direction: row;
@@ -8,6 +14,8 @@
         justify-content: space-between;
         padding: $density-normal $density-large;
         gap: $density-normal;
+
+        height: calc(1.6em + #{$density-normal + $density-large + 0.2rem});
 
         ul {
             display: flex;
