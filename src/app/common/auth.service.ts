@@ -7,13 +7,15 @@ import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
-    currentUser = new BehaviorSubject<User | null>(null);
+    currentUser = new ReplaySubject<User | null>(1);
 
     constructor(private api: ApiService) {
         if (this.authToken !== null) {
             this.api
                 .post<{ id: number }>('user/auth', { token: this.authToken })
                 .subscribe(({ id }) => this.getUser(id).subscribe(user => this.currentUser.next(user)));
+        } else {
+            this.currentUser.next(null);
         }
     }
 

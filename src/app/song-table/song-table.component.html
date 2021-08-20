@@ -17,7 +17,9 @@
                     <path
                         d="M8 3.5a.5.5 0 0 0-1 0V9a.5.5 0 0 0 .252.434l3.5 2a.5.5 0 0 0 .496-.868L8 8.71V3.5z"
                     />
-                    <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z" />
+                    <path
+                        d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm7-8A7 7 0 1 1 1 8a7 7 0 0 1 14 0z"
+                    />
                 </svg>
             </div>
         </div>
@@ -74,7 +76,12 @@
                 {{ song.publishDate | date: 'MMM yyyy' | persianNumeral }}
             </div>
             <div>
-                <button class="icon-button">
+                <button
+                    class="icon-button"
+                    [disabled]="likeDisabled.has(song.id)"
+                    [class.hidden]="!(auth.isAuthenticated | async) || (favs.isFavorite(song.id) | async)"
+                    (click)="likeSong(song)"
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"
@@ -86,7 +93,12 @@
                         />
                     </svg>
                 </button>
-                <button class="icon-button hidden">
+                <button
+                    class="icon-button"
+                    [disabled]="likeDisabled.has(song.id)"
+                    [class.hidden]="!(auth.isAuthenticated | async) || !(favs.isFavorite(song.id) | async)"
+                    (click)="dislikeSong(song)"
+                >
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="currentColor"

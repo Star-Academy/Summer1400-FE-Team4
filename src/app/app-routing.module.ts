@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { UserModule } from './user/user.module';
 import { LandingComponent } from './landing/landing.component';
 import { SongListComponent } from './song-list/song-list.component';
-import { UserModule } from './user/user.module';
 import { PageComponent } from './page/page.component';
 import { ArtistComponent } from './artist/artist.component';
 import { AlbumComponent } from './album/album.component';
 import { SongComponent } from './song/song.component';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { UserLoggedInGaurd } from './common';
 
 export const routes: Routes = [
     {
@@ -18,6 +20,11 @@ export const routes: Routes = [
         children: [
             { path: 'list/:term', component: SongListComponent },
             { path: 'list', component: SongListComponent },
+            {
+                path: 'favorites',
+                component: FavoritesComponent,
+                canActivate: [UserLoggedInGaurd],
+            },
             { path: 'artist/:name', component: ArtistComponent },
             { path: 'album/:id', component: AlbumComponent },
             { path: 'song/:id', component: SongComponent },
@@ -32,5 +39,6 @@ export const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes), UserModule],
     exports: [RouterModule],
+    providers: [UserLoggedInGaurd],
 })
 export class AppRoutingModule {}

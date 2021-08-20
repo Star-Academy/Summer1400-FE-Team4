@@ -6,15 +6,20 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
+import { AppRoutingModule } from './app-routing.module';
+import { UserModule } from './user/user.module';
+
 import {
     ApiService,
     ArtistService,
+    AuthService,
     DurationPipe,
+    FavoritesService,
     PersianNumeralPipe,
     SharedCommonService,
     SongService,
 } from './common';
-import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AsideComponent } from './aside/aside.component';
@@ -22,15 +27,14 @@ import { SongListComponent } from './song-list/song-list.component';
 import { LandingComponent } from './landing/landing.component';
 import { ShelfComponent } from './shelf/shelf.component';
 import { BannerComponent } from './banner/banner.component';
-import { UserModule } from './user/user.module';
 import { ArtistComponent } from './artist/artist.component';
 import { PageComponent } from './page/page.component';
 import { SongTableComponent } from './song-table/song-table.component';
-
-import localeFa from '@angular/common/locales/fa';
 import { AlbumComponent } from './album/album.component';
 import { SongComponent } from './song/song.component';
-import { AuthService } from './common/auth.service';
+import { FavoritesComponent } from './favorites/favorites.component';
+
+import localeFa from '@angular/common/locales/fa';
 registerLocaleData(localeFa);
 
 @NgModule({
@@ -49,6 +53,7 @@ registerLocaleData(localeFa);
         DurationPipe,
         AlbumComponent,
         SongComponent,
+        FavoritesComponent,
     ],
     imports: [
         BrowserModule,
@@ -71,6 +76,7 @@ registerLocaleData(localeFa);
         ArtistService,
         AuthService,
         SharedCommonService,
+        FavoritesService,
     ],
     bootstrap: [AppComponent],
 })

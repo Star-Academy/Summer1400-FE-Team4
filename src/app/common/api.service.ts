@@ -11,7 +11,7 @@ export class ApiError extends Error {
 
 @Injectable()
 export class ApiService {
-    API_URL = 'https://songs.code-star.ir/';
+    API_URL = 'https://songs.code-star.ir/' as const;
 
     constructor(private http: HttpClient) {}
 

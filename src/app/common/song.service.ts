@@ -58,7 +58,7 @@ export class SongService {
             );
     }
 
-    private parseSong(song: any): Song {
+    parseSong(song: any): Song {
         return {
             id: song.id,
             name: song.name,

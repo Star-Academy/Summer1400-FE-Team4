@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
-import { Song } from '../common';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService, FavoritesService, Song } from '../common';
 
 @Component({
     selector: 'app-song-table',
@@ -11,8 +12,13 @@ export class SongTableComponent implements OnInit, OnChanges {
     @Input() loaded = false;
     @Input() removeAlbum = false;
     songDuration: { [id: number]: number } = {};
+    likeDisabled = new Set<number>();
 
-    constructor() {}
+    constructor(
+        public auth: AuthService,
+        public favs: FavoritesService,
+        private toastr: ToastrService
+    ) {}
 
     ngOnInit(): void {}
 
@@ -27,5 +33,33 @@ export class SongTableComponent implements OnInit, OnChanges {
                 audio.remove();
             };
         });
+    }
+
+    likeSong(song: Song) {
+        this.likeDisabled.add(song.id);
+        this.favs.addSong(song).subscribe(
+            () => {
+                this.toastr.info(`«${song.name}» به موردعلاقه‌ها افزوده شد`);
+                this.likeDisabled.delete(song.id);
+            },
+            (error) => {
+                this.toastr.error(error.message);
+                this.likeDisabled.delete(song.id);
+            }
+        );
+    }
+
+    dislikeSong(song: Song) {
+        this.likeDisabled.add(song.id);
+        this.favs.removeSong(song).subscribe(
+            () => {
+                this.toastr.info(`«${song.name}» از موردعلاقه‌ها حذف شد`);
+                this.likeDisabled.delete(song.id);
+            },
+            (error) => {
+                this.toastr.error(error.message);
+                this.likeDisabled.delete(song.id);
+            }
+        );
     }
 }
