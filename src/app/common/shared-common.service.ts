@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { ReplaySubject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 // https://stackoverflow.com/a/46444867
 @Injectable()
 export class SharedCommonService {
-    currentSearchTerm = new ReplaySubject<string>();
-    topBarDark = new ReplaySubject<boolean>();
+    currentSearchTerm = new BehaviorSubject<string>('');
+    topBarDark = new BehaviorSubject<boolean>(false);
 
     constructor() {
         this.topBarDark.next(false);

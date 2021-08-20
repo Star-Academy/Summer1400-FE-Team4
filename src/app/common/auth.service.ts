@@ -3,19 +3,17 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { User } from './user.model';
 import { map, tap } from 'rxjs/operators';
-import { Observable, ReplaySubject } from 'rxjs';
+import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
-    currentUser = new ReplaySubject<User | null>();
+    currentUser = new BehaviorSubject<User | null>(null);
 
     constructor(private api: ApiService) {
         if (this.authToken !== null) {
             this.api
                 .post<{ id: number }>('user/auth', { token: this.authToken })
                 .subscribe(({ id }) => this.getUser(id).subscribe(user => this.currentUser.next(user)));
-        } else {
-            this.currentUser.next(null);
         }
     }
 
@@ -53,12 +51,12 @@ export class AuthService {
 
     set authToken(value: string | null) {
         if (value === null) {
-            localStorage.removeItem('token');
-        } else localStorage.setItem('token', value);
+            localStorage.removeItem('authToken');
+        } else localStorage.setItem('authToken', value);
     }
 
     get authToken(): string | null {
-        return localStorage.getItem('token');
+        return localStorage.getItem('authToken');
     }
 
     get isAuthenticated() {

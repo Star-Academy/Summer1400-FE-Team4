@@ -60,17 +60,17 @@
                 position: absolute;
                 top: $density-normal;
                 left: 0;
-                padding: $density-large $density-normal 0 $density-normal;
-
+                
                 background-color: $color-medium-dark;
                 border-radius: $density-small;
                 border: 0.1rem solid $color-medium-light;
                 color: $color-lighter;
-
+                
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 gap: $density-normal;
+                padding: $density-large $density-normal 0 $density-normal;
 
                 width: max-content;
 
