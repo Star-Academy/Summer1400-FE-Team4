@@ -66,7 +66,20 @@ export class AuthService {
     }
 
     getUser(id: number): Observable<User> {
-        return this.api.get<{ user: User }>('user/one/' + `${id}`).pipe(map(({ user }) => user));
+        return this.api.get<{ user: any }>('user/one/' + `${id}`).pipe(
+            map(
+                ({ user }): User => ({
+                    id: user.id,
+                    username: user.username,
+                    email: user.email,
+                    password: user.password,
+                    firstName: user.first_name,
+                    lastName: user.last_name,
+                    avatar: user.avatar,
+                    gender: user.gender,
+                })
+            )
+        );
     }
 
     set authToken(value: string | null) {

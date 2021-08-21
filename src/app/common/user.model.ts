@@ -8,6 +8,7 @@ export interface User {
     avatar: string;
     gender: boolean;
 }
+
 export interface UserInfo {
     username?: string;
     email?: string;
