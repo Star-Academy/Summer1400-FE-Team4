@@ -1,48 +1,62 @@
-.songtable {
-  padding: 1rem;
-}
-.songtable .list-empty {
-  padding: 1rem;
-}
-.songtable .header {
-  border-bottom: 0.15rem solid #595260;
-  margin-bottom: 1rem;
-}
-.songtable .row,
-.songtable .header {
+:host {
   display: grid;
-  grid-template-columns: 2em 5rem 1fr 2fr 7em 1.5em 3em;
+}
+
+.song-table {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
+.song-table .list-empty {
+  padding: 1rem;
+}
+.song-table .header-container {
+  position: sticky;
+  top: calc(1.6em + 3.2rem);
+  padding: 1rem 1rem 0 1rem;
+  z-index: 1;
+  background-color: #222334;
+}
+.song-table .header-container .header {
+  border-bottom: 0.15rem solid #595260;
+}
+.song-table .row-container {
+  padding: 1rem;
+}
+.song-table .row,
+.song-table .header {
+  display: grid;
+  grid-template-columns: 1.5em 5rem 1fr 2fr 7em 1.5em 2.5em;
   gap: 1rem;
   justify-items: start;
   padding: 1rem;
   align-items: center;
 }
 @media (max-width: 1000px) {
-  .songtable .row,
-.songtable .header {
-    grid-template-columns: 2em 5rem 1fr 1fr 1.5em 3em;
+  .song-table .row,
+.song-table .header {
+    grid-template-columns: 1.5em 5rem 1fr 1fr 1.5em 2.5em;
   }
-  .songtable .row .publish-date,
-.songtable .header .publish-date {
+  .song-table .row .publish-date,
+.song-table .header .publish-date {
     display: none;
   }
 }
-.songtable.remove-album .row,
-.songtable.remove-album .header {
-  grid-template-columns: 2em 1fr 1.5em 3em;
+.song-table.remove-album .row,
+.song-table.remove-album .header {
+  grid-template-columns: 1.5em 1fr 1.5em 2.5em;
 }
-.songtable.remove-album .row .publish-date,
-.songtable.remove-album .header .publish-date {
+.song-table.remove-album .row .publish-date,
+.song-table.remove-album .header .publish-date {
   display: hidden;
 }
-.songtable .row {
+.song-table .row {
   border-radius: 1rem;
   transition: background-color 200ms ease-in-out;
 }
-.songtable .row:hover {
+.song-table .row:hover {
   background-color: #434052;
 }
-.songtable img {
+.song-table img {
   width: 5rem;
   height: 5rem;
 }

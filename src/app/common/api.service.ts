@@ -4,7 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 export class ApiError extends Error {
-    constructor(message: string, code?: number) {
+    constructor(message: string, public code?: number) {
         super(message);
     }
 }
@@ -16,13 +16,29 @@ export class ApiService {
     constructor(private http: HttpClient) {}
 
     get<T>(path: string): Observable<T> {
-        return this.http.get<T>(this.API_URL + path).pipe(catchError(this.handleError<T>()));
+        return this.http
+            .get<T>(this.API_URL + path, {
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cache-Control':
+                        'no-cache, no-store, must-revalidate, post-check=0, pre-check=0',
+                    Pragma: 'no-cache',
+                    Expires: '0',
+                },
+            })
+            .pipe(catchError(this.handleError<T>()));
     }
 
     post<T>(path: string, body: any): Observable<T> {
         return this.http
             .post<T>(this.API_URL + path, body, {
-                headers: { 'Content-Type': 'application/json' },
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Cache-Control':
+                        'no-cache, no-store, must-revalidate, post-check=0, pre-check=0',
+                    Pragma: 'no-cache',
+                    Expires: '0',
+                },
             })
             .pipe(catchError(this.handleError<T>()));
     }

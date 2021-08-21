@@ -1,3 +1,15 @@
+:host {
+  display: grid;
+  grid-template-rows: auto 1fr;
+}
 
+app-banner {
+  display: block;
+  background-image: linear-gradient(to bottom, #181924 0%, #222334 100%);
+}
+
+app-song-table {
+  background-image: linear-gradient(to bottom, #222334 5rem, #2c2e43 25rem);
+}
 
 /*# sourceMappingURL=album.component.css.map */

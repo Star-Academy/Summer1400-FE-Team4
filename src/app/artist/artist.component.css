@@ -1,7 +1,3 @@
-::ng-deep .top-bar {
-  background-color: #181924;
-}
-
 app-banner {
   display: block;
   background-image: linear-gradient(to bottom, #181924 0%, #2c2e43 100%);

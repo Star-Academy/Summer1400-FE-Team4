@@ -1,36 +1,48 @@
+.top-bar {
+  background-color: #222334;
+}
+.top-bar.dark {
+  background-color: #181924;
+}
 .top-bar > nav {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  height: calc(1.6em + 3.2rem);
 }
 .top-bar > nav ul {
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-.top-bar > nav ul > li {
-  margin: 0 1rem;
+  gap: 2rem;
 }
 .top-bar > nav .icon-profile {
   display: flex;
   cursor: pointer;
-  margin: 0 1rem;
+  margin-left: 1rem;
   padding: 0.5rem;
   background-color: #ffd523;
   background-size: cover;
   color: #2c2e43;
   border-radius: 100%;
-  border: 0.2em solid #222334;
+  border: none;
+  box-shadow: 0 0 0 0.05em #e7e7e9;
 }
 .top-bar > nav .icon-profile > svg {
   width: 1.6em;
   height: 1.6em;
 }
+@media screen and (max-width: 600px) {
+  .top-bar > nav .icon-profile {
+    margin-left: 0;
+  }
+}
 .top-bar > nav .profile-popup-container {
   position: relative;
-  transition: opacity 200ms;
+  transition: opacity 200ms ease-in-out;
 }
 .top-bar > nav .profile-popup-container.invisible {
   opacity: 0;
@@ -41,7 +53,6 @@
   position: absolute;
   top: 1rem;
   left: 0;
-  padding: 2rem 1rem 0 1rem;
   background-color: #434052;
   border-radius: 0.5rem;
   border: 0.1rem solid #86828d;
@@ -50,6 +61,7 @@
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+  padding: 2rem 1rem 0 1rem;
   width: max-content;
 }
 .top-bar > nav .profile-popup-container > .profile-popup::before {
@@ -74,10 +86,9 @@
 }
 .top-bar > nav .profile-popup-container > .profile-popup .icon-profile {
   cursor: inherit;
-}
-.top-bar > nav .profile-popup-container > .profile-popup .icon-profile > svg {
-  width: 6em;
-  height: 6em;
+  font-size: 400%;
+  padding: 2rem;
+  margin-left: 0;
 }
 .top-bar > nav .profile-popup-container > .profile-popup > ul {
   border-top: 0.1rem solid #86828d;
@@ -87,13 +98,12 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin: 0 1rem;
   height: fit-content;
   width: calc(min(25vw + 2rem, 15em));
   border-radius: 1000rem;
   border: 0.1rem solid #b2b1b9;
   background-color: inherit;
-  transition: 100ms ease-in-out;
+  transition: border-color 100ms ease-in-out;
 }
 .top-bar > nav > .search-box:hover {
   border-color: #e7e7e9;
@@ -116,7 +126,7 @@
   justify-content: center;
   width: 4rem;
   height: 100%;
-  transition: 100ms ease-in-out;
+  transition: color 100ms ease-in-out;
 }
 .top-bar > nav > .search-box > button:hover {
   color: #e7e7e9;

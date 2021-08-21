@@ -12,7 +12,7 @@
   align-items: center;
   border: none;
   margin: 0.5rem 1rem;
-  transition: color 200ms;
+  transition: color 200ms ease-in-out;
   background-color: inherit;
   cursor: pointer;
   font-size: 1.2em;
@@ -43,7 +43,7 @@
   background-color: #222334;
   border-radius: 0.5rem;
   gap: 1rem;
-  transition: 200ms ease-in-out;
+  transition: transform 200ms ease-in-out;
 }
 .shelf .shelf-items .shelf-card > .card-image {
   width: 100%;

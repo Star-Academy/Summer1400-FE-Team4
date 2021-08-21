@@ -5,6 +5,31 @@
   display: grid;
   place-items: center;
 }
+.outerForm .images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.outerForm .images .icon-profile {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  margin-top: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: #ffd523;
+  background-size: cover;
+  color: #2c2e43;
+  border-radius: 100%;
+  border: none;
+  box-shadow: 0 0 0 0.05em #e7e7e9;
+  width: 6em;
+  height: 6em;
+}
+.outerForm .images .icon-profile > svg {
+  width: 90%;
+  height: 90%;
+}
 .outerForm #box {
   border-radius: 2rem;
   width: calc(min(35rem, 100%));
@@ -47,20 +72,20 @@
 }
 .outerForm #box .buttons {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   padding: 0 2rem;
-  font-size: 1.4rem;
+  font-size: 1rem;
 }
-.outerForm #box .buttons input[type=submit] {
+.outerForm #box .buttons .button {
   color: #434052;
   border: none;
-  border-radius: 2rem;
+  border-radius: 0.8rem;
   width: 90%;
   background-color: lightyellow;
   padding: 0.5rem;
   margin-bottom: 1rem;
 }
-.outerForm #box .buttons input[type=submit]:hover {
+.outerForm #box .buttons .button:hover {
   background-color: #ffd523;
   transition: 0.5s;
   color: #2c2e43;

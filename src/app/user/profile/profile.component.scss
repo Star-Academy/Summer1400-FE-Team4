@@ -6,6 +6,31 @@
     width: 100%;
     display: grid;
     place-items: center;
+    .images {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon-profile {
+            display: grid;
+            place-content: center;
+            place-items: center;
+            margin-top: 2rem;
+            cursor: pointer;
+            padding: $density-small;
+            background-color: $color-primary;
+            background-size: cover;
+            color: $color-dark;
+            border-radius: 100%;
+            border: none;
+            box-shadow: 0 0 0 0.05em $color-lighter;
+            width: 6em;
+            height: 6em;
+            > svg {
+                width: 90%;
+                height: 90%;
+            }
+        }
+    }
 
     #box {
         border-radius: 2rem;
@@ -52,14 +77,14 @@
 
         .buttons {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr 1fr 1fr;
             padding: 0 2rem;
-            font-size: 1.4rem;
+            font-size: 1rem;
 
-            input[type='submit'] {
+            .button {
                 color: $color-medium-dark;
                 border: none;
-                border-radius: 2rem;
+                border-radius: 0.8rem;
                 width: 90%;
                 background-color: lightyellow;
                 padding: 0.5rem;

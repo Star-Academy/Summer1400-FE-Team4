@@ -9,8 +9,7 @@
   grid-area: top-bar;
   position: sticky;
   top: 0;
-  z-index: 1;
-  background-color: #222334;
+  z-index: 2;
 }
 .page > .side-bar-container {
   grid-area: side-bar;
@@ -19,23 +18,15 @@
 
 .page-content {
   grid-area: page-content;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  display: grid;
+  grid-template-rows: 1fr auto;
 }
-
-footer {
+.page-content main {
+  display: grid;
+}
+.page-content footer {
   background-color: #181924;
   padding: 1rem 2rem;
-}
-
-main {
-  height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: 1fr;
-  grid-template-areas: "banner" "table";
-  justify-items: stretch;
 }
 
 /*# sourceMappingURL=page.component.css.map */

@@ -1,9 +1,9 @@
 import { UserSignUpModel } from './user-signup.model';
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
-import { User } from './user.model';
-import { map, tap } from 'rxjs/operators';
-import { BehaviorSubject, Observable, ReplaySubject } from 'rxjs';
+import { User, UserInfo } from './user.model';
+import { first, map, tap } from 'rxjs/operators';
+import { Observable, ReplaySubject } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -13,7 +13,9 @@ export class AuthService {
         if (this.authToken !== null) {
             this.api
                 .post<{ id: number }>('user/auth', { token: this.authToken })
-                .subscribe(({ id }) => this.getUser(id).subscribe(user => this.currentUser.next(user)));
+                .subscribe(({ id }) =>
+                    this.getUser(id).subscribe((user) => this.currentUser.next(user))
+                );
         } else {
             this.currentUser.next(null);
         }
@@ -23,7 +25,23 @@ export class AuthService {
         return this.api.post<{ id: number; token: string }>('user/register', user).pipe(
             tap((value) => {
                 this.authToken = value.token;
-                this.getUser(value.id).subscribe(user => this.currentUser.next(user));
+                this.getUser(value.id).subscribe((user) => this.currentUser.next(user));
+            })
+        );
+    }
+
+    public editProfile(user: UserInfo) {
+        const alterUser = { ...user, token: this.authToken };
+
+        return this.api.post<void>('user/alter', alterUser).pipe(
+            tap(() => {
+                this.currentUser.pipe(first()).subscribe((nextUser) => {
+                    if (nextUser !== null) {
+                        this.getUser(nextUser.id).subscribe((newUser) =>
+                            this.currentUser.next(newUser)
+                        );
+                    }
+                });
             })
         );
     }
@@ -37,7 +55,7 @@ export class AuthService {
         return this.api.post<{ id: number; token: string }>('user/login', body).pipe(
             tap((value) => {
                 this.authToken = value.token;
-                this.getUser(value.id).subscribe(user => this.currentUser.next(user));
+                this.getUser(value.id).subscribe((user) => this.currentUser.next(user));
             })
         );
     }
