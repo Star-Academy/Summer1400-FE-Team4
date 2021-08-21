@@ -66,13 +66,12 @@
             margin-top: $density-large;
             gap: $density-large;
 
-            .icon-play,
-            .icon-pause {
+            .player-buttons {
                 font-size: 200%;
                 transition: transform 200ms ease-in-out;
 
                 &:hover {
-                    transform: scaleX(-110%) scaleY(110%);
+                    transform: scale(110%);
                 }
             }
         }

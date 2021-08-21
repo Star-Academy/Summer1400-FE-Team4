@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FavoritesService, Song } from '../common';
+import { FavoritesService, SharedCommonService, Song } from '../common';
 
 @Component({
     selector: 'app-favorites',
@@ -10,9 +10,10 @@ export class FavoritesComponent implements OnInit {
     songs: Song[] = [];
     loaded = false;
 
-    constructor(public favs: FavoritesService) {}
+    constructor(private sharedCommon: SharedCommonService, public favs: FavoritesService) {}
 
     ngOnInit(): void {
+        this.sharedCommon.topBarDark.next(false);
         this.favs.songs.subscribe((songs) => {
             if (songs === undefined) {
                 this.songs = [];

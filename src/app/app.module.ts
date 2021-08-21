@@ -16,6 +16,7 @@ import {
     DurationPipe,
     FavoritesService,
     PersianNumeralPipe,
+    PlayerService,
     SharedCommonService,
     SongService,
 } from './common';
@@ -77,6 +78,7 @@ registerLocaleData(localeFa);
         AuthService,
         SharedCommonService,
         FavoritesService,
+        PlayerService,
     ],
     bootstrap: [AppComponent],
 })

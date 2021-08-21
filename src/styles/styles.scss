@@ -251,6 +251,15 @@ body {
     transform: scaleX(-1);
 }
 
+@keyframes rotating {
+    from { transform: rotate(0turn); }
+    to { transform: rotate(1turn); }
+}
+
+.icon-loading {
+    animation: rotating 2s linear infinite;
+}
+
 h1,
 h2,
 h3,

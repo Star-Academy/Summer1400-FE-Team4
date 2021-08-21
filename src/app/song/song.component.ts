@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { SharedCommonService, Song, SongService } from '../common';
+import { ToastrService } from 'ngx-toastr';
+import {
+    AuthService,
+    FavoritesService,
+    PlayerService,
+    SharedCommonService,
+    Song,
+    SongService,
+} from '../common';
 
 @Component({
     templateUrl: './song.component.html',
@@ -9,11 +17,16 @@ import { SharedCommonService, Song, SongService } from '../common';
 export class SongComponent implements OnInit {
     song?: Song;
     duration?: number;
+    likeDisabled = false;
 
     constructor(
         public sharedCommon: SharedCommonService,
+        public auth: AuthService,
+        public favs: FavoritesService,
+        public player: PlayerService,
         private songService: SongService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private toastr: ToastrService
     ) {}
 
     ngOnInit(): void {
@@ -25,7 +38,6 @@ export class SongComponent implements OnInit {
             const id = parseInt(params.get('id') as string);
             this.songService.getSong(id).subscribe((song) => {
                 this.song = song;
-                console.log(song);
 
                 const audio = new Audio();
                 audio.preload = 'metadata';
@@ -36,5 +48,46 @@ export class SongComponent implements OnInit {
                 };
             });
         });
+    }
+
+    likeSong(song: Song) {
+        this.likeDisabled = true;
+        this.favs.addSong(song).subscribe(
+            () => {
+                this.toastr.info(`«${song.name}» به موردعلاقه‌ها افزوده شد`);
+                this.likeDisabled = false;
+            },
+            (error) => {
+                this.toastr.error(error.message);
+                this.likeDisabled = false;
+            }
+        );
+    }
+
+    dislikeSong(song: Song) {
+        this.likeDisabled = true;
+        this.favs.removeSong(song).subscribe(
+            () => {
+                this.toastr.info(`«${song.name}» از موردعلاقه‌ها حذف شد`);
+                this.likeDisabled = false;
+            },
+            (error) => {
+                this.toastr.error(error.message);
+                this.likeDisabled = false;
+            }
+        );
+    }
+
+    playSong(song: Song) {
+        this.player.load([song], song.id);
+        this.player.play().subscribe({
+            error: () => {
+                this.toastr.error('پخش آهنگ با مشکل روبرو شد');
+            },
+        });
+    }
+
+    pauseSong(song: Song) {
+        this.player.pause();
     }
 }
