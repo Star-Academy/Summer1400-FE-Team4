@@ -229,6 +229,10 @@ body {
     border: none;
     cursor: pointer;
 
+    &:not([disabled]) {
+        cursor: pointer;
+    }
+
     .icon {
         display: block;
 

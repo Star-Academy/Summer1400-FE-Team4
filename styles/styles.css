@@ -240,7 +240,7 @@ body {
   border-radius: 1000rem;
   border: 0.1rem solid currentColor;
   padding: 0.5rem 1rem;
-  transition: 100ms ease-in-out;
+  transition: color 100ms ease-in-out, background-color 100ms ease-in-out;
   background-color: inherit;
   cursor: pointer;
 }
@@ -255,7 +255,7 @@ body {
   align-items: center;
   padding: 1rem 2rem;
   border-radius: 0.5rem;
-  transition: 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out;
   cursor: pointer;
 }
 .button-block:hover {
@@ -277,12 +277,15 @@ body {
   border: none;
   cursor: pointer;
 }
+.icon-button:not([disabled]) {
+  cursor: pointer;
+}
 .icon-button .icon {
   display: block;
 }
 .icon-button .icon:hover {
   fill: #ffd523;
-  transition: 300ms;
+  transition: fill 200ms ease-in-out;
 }
 .icon-button .icon.selected {
   color: #ffd523;
@@ -305,7 +308,16 @@ h6 {
   display: grid;
 }
 
+.toast-container.toast-top-left {
+  top: 1rem;
+  left: 1rem;
+}
+.toast-container.toast-top-left-page {
+  top: calc(1.8em + 4rem);
+  left: 1rem;
+}
 .toast-container .ngx-toastr {
+  width: 20em;
   box-shadow: none;
 }
 
