@@ -60,14 +60,12 @@
   margin-top: 2rem;
   gap: 2rem;
 }
-.banner .banner-desc .button-row .icon-play,
-.banner .banner-desc .button-row .icon-pause {
+.banner .banner-desc .button-row .player-buttons {
   font-size: 200%;
   transition: transform 200ms ease-in-out;
 }
-.banner .banner-desc .button-row .icon-play:hover,
-.banner .banner-desc .button-row .icon-pause:hover {
-  transform: scaleX(-110%) scaleY(110%);
+.banner .banner-desc .button-row .player-buttons:hover {
+  transform: scale(110%);
 }
 
 .song-lyrics {
