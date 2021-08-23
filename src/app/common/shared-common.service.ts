@@ -7,7 +7,5 @@ export class SharedCommonService {
     currentSearchTerm = new BehaviorSubject<string>('');
     topBarDark = new BehaviorSubject<boolean>(false);
 
-    constructor() {
-        this.topBarDark.next(false);
-    }
+    constructor() {}
 }

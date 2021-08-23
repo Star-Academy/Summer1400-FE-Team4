@@ -105,7 +105,8 @@
               "node_modules/ngx-toastr/toastr.css",
               "src/styles/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "codeCoverage": true
           }
         },
         "deploy": {

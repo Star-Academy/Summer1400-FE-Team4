@@ -43,7 +43,7 @@ export class ApiService {
             .pipe(catchError(this.handleError<T>()));
     }
 
-    handleError<T>() {
+    private handleError<T>() {
         return (error: any): Observable<T> => {
             console.error(error);
             if (error instanceof HttpErrorResponse && error.status)
