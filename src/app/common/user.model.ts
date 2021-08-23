@@ -2,11 +2,9 @@ export interface User {
     id: number;
     username: string;
     email: string;
-    password: string;
     firstName: string;
     lastName: string;
-    avatar: string;
-    gender: boolean;
+    avatar?: string | null;
 }
 
 export interface UserInfo {
@@ -15,6 +13,5 @@ export interface UserInfo {
     password?: string;
     firstName?: string;
     lastName?: string;
-    avatar?: string;
-    gender?: boolean;
+    avatar?: string | null;
 }

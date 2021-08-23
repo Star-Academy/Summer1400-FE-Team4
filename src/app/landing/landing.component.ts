@@ -17,8 +17,7 @@ export class LandingComponent implements OnInit {
     constructor(
         public sharedCommon: SharedCommonService,
         private songService: SongService,
-        private toastr: ToastrService,
-        private route: Router
+        private toastr: ToastrService
     ) {}
 
     ngOnInit(): void {
