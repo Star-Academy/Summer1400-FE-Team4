@@ -14,4 +14,4 @@ export { ArtistService } from './artist.service';
 export { FavoritesService } from './favorites.service';
 export { PlayerService, PlayState } from './player.service';
 
-export { UserLoggedInGaurd } from './user-logged-in.gaurd';
+export { UserLoggedInGuard } from './user-logged-in.guard';

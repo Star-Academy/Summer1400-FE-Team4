@@ -1,4 +1,4 @@
-import { HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { of, throwError } from 'rxjs';
 import { ApiError, ApiService } from './api.service';
 
@@ -17,7 +17,7 @@ describe('ApiError', () => {
 });
 
 describe('ApiService', () => {
-    let mockHttp: any;
+    let mockHttp: jasmine.SpyObj<HttpClient>;
     let api: ApiService;
 
     beforeEach(() => {

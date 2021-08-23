@@ -8,7 +8,7 @@ import { ArtistComponent } from './artist/artist.component';
 import { AlbumComponent } from './album/album.component';
 import { SongComponent } from './song/song.component';
 import { FavoritesComponent } from './favorites/favorites.component';
-import { UserLoggedInGaurd } from './common';
+import { UserLoggedInGuard } from './common';
 
 export const routes: Routes = [
     {
@@ -23,7 +23,7 @@ export const routes: Routes = [
             {
                 path: 'favorites',
                 component: FavoritesComponent,
-                canActivate: [UserLoggedInGaurd],
+                canActivate: [UserLoggedInGuard],
             },
             { path: 'artist/:name', component: ArtistComponent },
             { path: 'album/:id', component: AlbumComponent },
@@ -39,6 +39,6 @@ export const routes: Routes = [
 @NgModule({
     imports: [RouterModule.forRoot(routes), UserModule],
     exports: [RouterModule],
-    providers: [UserLoggedInGaurd],
+    providers: [UserLoggedInGuard],
 })
 export class AppRoutingModule {}

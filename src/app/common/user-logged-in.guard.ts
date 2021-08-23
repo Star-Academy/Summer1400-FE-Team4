@@ -3,10 +3,10 @@ import { CanActivate, Router, UrlTree } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { AuthService } from '../common';
+import { AuthService } from '.';
 
 @Injectable()
-export class UserLoggedInGaurd implements CanActivate {
+export class UserLoggedInGuard implements CanActivate {
     constructor(private auth: AuthService, private router: Router, private toastr: ToastrService) {}
 
     canActivate(): Observable<boolean | UrlTree> {
