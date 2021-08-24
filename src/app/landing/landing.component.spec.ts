@@ -1,24 +1,28 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SharedCommonService, SongService } from '../common';
+import { ToastrService } from 'ngx-toastr';
 import { LandingComponent } from './landing.component';
+import { of, Subject } from 'rxjs';
 
-describe('LandingComponent', () => {
-    let component: LandingComponent;
-    let fixture: ComponentFixture<LandingComponent>;
-
-    beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            declarations: [LandingComponent],
-        }).compileComponents();
-    });
+describe('landingComponent', () => {
+    let mockSharedCommon: SharedCommonService;
+    let mockSongService: SongService;
+    let mockToastr: ToastrService;
+    let landingComponent: LandingComponent;
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(LandingComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
+        mockSongService = jasmine.createSpyObj('mockSongService', { getSongs: of() });
+        mockToastr = jasmine.createSpyObj('mockToastr', ['success', 'error']);
+        mockSharedCommon = jasmine.createSpyObj('mockSharedCommon', [], {
+            topBarDark: new Subject<boolean>(),
+        });
+        landingComponent = new LandingComponent(mockSharedCommon, mockSongService, mockToastr);
     });
-
-    it('should create', () => {
-        expect(component).toBeTruthy();
+    describe('ngOnInit', () => {
+        describe('getSongs', () => {
+            it('should call getSongs()', () => {
+                landingComponent.ngOnInit();
+                expect(mockSongService.getSongs).toHaveBeenCalledTimes(3);
+            });
+        });
     });
 });
