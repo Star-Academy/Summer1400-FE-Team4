@@ -144,7 +144,7 @@
                     </svg>
                 </button>
             </div>
-            <div>{{ songDuration[song.id] | duration | persianNumeral }}</div>
+            <div>{{ songDuration[song.id] | async | duration | persianNumeral }}</div>
         </div>
         <h1 class="list-empty" [hidden]="!loaded || songs.length > 0">آهنگی وجود ندارد!</h1>
     </div>

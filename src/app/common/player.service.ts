@@ -1,5 +1,5 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { BehaviorSubject, combineLatest, concat, from, of } from 'rxjs';
+import { BehaviorSubject, combineLatest, concat, from, fromEvent, Observable, of, ReplaySubject, Subject } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Song } from './song.model';
 
@@ -110,5 +110,21 @@ export class PlayerService {
                 else return state;
             })
         );
+    }
+
+    songDuration(song: Song): Observable<number> {
+        const duration = new Subject<number>();
+        const audio = new Audio();
+
+        audio.preload = 'metadata';
+        audio.src = song.file;
+        audio.load();
+
+        audio.onloadedmetadata = () => {
+            duration.next(audio.duration);
+            audio.remove();
+        }
+
+        return duration;
     }
 }

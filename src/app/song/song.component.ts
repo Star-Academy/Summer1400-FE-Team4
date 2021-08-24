@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Observable, of } from 'rxjs';
 import {
     AuthService,
     FavoritesService,
@@ -16,7 +17,7 @@ import {
 })
 export class SongComponent implements OnInit {
     song?: Song;
-    duration?: number;
+    duration: Observable<number> = of();
     likeDisabled = false;
 
     constructor(
@@ -33,19 +34,12 @@ export class SongComponent implements OnInit {
         this.sharedCommon.topBarDark.next(true);
 
         this.route.paramMap.subscribe((params) => {
-            this.duration = undefined;
+            this.duration = of()
 
             const id = parseInt(params.get('id') as string);
             this.songService.getSong(id).subscribe((song) => {
                 this.song = song;
-
-                const audio = new Audio();
-                audio.preload = 'metadata';
-                audio.src = song.file;
-                audio.onloadedmetadata = () => {
-                    this.duration = audio.duration;
-                    audio.remove();
-                };
+                this.duration = this.player.songDuration(song);
             });
         });
     }

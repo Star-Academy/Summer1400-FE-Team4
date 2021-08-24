@@ -12,7 +12,7 @@
                 <a [routerLink]="['/artist', song.artist]">{{ song.artist }}</a>
             </strong>
             &bullet;&nbsp;<span>{{ song.publishDate | date: 'MMM y' | persianNumeral }}</span>
-            &bullet;&nbsp;<span>{{ duration | duration | persianNumeral }}</span>
+            &bullet;&nbsp;<span>{{ duration | async | duration | persianNumeral }}</span>
         </div>
         <diV class="button-row">
             <div class="player-buttons">

@@ -1,6 +1,6 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { zip } from 'rxjs';
+import { Observable, zip } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AuthService, FavoritesService, PlayerService, PlayState, Song } from '../common';
 
@@ -15,7 +15,7 @@ export class SongTableComponent implements OnInit, OnChanges {
     @Input() removeAlbum = false;
     @Input() isPlaylist = false;
     @Input() playlistLink?: string;
-    songDuration: { [id: number]: number } = {};
+    songDuration: { [id: number]: Observable<number> } = {};
     likeDisabled = new Set<number>();
 
     constructor(
@@ -30,13 +30,7 @@ export class SongTableComponent implements OnInit, OnChanges {
     ngOnChanges(): void {
         this.songDuration = {};
         this.songs.forEach((song) => {
-            const audio = new Audio();
-            audio.preload = 'metadata';
-            audio.src = song.file;
-            audio.onloadedmetadata = () => {
-                this.songDuration[song.id] = audio.duration;
-                audio.remove();
-            };
+            this.songDuration[song.id] = this.player.songDuration(song);
         });
     }
 
