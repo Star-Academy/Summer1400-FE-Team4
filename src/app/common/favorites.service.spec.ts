@@ -1,5 +1,6 @@
-import { of, ReplaySubject } from 'rxjs';
-import { ApiService } from './api.service';
+import { EMPTY, of, ReplaySubject, throwError } from 'rxjs';
+import { bufferCount, first, take } from 'rxjs/operators';
+import { ApiError, ApiService } from './api.service';
 import { AuthService } from './auth.service';
 import { FavoritesService } from './favorites.service';
 import { Song } from './song.model';
@@ -73,7 +74,6 @@ describe('FavoritesService', () => {
     });
 
     describe('when user is logged in', () => {
-
         beforeEach(() => {
             mockAuth.currentUser.next({ id: 12 } as User);
         });
@@ -86,9 +86,6 @@ describe('FavoritesService', () => {
                         return of([{ id: 12, name: 'favorites', songs: dummyPlaylist }]);
                     }
                     done.fail('invalid path argument in call of api post');
-                    // else if (path === 'playlist/create') {
-                    //     expect(body).toEqual({token: 'tok'});
-                    // }
                 });
 
                 favService = new FavoritesService(mockApi, mockAuth, mockSongService);
@@ -117,6 +114,92 @@ describe('FavoritesService', () => {
                     expect(mockApi.post).toHaveBeenCalledTimes(2);
                     done();
                 }, done.fail);
+            });
+        });
+
+        describe('addSong', () => {
+            beforeEach(() => {
+                mockApi.post.and.returnValue(
+                    of([{ id: 12, name: 'favorites', songs: dummyPlaylist }])
+                );
+                favService = new FavoritesService(mockApi, mockAuth, mockSongService);
+            });
+
+            it('should add song if post succeeded', (done) => {
+                favService.songs.pipe(bufferCount(2), first()).subscribe(([songs1, songs2]) => {
+                    expect(songs1?.length).toBe(3);
+                    expect(songs2?.length).toBe(4);
+                    done();
+                }, done.fail);
+
+                mockApi.post.and.callFake(() => {
+                    return EMPTY;
+                });
+                favService.addSong({ id: 10, name: 'zen' } as Song).subscribe();
+            });
+
+            it('should add then remove song if post failed', (done) => {
+                favService.songs
+                    .pipe(bufferCount(3), first())
+                    .subscribe(([songs1, songs2, songs3]) => {
+                        expect(songs1?.length).toBe(3);
+                        expect(songs2?.length).toBe(4);
+                        expect(songs3?.length).toBe(3);
+                        done();
+                    }, done.fail);
+
+                mockApi.post.and.callFake(() => {
+                    return throwError(new ApiError(''));
+                });
+                favService.addSong({ id: 10, name: 'zen' } as Song).subscribe(
+                    () => {
+                        done.fail('an error was thrown but the observable succeeded');
+                    },
+                    (error) => {}
+                );
+            });
+        });
+
+        describe('removeSong', () => {
+            beforeEach(() => {
+                mockApi.post.and.returnValue(
+                    of([{ id: 12, name: 'favorites', songs: dummyPlaylist }])
+                );
+                favService = new FavoritesService(mockApi, mockAuth, mockSongService);
+            });
+
+            it('should remove song if post succeeded', (done) => {
+                favService.songs.pipe(bufferCount(2), first()).subscribe(([songs1, songs2]) => {
+                    expect(songs1?.length).toBe(3);
+                    expect(songs2?.length).toBe(2);
+                    done();
+                }, done.fail);
+
+                mockApi.post.and.callFake(() => {
+                    return EMPTY;
+                });
+                favService.removeSong({ id: 2, name: 'zwei' } as Song).subscribe();
+            });
+
+            it('should remove then add song if post failed', (done) => {
+                favService.songs
+                    .pipe(bufferCount(3), first())
+                    .subscribe(([songs1, songs2, songs3]) => {
+                        expect(songs1?.length).toBe(3);
+                        expect(songs2?.length).toBe(2);
+                        expect(songs3?.length).toBe(3);
+                        done();
+                    }, done.fail);
+
+                mockApi.post.and.callFake(() => {
+                    return throwError(new ApiError(''));
+                });
+                favService.removeSong({ id: 2, name: 'zwei' } as Song).subscribe(
+                    () => {
+                        done.fail('an error was thrown but the observable succeeded');
+                    },
+                    (error) => {}
+                );
             });
         });
     });

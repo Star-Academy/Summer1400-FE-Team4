@@ -84,10 +84,14 @@ export class FavoritesService {
                     .pipe(
                         tap({
                             error: () => {
-                                if (songs !== undefined) {
-                                    this.version++;
-                                    this.songs.next(songs.filter((song) => song.id !== toAdd.id));
-                                }
+                                this.songs.pipe(first()).subscribe((songs) => {
+                                    if (songs !== undefined) {
+                                        this.version++;
+                                        this.songs.next(
+                                            songs.filter((song) => song.id !== toAdd.id)
+                                        );
+                                    }
+                                });
                             },
                         })
                     );
@@ -120,10 +124,12 @@ export class FavoritesService {
                     .pipe(
                         tap({
                             error: () => {
-                                if (songs !== undefined) {
-                                    this.version++;
-                                    this.songs.next(songs.concat([toRemove]));
-                                }
+                                this.songs.pipe(first()).subscribe((songs) => {
+                                    if (songs !== undefined) {
+                                        this.version++;
+                                        this.songs.next(songs.concat([toRemove]));
+                                    }
+                                });
                             },
                         })
                     );
