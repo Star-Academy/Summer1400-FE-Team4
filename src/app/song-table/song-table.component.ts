@@ -28,7 +28,6 @@ export class SongTableComponent implements OnInit, OnChanges {
     ngOnInit(): void {}
 
     ngOnChanges(): void {
-        this.songDuration = {};
         this.songs.forEach((song) => {
             this.songDuration[song.id] = this.player.songDuration(song);
         });
