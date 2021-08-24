@@ -23,7 +23,7 @@ export class FavoritesService {
             if (user === null) {
                 this.version++;
                 this.playlistId = undefined;
-                this.songs.next([]);
+                this.songs.next(undefined);
             } else {
                 // the user could suddenly log out in the middle of fetching the playlist.
                 // lastVersion is for version control
@@ -51,6 +51,7 @@ export class FavoritesService {
                             if (lastVersion === this.version) {
                                 this.version++;
                                 this.playlistId = id;
+                                this.songs.next([]);
                             }
                         });
                     }
@@ -63,7 +64,7 @@ export class FavoritesService {
         return this.songs.pipe(first()).pipe(
             map((songs): Observable<void> => {
                 if (songs === undefined)
-                    return throwError(new ApiError('کاربر وارد حساب کاربری نشده'));
+                    return throwError(new Error('کاربر وارد حساب کاربری نشده'));
 
                 if (songs.find((song) => song.id === toAdd.id) !== undefined) {
                     // song already exists
@@ -99,7 +100,7 @@ export class FavoritesService {
         return this.songs.pipe(first()).pipe(
             map((songs): Observable<void> => {
                 if (songs === undefined)
-                    return throwError(new ApiError('کاربر وارد حساب کاربری نشده'));
+                    return throwError(new Error('کاربر وارد حساب کاربری نشده'));
 
                 if (songs.find((song) => song.id === toRemove.id) === undefined) {
                     // song does not exist
