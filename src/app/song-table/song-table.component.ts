@@ -9,7 +9,7 @@ import { AuthService, FavoritesService, PlayerService, PlayState, Song } from '.
     templateUrl: './song-table.component.html',
     styleUrls: ['./song-table.component.scss'],
 })
-export class SongTableComponent implements OnInit, OnChanges {
+export class SongTableComponent implements OnChanges {
     @Input() songs: Song[] = [];
     @Input() loaded = false;
     @Input() removeAlbum = false;
@@ -24,8 +24,6 @@ export class SongTableComponent implements OnInit, OnChanges {
         public player: PlayerService,
         private toastr: ToastrService
     ) {}
-
-    ngOnInit(): void {}
 
     ngOnChanges(): void {
         this.songs.forEach((song) => {

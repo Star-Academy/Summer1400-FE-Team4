@@ -34,7 +34,7 @@ export class SongComponent implements OnInit {
         this.sharedCommon.topBarDark.next(true);
 
         this.route.paramMap.subscribe((params) => {
-            this.duration = of()
+            this.duration = of();
 
             const id = parseInt(params.get('id') as string);
             this.songService.getSong(id).subscribe((song) => {

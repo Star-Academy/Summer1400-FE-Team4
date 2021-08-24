@@ -1,6 +1,6 @@
 import { ToastrService } from 'ngx-toastr';
 import { EMPTY, of, throwError } from 'rxjs';
-import { ApiError, AuthService, FavoritesService, PlayerService, Song } from '../common';
+import { AuthService, FavoritesService, PlayerService, Song } from '../common';
 import { SongTableComponent } from './song-table.component';
 
 describe('SongTableComponent', () => {
@@ -66,7 +66,7 @@ describe('SongTableComponent', () => {
     });
 
     describe('dislikeSong', () => {
-        it('should call addSong', () => {
+        it('should call removeSong', () => {
             mockFavs.removeSong.and.returnValue(EMPTY);
             component.dislikeSong(dummyPlaylist[1]);
             expect(mockFavs.removeSong).toHaveBeenCalledOnceWith(dummyPlaylist[1]);
