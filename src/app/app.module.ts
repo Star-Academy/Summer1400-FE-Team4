@@ -12,6 +12,7 @@ import { UserModule } from './user/user.module';
 import {
     ApiService,
     ArtistService,
+    AUDIO_TOKEN,
     AuthService,
     DurationPipe,
     FavoritesService,
@@ -72,6 +73,7 @@ registerLocaleData(localeFa);
     ],
     providers: [
         { provide: LOCALE_ID, useValue: 'fa-IR' },
+        { provide: AUDIO_TOKEN, useFactory: () => new Audio() },
         ApiService,
         SongService,
         ArtistService,

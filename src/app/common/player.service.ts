@@ -1,9 +1,11 @@
-import { Inject, Injectable } from '@angular/core';
+import { Inject, Injectable, InjectionToken } from '@angular/core';
 import { BehaviorSubject, combineLatest, concat, from, of } from 'rxjs';
 import { map, startWith } from 'rxjs/operators';
 import { Song } from './song.model';
 
 export type PlayState = 'playing' | 'paused' | 'loading';
+
+export const AUDIO_TOKEN = new InjectionToken<any>('Audio');
 
 @Injectable()
 export class PlayerService {
@@ -17,7 +19,7 @@ export class PlayerService {
 
     repeat = new BehaviorSubject<boolean>(false);
 
-    constructor(@Inject(new Audio()) private audio = new Audio()) {
+    constructor(@Inject(AUDIO_TOKEN) private audio: HTMLAudioElement = new Audio()) {
         this.audio.ontimeupdate = (event) => {
             this.progress.next({ progress: this.audio.currentTime, total: this.audio.duration });
         };
@@ -104,7 +106,6 @@ export class PlayerService {
     songState(song: Song) {
         return combineLatest([this.currentSong, this.state]).pipe(
             map(([currentSong, state]): PlayState => {
-                console.log(currentSong, state);
                 if (song.id !== currentSong?.id) return 'paused';
                 else return state;
             })

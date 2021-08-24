@@ -1,7 +1,6 @@
 export { Song } from './song.model';
 export { User, UserInfo } from './user.model';
 export { UserSignUpModel } from './user-signup.model';
-export { Playlist } from './playlist.model';
 
 export { PersianNumeralPipe } from './persian-numeral.pipe';
 export { DurationPipe } from './duration.pipe';
@@ -12,6 +11,6 @@ export { AuthService } from './auth.service';
 export { SongService } from './song.service';
 export { ArtistService } from './artist.service';
 export { FavoritesService } from './favorites.service';
-export { PlayerService, PlayState } from './player.service';
+export { PlayerService, PlayState, AUDIO_TOKEN } from './player.service';
 
 export { UserLoggedInGuard } from './user-logged-in.guard';

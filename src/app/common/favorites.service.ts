@@ -1,19 +1,18 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, throwError } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { BehaviorSubject, Observable, of, ReplaySubject, throwError } from 'rxjs';
+import { first, map, mergeAll, tap } from 'rxjs/operators';
 import { ApiError, ApiService } from './api.service';
 import { AuthService } from './auth.service';
-import { Playlist } from './playlist.model';
 import { Song } from './song.model';
 import { SongService } from './song.service';
 
-// note: this class seems to suffer from race conditions.
+// note: this class might suffer from race conditions.
 @Injectable()
 export class FavoritesService {
-    PLAYLIST_NAME = 'favorites' as const;
-    songs = new BehaviorSubject<Song[] | undefined>(undefined);
-    version: number = 0;
-    playlistId?: number;
+    private PLAYLIST_NAME = 'favorites' as const;
+    private version: number = 0;
+    private playlistId?: number;
+    songs = new ReplaySubject<Song[] | undefined>(1);
 
     constructor(
         private api: ApiService,
@@ -61,67 +60,75 @@ export class FavoritesService {
     }
 
     addSong(toAdd: Song): Observable<void> {
-        if (this.songs.value === undefined)
-            return throwError(new ApiError('کاربر وارد حساب کاربری نشده'));
+        return this.songs.pipe(first()).pipe(
+            map((songs): Observable<void> => {
+                if (songs === undefined)
+                    return throwError(new ApiError('کاربر وارد حساب کاربری نشده'));
 
-        if (this.songs.value.find((song) => song.id === toAdd.id) !== undefined) {
-            // song already exists
-            return of();
-        }
+                if (songs.find((song) => song.id === toAdd.id) !== undefined) {
+                    // song already exists
+                    return of(void 0);
+                }
 
-        // add for now
-        this.version++;
-        this.songs.next(this.songs.value.concat([toAdd]));
+                // add for now
+                this.version++;
+                this.songs.next(songs.concat([toAdd]));
 
-        return this.api
-            .post<void>('playlist/add-song', {
-                token: this.auth.authToken,
-                playlistId: this.playlistId,
-                songId: toAdd.id,
-            })
-            .pipe(
-                tap({
-                    error: () => {
-                        if (this.songs.value !== undefined) {
-                            this.version++;
-                            this.songs.next(
-                                this.songs.value.filter((song) => song.id !== toAdd.id)
-                            );
-                        }
-                    },
-                })
-            );
+                return this.api
+                    .post<void>('playlist/add-song', {
+                        token: this.auth.authToken,
+                        playlistId: this.playlistId,
+                        songId: toAdd.id,
+                    })
+                    .pipe(
+                        tap({
+                            error: () => {
+                                if (songs !== undefined) {
+                                    this.version++;
+                                    this.songs.next(songs.filter((song) => song.id !== toAdd.id));
+                                }
+                            },
+                        })
+                    );
+            }),
+            mergeAll()
+        );
     }
 
     removeSong(toRemove: Song): Observable<void> {
-        if (this.songs.value === undefined)
-            return throwError(new ApiError('کاربر وارد حساب کاربری نشده'));
+        return this.songs.pipe(first()).pipe(
+            map((songs): Observable<void> => {
+                if (songs === undefined)
+                    return throwError(new ApiError('کاربر وارد حساب کاربری نشده'));
 
-        if (this.songs.value.find((song) => song.id === toRemove.id) === undefined) {
-            // song does not exist
-            return of();
-        }
+                if (songs.find((song) => song.id === toRemove.id) === undefined) {
+                    // song does not exist
+                    return of();
+                }
 
-        // remove for now
-        this.version++;
-        this.songs.next(this.songs.value.filter((song) => song.id !== toRemove.id));
+                // remove for now
+                this.version++;
+                this.songs.next(songs.filter((song) => song.id !== toRemove.id));
 
-        return this.api
-            .post<void>('playlist/remove-song', {
-                token: this.auth.authToken,
-                playlistId: this.playlistId,
-                songId: toRemove.id,
-            })
-            .pipe(
-                tap({
-                    error: () => {
-                        if (this.songs.value !== undefined) {
-                            this.version++;
-                            this.songs.next(this.songs.value.concat([toRemove]));
-                        }
-                    },
-                })
-            );
+                return this.api
+                    .post<void>('playlist/remove-song', {
+                        token: this.auth.authToken,
+                        playlistId: this.playlistId,
+                        songId: toRemove.id,
+                    })
+                    .pipe(
+                        tap({
+                            error: () => {
+                                if (songs !== undefined) {
+                                    this.version++;
+                                    this.songs.next(songs.concat([toRemove]));
+                                }
+                            },
+                        })
+                    );
+            }),
+            mergeAll()
+        );
     }
 
     isFavorite(id: number): Observable<boolean> {
