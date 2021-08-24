@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject, from, zip } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Inject, Injectable } from '@angular/core';
+import { BehaviorSubject, combineLatest, concat, from, of } from 'rxjs';
+import { map, startWith } from 'rxjs/operators';
 import { Song } from './song.model';
 
 export type PlayState = 'playing' | 'paused' | 'loading';
@@ -17,16 +17,14 @@ export class PlayerService {
 
     repeat = new BehaviorSubject<boolean>(false);
 
-    private audio = new Audio();
-
-    constructor() {
+    constructor(@Inject(new Audio()) private audio = new Audio()) {
         this.audio.ontimeupdate = (event) => {
             this.progress.next({ progress: this.audio.currentTime, total: this.audio.duration });
         };
 
         this.audio.onwaiting = () => {
             this.state.next('loading');
-        }
+        };
 
         this.audio.onplaying = () => {
             this.state.next('playing');
@@ -68,11 +66,11 @@ export class PlayerService {
     }
 
     seek(second: number) {
-        this.audio.fastSeek(second);
+        this.audio.currentTime = second;
     }
 
     next(repeat = true) {
-        if (this.currentSongIndex.value) {
+        if (this.currentSongIndex.value !== undefined) {
             let nextIndex = this.currentSongIndex.value + 1;
             if (nextIndex >= this.playlist.value.length)
                 if (repeat) nextIndex = 0;
@@ -88,7 +86,7 @@ export class PlayerService {
     }
 
     previous(repeat = true) {
-        if (this.currentSongIndex.value) {
+        if (this.currentSongIndex.value !== undefined) {
             let prevIndex = this.currentSongIndex.value - 1;
             if (prevIndex < 0)
                 if (repeat) prevIndex = this.playlist.value.length - 1;
@@ -104,8 +102,9 @@ export class PlayerService {
     }
 
     songState(song: Song) {
-        return zip(this.currentSong, this.state).pipe(
+        return combineLatest([this.currentSong, this.state]).pipe(
             map(([currentSong, state]): PlayState => {
+                console.log(currentSong, state);
                 if (song.id !== currentSong?.id) return 'paused';
                 else return state;
             })

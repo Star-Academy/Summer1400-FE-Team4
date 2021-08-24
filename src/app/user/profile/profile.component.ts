@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService, User } from '../../common';
+import { AuthService, User, UserInfo } from '../../common';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
         }
     }
 
-    user?: User;
+    user?: UserInfo;
 
     changeProfile() {
         if (this.user !== undefined) {
@@ -89,7 +89,7 @@ export class ProfileComponent implements OnInit {
     ngOnInit(): void {
         this.authService.currentUser.subscribe((user) => {
             if (user !== null) {
-                this.user = user;
+                this.user = { ...user };
                 this.hasAvatar = this.user?.avatar !== 'null';
             } else this.user = undefined;
         });

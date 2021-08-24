@@ -53,7 +53,6 @@ export class AuthService {
                     if (nextUser !== null) {
                         this.getUser(nextUser.id).subscribe((newUser) => {
                             this.currentUser.next(newUser)
-                            console.log(newUser);
                         });
                     }
                 });
