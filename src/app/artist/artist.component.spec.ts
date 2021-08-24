@@ -1,24 +1,26 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { ArtistService, SharedCommonService } from '../common';
+import { ActivatedRoute } from '@angular/router';
 import { ArtistComponent } from './artist.component';
 
-describe('ArtistComponent', () => {
-    let component: ArtistComponent;
-    let fixture: ComponentFixture<ArtistComponent>;
-
-    beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            declarations: [ArtistComponent],
-        }).compileComponents();
-    });
+describe('artistComponent', () => {
+    let mockSharedCommon: SharedCommonService;
+    let mockArtistService: ArtistService;
+    let mockActivatedRouts: ActivatedRoute;
+    let artistComponent: ArtistComponent;
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(ArtistComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+        mockArtistService = jasmine.createSpyObj('mockArtistService', ['getSong']);
+        mockSharedCommon = new SharedCommonService();
+        mockActivatedRouts = new ActivatedRoute();
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
+        artistComponent = new ArtistComponent(
+            mockSharedCommon,
+            mockArtistService,
+            mockActivatedRouts
+        );
+    });
+    it('should call ngOnInit', () => {
+        artistComponent.ngOnInit();
+        expect(true).toBeTrue();
     });
 });

@@ -1,25 +1,23 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FavoritesService, SharedCommonService, Song } from '../common';
 import { FavoritesComponent } from './favorites.component';
+import { ReplaySubject } from 'rxjs';
 
-describe('FavoritesComponent', () => {
-  let component: FavoritesComponent;
-  let fixture: ComponentFixture<FavoritesComponent>;
+describe('favoritesComponent', () => {
+    let mockSharedCommon: SharedCommonService;
+    let mockFavoriteService: FavoritesService;
+    let favoriteComponent: FavoritesComponent;
 
-  beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      declarations: [ FavoritesComponent ]
-    })
-    .compileComponents();
-  });
+    beforeEach(() => {
+        mockFavoriteService = jasmine.createSpyObj('mockFavoriteService', ['addSong']);
+        mockSharedCommon = new SharedCommonService();
+        favoriteComponent = new FavoritesComponent(mockSharedCommon, mockFavoriteService);
+        mockFavoriteService.songs = new ReplaySubject<Song[] | undefined>(1);
+    });
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(FavoritesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
-
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    it('should call ngOnInit', () => {
+        // spyOnProperty(mockFavoriteService, 'songs').and.returnValue(of([]));
+        mockFavoriteService.songs.next(undefined);
+        favoriteComponent.ngOnInit();
+        expect(favoriteComponent.loaded).toBeFalse();
+    });
 });

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 export interface ShelfCard {
     id?: any;
@@ -12,7 +12,7 @@ export interface ShelfCard {
     templateUrl: './shelf.component.html',
     styleUrls: ['./shelf.component.scss'],
 })
-export class ShelfComponent implements OnInit {
+export class ShelfComponent {
     @Input() title?: string;
     @Input() cards: ShelfCard[] = [];
     @Input() collapsed = false;
@@ -21,10 +21,6 @@ export class ShelfComponent implements OnInit {
     @Output() click = new EventEmitter();
 
     constructor() {}
-
-    ngOnInit(): void {}
-
-    expandItems(): void {}
 
     cardClick(id: any) {
         if (this.click) this.click.emit(id);

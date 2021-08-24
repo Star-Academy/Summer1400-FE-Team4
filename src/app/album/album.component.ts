@@ -18,12 +18,10 @@ export class AlbumComponent implements OnInit {
 
     ngOnInit(): void {
         this.sharedCommon.topBarDark.next(true);
-
         this.route.paramMap.subscribe((params) => {
             const id = parseInt(params.get('id') as string);
             this.songService.getSong(id).subscribe((song) => {
                 this.song = song;
-                console.log(song);
             });
         });
     }

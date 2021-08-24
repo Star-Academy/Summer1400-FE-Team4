@@ -1,24 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SharedCommonService, SongService } from '../common';
+import { ActivatedRoute } from '@angular/router';
 import { AlbumComponent } from './album.component';
 
-describe('AlbumComponent', () => {
-    let component: AlbumComponent;
-    let fixture: ComponentFixture<AlbumComponent>;
-
-    beforeEach(async () => {
-        await TestBed.configureTestingModule({
-            declarations: [AlbumComponent],
-        }).compileComponents();
-    });
+describe('albumComponent', () => {
+    let mockSharedCommon: SharedCommonService;
+    let mockSongService: SongService;
+    let mockActivatedRouts: ActivatedRoute;
+    let albumComponent: AlbumComponent;
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(AlbumComponent);
-        component = fixture.componentInstance;
-        fixture.detectChanges();
-    });
+        mockSongService = jasmine.createSpyObj('mockSongService', ['getSong']);
+        mockSharedCommon = new SharedCommonService();
+        mockActivatedRouts = new ActivatedRoute();
 
-    it('should create', () => {
-        expect(component).toBeTruthy();
+        albumComponent = new AlbumComponent(mockSharedCommon, mockSongService, mockActivatedRouts);
+    });
+    it('should call ngOnInit', () => {
+        albumComponent.ngOnInit();
+        expect(true).toBeTrue();
     });
 });
