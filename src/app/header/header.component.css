@@ -1,0 +1,135 @@
+.top-bar {
+  background-color: #222334;
+}
+.top-bar.dark {
+  background-color: #181924;
+}
+.top-bar > nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  gap: 1rem;
+  height: calc(1.6em + 3.2rem);
+}
+.top-bar > nav ul {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+}
+.top-bar > nav .icon-profile {
+  display: flex;
+  cursor: pointer;
+  margin-left: 1rem;
+  padding: 0.5rem;
+  background-color: #ffd523;
+  background-size: cover;
+  color: #2c2e43;
+  border-radius: 100%;
+  border: none;
+  box-shadow: 0 0 0 0.05em #e7e7e9;
+}
+.top-bar > nav .icon-profile > svg {
+  width: 1.6em;
+  height: 1.6em;
+}
+@media screen and (max-width: 600px) {
+  .top-bar > nav .icon-profile {
+    margin-left: 0;
+  }
+}
+.top-bar > nav .profile-popup-container {
+  position: relative;
+  transition: opacity 200ms ease-in-out;
+}
+.top-bar > nav .profile-popup-container.invisible {
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+}
+.top-bar > nav .profile-popup-container > .profile-popup {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  background-color: #434052;
+  border-radius: 0.5rem;
+  border: 0.1rem solid #86828d;
+  color: #e7e7e9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 1rem 0 1rem;
+  width: max-content;
+}
+.top-bar > nav .profile-popup-container > .profile-popup::before {
+  content: "";
+  position: absolute;
+  border: calc(0.5em + 0.1rem) solid transparent;
+  border-bottom-color: #86828d;
+  width: calc(1em + 0.2rem);
+  height: calc(1em + 0.2rem);
+  top: calc(-1em - 0.2rem);
+  left: calc(2rem - 0.1rem);
+}
+.top-bar > nav .profile-popup-container > .profile-popup::after {
+  content: "";
+  position: absolute;
+  border: 0.5em solid transparent;
+  border-bottom-color: #434052;
+  width: 1em;
+  height: 1em;
+  top: -1em;
+  left: 2rem;
+}
+.top-bar > nav .profile-popup-container > .profile-popup .icon-profile {
+  cursor: inherit;
+  font-size: 400%;
+  padding: 2rem;
+  margin-left: 0;
+}
+.top-bar > nav .profile-popup-container > .profile-popup > ul {
+  border-top: 0.1rem solid #86828d;
+  padding: 1rem;
+}
+.top-bar > nav > .search-box {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: fit-content;
+  width: calc(min(25vw + 2rem, 15em));
+  border-radius: 1000rem;
+  border: 0.1rem solid #b2b1b9;
+  background-color: inherit;
+  transition: border-color 100ms ease-in-out;
+}
+.top-bar > nav > .search-box:hover {
+  border-color: #e7e7e9;
+}
+.top-bar > nav > .search-box > input {
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 1rem 0.5rem 0;
+  width: 100%;
+  outline: none;
+  color: inherit;
+}
+.top-bar > nav > .search-box > button {
+  border: none;
+  border-radius: 100%;
+  background-color: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4rem;
+  height: 100%;
+  transition: color 100ms ease-in-out;
+}
+.top-bar > nav > .search-box > button:hover {
+  color: #e7e7e9;
+}
+
+/*# sourceMappingURL=header.component.css.map */

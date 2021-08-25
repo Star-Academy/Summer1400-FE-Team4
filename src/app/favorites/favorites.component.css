@@ -1,0 +1,10 @@
+:host {
+  display: grid;
+}
+
+app-song-table {
+  background-image: linear-gradient(to bottom, #222334 10rem, #2c2e43 30rem);
+  background-attachment: fixed;
+}
+
+/*# sourceMappingURL=favorites.component.css.map */

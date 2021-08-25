@@ -1,0 +1,15 @@
+@use '../../styles/defs' as *;
+
+:host {
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+app-banner {
+    display: block;
+    background-image: linear-gradient(to bottom, $color-darkest 0%, $color-darker 100%);
+}
+
+app-song-table {
+    background-image: linear-gradient(to bottom, $color-darker 5rem, $color-dark 25rem);
+}

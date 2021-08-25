@@ -1,3 +1,6 @@
-assets
-images
-styles/css
+.vscode
+node_modules
+src/assets
+*.css
+dist
+coverage

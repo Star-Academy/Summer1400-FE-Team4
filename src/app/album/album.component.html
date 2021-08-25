@@ -1,0 +1,19 @@
+<app-banner [image]="song?.cover">
+    <h1>{{ song?.name }}</h1>
+    <div>{{ song ? 'تک‌آهنگ' : '' }}</div>
+    <div>
+        <strong>
+            <a [routerLink]="['/artist', song?.artist]">{{ song?.artist }}</a>
+        </strong>
+        &bullet;
+        <span>
+            {{ song?.publishDate | date: 'MMM yyyy' | persianNumeral }}
+        </span>
+    </div>
+</app-banner>
+
+<app-song-table
+    [removeAlbum]="true"
+    [songs]="song ? [song] : []"
+    [loaded]="song !== undefined"
+></app-song-table>

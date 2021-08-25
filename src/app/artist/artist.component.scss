@@ -1,0 +1,6 @@
+@use '../../styles/defs' as *;
+
+app-banner {
+    display: block;
+    background-image: linear-gradient(to bottom, $color-darkest 0%, $color-dark 100%);
+}

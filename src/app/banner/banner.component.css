@@ -1,0 +1,41 @@
+.banner {
+  grid-area: banner;
+  padding: 5%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: auto;
+  column-gap: 5%;
+}
+.banner .banner-image {
+  width: 100%;
+  padding-bottom: 100%;
+  position: relative;
+}
+.banner .banner-image > img,
+.banner .banner-image svg {
+  box-shadow: 0 0 5rem rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+.banner .banner-image > svg {
+  background-color: #181924;
+}
+.banner .banner-desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding-bottom: 2rem;
+}
+.banner .banner-desc ::ng-deep h1 {
+  font-size: 250%;
+}
+@media screen and (max-width: 800px) {
+  .banner .banner-desc ::ng-deep h1 {
+    font-size: 200%;
+  }
+}
+
+/*# sourceMappingURL=banner.component.css.map */

@@ -1,0 +1,10 @@
+@use '../../styles/defs' as *;
+
+:host {
+    display: grid;
+}
+
+app-song-table {
+    background-image: linear-gradient(to bottom, $color-darker 10rem, $color-dark 30rem);
+    background-attachment: fixed;
+}

@@ -1,0 +1,94 @@
+.outerForm {
+  background-color: #434052;
+  height: 100%;
+  width: 100%;
+  display: grid;
+  place-items: center;
+}
+.outerForm .images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.outerForm .images .icon-profile {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  margin-top: 2rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: #ffd523;
+  background-size: cover;
+  color: #2c2e43;
+  border-radius: 100%;
+  border: none;
+  box-shadow: 0 0 0 0.05em #e7e7e9;
+  width: 6em;
+  height: 6em;
+}
+.outerForm .images .icon-profile > svg {
+  width: 90%;
+  height: 90%;
+}
+.outerForm #box {
+  border-radius: 2rem;
+  width: calc(min(35rem, 100%));
+  background: #2c2e43;
+  text-align: center;
+}
+.outerForm #box #spotifyicon {
+  width: 10rem;
+  height: 10rem;
+  fill: #ffd523;
+}
+.outerForm #box input[type=text],
+.outerForm #box input[type=email],
+.outerForm #box input[type=password] {
+  background: none;
+  display: block;
+  text-align: center;
+  border: 1.5px solid lightgray;
+  padding: 0.7rem;
+  margin: auto;
+  outline: none;
+  width: 20rem;
+  border-radius: 1.5rem;
+  transition: 0.25s;
+}
+.outerForm #box input[type=text]:focus,
+.outerForm #box input[type=password]:focus,
+.outerForm #box input[type=email]:focus {
+  border-color: #ffd523;
+  width: 62%;
+}
+.outerForm #box .inputs {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+.outerForm #box .inputs > label {
+  padding: 1rem 7.5rem 0.5rem 1rem;
+  font-size: 1.4rem;
+  text-align: right;
+}
+.outerForm #box .buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0 2rem;
+  font-size: 1rem;
+}
+.outerForm #box .buttons .button {
+  color: #434052;
+  border: none;
+  border-radius: 0.8rem;
+  width: 90%;
+  background-color: lightyellow;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+}
+.outerForm #box .buttons .button:hover {
+  background-color: #ffd523;
+  transition: 0.5s;
+  color: #2c2e43;
+}
+
+/*# sourceMappingURL=profile.component.css.map */

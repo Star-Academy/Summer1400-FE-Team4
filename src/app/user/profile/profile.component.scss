@@ -1,0 +1,101 @@
+@use "../../../styles/defs" as *;
+
+.outerForm {
+    background-color: $color-medium-dark;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+    .images {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .icon-profile {
+            display: grid;
+            place-content: center;
+            place-items: center;
+            margin-top: 2rem;
+            cursor: pointer;
+            padding: $density-small;
+            background-color: $color-primary;
+            background-size: cover;
+            color: $color-dark;
+            border-radius: 100%;
+            border: none;
+            box-shadow: 0 0 0 0.05em $color-lighter;
+            width: 6em;
+            height: 6em;
+            > svg {
+                width: 90%;
+                height: 90%;
+            }
+        }
+    }
+
+    #box {
+        border-radius: 2rem;
+        width: calc(min(35rem, 100%));
+        background: #2c2e43;
+        text-align: center;
+
+        #spotifyicon {
+            width: 10rem;
+            height: 10rem;
+            fill: $color-primary;
+        }
+        input[type='text'],
+        input[type='email'],
+        input[type='password'] {
+            background: none;
+            display: block;
+
+            text-align: center;
+            border: 1.5px solid lightgray;
+            padding: 0.7rem;
+            margin: auto;
+            outline: none;
+            width: 20rem;
+            border-radius: 1.5rem;
+            transition: 0.25s;
+        }
+
+        input[type='text']:focus,
+        input[type='password']:focus,
+        input[type='email']:focus {
+            border-color: $color-primary;
+            width: 62%;
+        }
+        .inputs {
+            display: grid;
+            grid-template-rows: 1fr;
+            > label {
+                padding: 1rem 7.5rem 0.5rem 1rem;
+                font-size: 1.4rem;
+                text-align: right;
+            }
+        }
+
+        .buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            padding: 0 2rem;
+            font-size: 1rem;
+
+            .button {
+                color: $color-medium-dark;
+                border: none;
+                border-radius: 0.8rem;
+                width: 90%;
+                background-color: lightyellow;
+                padding: 0.5rem;
+                margin-bottom: 1rem;
+
+                &:hover {
+                    background-color: $color-primary;
+                    transition: 0.5s;
+                    color: $color-dark;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,41 @@
+@use '../../styles/defs' as *;
+
+.page {
+    min-height: 100%;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas:
+        'side-bar top-bar     '
+        'side-bar page-content';
+
+    > .top-bar-container {
+        grid-area: top-bar;
+
+        position: sticky;
+        top: 0;
+        z-index: 2;
+    }
+
+    > .side-bar-container {
+        grid-area: side-bar;
+
+        width: fit-content;
+    }
+}
+
+.page-content {
+    grid-area: page-content;
+
+    display: grid;
+    grid-template-rows: 1fr auto;
+
+    main {
+        display: grid;
+    }
+
+    footer {
+        background-color: $color-darker;
+        padding: $density-normal $density-large;
+    }
+}

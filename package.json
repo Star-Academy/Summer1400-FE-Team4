@@ -1,26 +1,44 @@
 {
-    "name": "Summer1400-FE-Team4",
-    "version": "1.0.0",
-    "description": "Phase 1 is finished",
-    "main": "index.js",
+    "name": "ahangify",
+    "version": "0.0.0",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "sass --watch styles/scss:styles/css"
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "ng build",
+        "watch": "ng build --watch --configuration development",
+        "test": "ng test",
+        "deploy": "ng deploy --base-href=/Summer1400-FE-Team4/"
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Star-Academy/Summer1400-FE-Team4.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/Star-Academy/Summer1400-FE-Team4/issues"
-    },
-    "homepage": "https://github.com/Star-Academy/Summer1400-FE-Team4#readme",
-    "devDependencies": {
-        "live-server": "^1.2.1",
+    "private": true,
+    "dependencies": {
+        "@angular/animations": "^12.2.1",
+        "@angular/common": "~12.2.0",
+        "@angular/compiler": "~12.2.0",
+        "@angular/core": "~12.2.0",
+        "@angular/forms": "~12.2.0",
+        "@angular/platform-browser": "~12.2.0",
+        "@angular/platform-browser-dynamic": "~12.2.0",
+        "@angular/router": "~12.2.0",
+        "ng-notyf": "^0.4.0",
+        "ngx-toastr": "^14.1.0",
         "prettier": "^2.3.2",
-        "sass": "^1.36.0"
+        "rxjs": "~6.6.0",
+        "tslib": "^2.3.0",
+        "zone.js": "~0.11.4"
+    },
+    "devDependencies": {
+        "@angular-devkit/build-angular": "~12.2.0",
+        "@angular/cli": "~12.2.0",
+        "@angular/compiler-cli": "~12.2.0",
+        "@types/jasmine": "~3.8.0",
+        "@types/node": "^12.11.1",
+        "angular-cli-ghpages": "^1.0.0-rc.2",
+        "jasmine-core": "~3.8.0",
+        "karma": "~6.3.0",
+        "karma-chrome-launcher": "~3.1.0",
+        "karma-coverage": "~2.0.3",
+        "karma-jasmine": "~4.0.0",
+        "karma-jasmine-html-reporter": "~1.7.0",
+        "typescript": "~4.3.5"
     }
 }

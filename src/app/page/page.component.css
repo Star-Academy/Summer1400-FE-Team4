@@ -1,0 +1,32 @@
+.page {
+  min-height: 100%;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: auto 1fr;
+  grid-template-areas: "side-bar top-bar     " "side-bar page-content";
+}
+.page > .top-bar-container {
+  grid-area: top-bar;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.page > .side-bar-container {
+  grid-area: side-bar;
+  width: fit-content;
+}
+
+.page-content {
+  grid-area: page-content;
+  display: grid;
+  grid-template-rows: 1fr auto;
+}
+.page-content main {
+  display: grid;
+}
+.page-content footer {
+  background-color: #222334;
+  padding: 1rem 2rem;
+}
+
+/*# sourceMappingURL=page.component.css.map */
