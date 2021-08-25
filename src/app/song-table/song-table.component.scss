@@ -23,7 +23,7 @@ $width-duration: 2.5em;
         top: calc(1.6em + #{$density-normal + $density-large + 0.2rem});
         padding: $density-normal $density-normal 0 $density-normal;
         z-index: 1;
-        
+
         background-color: $color-darker;
 
         .header {
@@ -60,7 +60,7 @@ $width-duration: 2.5em;
             grid-template-columns: $width-number 1fr $width-like-icon $width-duration;
 
             .publish-date {
-                display: hidden;
+                display: none;
             }
         }
     }
