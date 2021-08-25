@@ -46,7 +46,7 @@ describe('ApiService', () => {
             );
 
             api.get<number>('/test/12').subscribe(
-                (result) => done.fail('expected an error'),
+                () => done.fail('expected an error'),
                 (error) => {
                     expect(error).toBeInstanceOf(ApiError);
                     expect(error.message).toBe('failed');
@@ -89,7 +89,7 @@ describe('ApiService', () => {
             );
 
             api.post<number>('/test/12', {}).subscribe(
-                (result) => done.fail('expected an error'),
+                () => done.fail('expected an error'),
                 (error) => {
                     expect(error).toBeInstanceOf(ApiError);
                     expect(error.message).toBe('failed');

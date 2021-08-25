@@ -53,7 +53,7 @@ describe('AuthService', () => {
             });
 
             it('should not call get auth and get user', (done) => {
-                auth.currentUser.subscribe((user) => {
+                auth.currentUser.subscribe(() => {
                     expect(mockApi.get).not.toHaveBeenCalled();
                     expect(mockApi.post).not.toHaveBeenCalled();
                     expect(AuthService.prototype.getUser).not.toHaveBeenCalled();
@@ -81,7 +81,7 @@ describe('AuthService', () => {
             });
 
             it('should call get auth and get user correctly', (done) => {
-                auth.currentUser.subscribe((user) => {
+                auth.currentUser.subscribe(() => {
                     expect(mockApi.post).toHaveBeenCalledOnceWith('user/auth', { token: 'tok' });
                     expect(AuthService.prototype.getUser).toHaveBeenCalledOnceWith(12);
                     done();

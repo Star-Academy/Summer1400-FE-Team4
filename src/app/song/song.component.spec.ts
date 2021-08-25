@@ -1,6 +1,6 @@
 import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import { EMPTY, Observable, of, Subject, throwError } from 'rxjs';
+import { EMPTY, of, Subject, throwError } from 'rxjs';
 import {
     AuthService,
     FavoritesService,

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, of, ReplaySubject, throwError } from 'rxjs';
+import { Observable, of, ReplaySubject, throwError } from 'rxjs';
 import { first, map, mergeAll, tap } from 'rxjs/operators';
-import { ApiError, ApiService } from './api.service';
+import { ApiService } from './api.service';
 import { AuthService } from './auth.service';
 import { Song } from './song.model';
 import { SongService } from './song.service';
