@@ -1,9 +1,0 @@
-{
-    "version": 3,
-    "mappings": "",
-    "sources": [
-        "../landing/landing.component.scss"
-    ],
-    "names": [],
-    "file": "landing.component.css"
-}

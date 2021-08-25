@@ -1,6 +1,6 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import { BehaviorSubject, combineLatest, concat, from, fromEvent, Observable, of, ReplaySubject, Subject } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
+import { BehaviorSubject, combineLatest, from, Observable, Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Song } from './song.model';
 
 export type PlayState = 'playing' | 'paused' | 'loading';
@@ -20,7 +20,7 @@ export class PlayerService {
     repeat = new BehaviorSubject<boolean>(false);
 
     constructor(@Inject(AUDIO_TOKEN) private audio: HTMLAudioElement = new Audio()) {
-        this.audio.ontimeupdate = (event) => {
+        this.audio.ontimeupdate = () => {
             this.progress.next({ progress: this.audio.currentTime, total: this.audio.duration });
         };
 
@@ -123,7 +123,7 @@ export class PlayerService {
         audio.onloadedmetadata = () => {
             duration.next(audio.duration);
             audio.remove();
-        }
+        };
 
         return duration;
     }

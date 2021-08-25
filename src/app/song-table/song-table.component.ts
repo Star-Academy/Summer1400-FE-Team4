@@ -1,8 +1,8 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Observable, zip } from 'rxjs';
-import { map } from 'rxjs/operators';
-import { AuthService, FavoritesService, PlayerService, PlayState, Song } from '../common';
+import { Observable } from 'rxjs';
+
+import { AuthService, FavoritesService, PlayerService, Song } from '../common';
 
 @Component({
     selector: 'app-song-table',

@@ -1,4 +1,4 @@
-import { first, tap } from 'rxjs/operators';
+import { first } from 'rxjs/operators';
 import { PlayerService } from './player.service';
 import { Song } from './song.model';
 
@@ -189,7 +189,7 @@ describe('PlayerService', () => {
                 }
             });
         });
-        
+
         describe('onended', () => {
             describe('should go to next song', () => {
                 for (const repeat of [false, true]) {
@@ -202,7 +202,7 @@ describe('PlayerService', () => {
                         }
                     });
                 }
-            })
+            });
         });
     });
 });

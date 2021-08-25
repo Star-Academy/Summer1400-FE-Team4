@@ -52,7 +52,7 @@ export class AuthService {
                 this.currentUser.pipe(take(1)).subscribe((nextUser) => {
                     if (nextUser !== null) {
                         this.getUser(nextUser.id).subscribe((newUser) => {
-                            this.currentUser.next(newUser)
+                            this.currentUser.next(newUser);
                         });
                     }
                 });

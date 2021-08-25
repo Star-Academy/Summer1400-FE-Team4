@@ -1,5 +1,5 @@
 import { EMPTY, of, ReplaySubject, throwError } from 'rxjs';
-import { bufferCount, first, take } from 'rxjs/operators';
+import { bufferCount, first } from 'rxjs/operators';
 import { ApiError, ApiService } from './api.service';
 import { AuthService } from './auth.service';
 import { FavoritesService } from './favorites.service';
@@ -155,7 +155,7 @@ describe('FavoritesService', () => {
                     () => {
                         done.fail('an error was thrown but the observable succeeded');
                     },
-                    (error) => {}
+                    () => {}
                 );
             });
         });
@@ -198,7 +198,7 @@ describe('FavoritesService', () => {
                     () => {
                         done.fail('an error was thrown but the observable succeeded');
                     },
-                    (error) => {}
+                    () => {}
                 );
             });
         });

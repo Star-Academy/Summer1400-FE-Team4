@@ -47,7 +47,7 @@
 }
 .song-table.remove-album .row .publish-date,
 .song-table.remove-album .header .publish-date {
-  display: hidden;
+  display: none;
 }
 .song-table .row {
   border-radius: 1rem;

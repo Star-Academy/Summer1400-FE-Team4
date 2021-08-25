@@ -65,7 +65,7 @@
   transition: transform 200ms ease-in-out;
 }
 .banner .banner-desc .button-row .player-buttons:hover {
-  transform: scale(110%);
+  transform: scale(1.1);
 }
 
 .song-lyrics {

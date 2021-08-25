@@ -1,5 +1,5 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { AuthService } from '../../common/auth.service';
+import { Component } from '@angular/core';
+import { AuthService } from '../../common';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -26,7 +26,7 @@ export class LoginComponent {
             },
             (response) => {
                 this.toastr.error(response.message, undefined, {
-                    positionClass: 'toast-top-left'
+                    positionClass: 'toast-top-left',
                 });
             }
         );
