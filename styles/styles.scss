@@ -252,8 +252,12 @@ body {
 }
 
 @keyframes rotating {
-    from { transform: rotate(0turn); }
-    to { transform: rotate(1turn); }
+    from {
+        transform: rotate(0turn);
+    }
+    to {
+        transform: rotate(1turn);
+    }
 }
 
 .icon-loading {
