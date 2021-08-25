@@ -1,22 +1,41 @@
-import { SharedCommonService, SongService } from '../common';
-import { ActivatedRoute } from '@angular/router';
+import { SharedCommonService, Song, SongService } from '../common';
+import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 import { AlbumComponent } from './album.component';
+import { of, Subject } from 'rxjs';
 
 describe('albumComponent', () => {
-    let mockSharedCommon: SharedCommonService;
-    let mockSongService: SongService;
-    let mockActivatedRouts: ActivatedRoute;
-    let albumComponent: AlbumComponent;
+    let sharedCommon: SharedCommonService;
+    let mockSongService: jasmine.SpyObj<SongService>;
+    let mockRouteParamMap: Subject<ParamMap>;
+    let mockRoute: ActivatedRoute;
+    let component: AlbumComponent;
+
+    const dummySong = { id: 3, name: 'drei' } as Song;
 
     beforeEach(() => {
         mockSongService = jasmine.createSpyObj('mockSongService', ['getSong']);
-        mockSharedCommon = new SharedCommonService();
-        mockActivatedRouts = new ActivatedRoute();
+        sharedCommon = new SharedCommonService();
+        mockRouteParamMap = new Subject<ParamMap>();
+        mockRoute = { paramMap: mockRouteParamMap.asObservable() } as ActivatedRoute;
 
-        albumComponent = new AlbumComponent(mockSharedCommon, mockSongService, mockActivatedRouts);
+        component = new AlbumComponent(sharedCommon, mockSongService, mockRoute);
     });
-    it('should call ngOnInit', () => {
-        albumComponent.ngOnInit();
-        expect(true).toBeTrue();
+
+    describe('ngOnInit', () => {
+        it('should update topBarDark', () => {
+            spyOn(sharedCommon.topBarDark, 'next').and.callThrough();
+            component.ngOnInit();
+            expect(sharedCommon.topBarDark.next).toHaveBeenCalled();
+        });
+
+        it('should handle paramMap changes and call getSong', () => {
+            mockSongService.getSong.and.returnValue(of(dummySong));
+            component.ngOnInit();
+
+            mockRouteParamMap.next(convertToParamMap({ id: ' 3 ' }));
+
+            expect(mockSongService.getSong).toHaveBeenCalledOnceWith(3);
+            expect(component.song).toEqual(dummySong);
+        });
     });
 });

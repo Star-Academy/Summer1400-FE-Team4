@@ -34,8 +34,6 @@ describe('SongComponent', () => {
         mockRoute = { paramMap: mockRouteParamMap.asObservable() } as ActivatedRoute;
         mockToastr = jasmine.createSpyObj<ToastrService>(['error', 'info']);
 
-        spyOn(sharedCommon.topBarDark, 'next').and.callThrough();
-
         component = new SongComponent(
             sharedCommon,
             mockAuth,
@@ -49,7 +47,9 @@ describe('SongComponent', () => {
 
     describe('ngOnInit', () => {
         it('should update topBarDark', () => {
+            spyOn(sharedCommon.topBarDark, 'next').and.callThrough();
             component.ngOnInit();
+
             expect(sharedCommon.topBarDark.next).toHaveBeenCalled();
         });
 
@@ -62,7 +62,6 @@ describe('SongComponent', () => {
 
             mockRouteParamMap.next(convertToParamMap({ id: ' 3 ' }));
 
-            expect(sharedCommon.topBarDark.next).toHaveBeenCalled();
             expect(mockSongService.getSong).toHaveBeenCalledOnceWith(3);
             expect(mockPlayer.songDuration).toHaveBeenCalledOnceWith(dummySong);
 
