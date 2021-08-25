@@ -3,7 +3,7 @@ import { of, Subject } from 'rxjs';
 import { SongListComponent } from './song-list.component';
 import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
 
-describe('FavoritesComponent', () => {
+describe('SongListComponent', () => {
     let sharedCommon: SharedCommonService;
     let mockSongService: jasmine.SpyObj<SongService>;
     let mockRouteParamMap: Subject<ParamMap>;
@@ -73,8 +73,8 @@ describe('FavoritesComponent', () => {
             expect(mockSongService.getSongs).toHaveBeenCalledTimes(1);
             expect(mockSongService.findSongs).toHaveBeenCalledOnceWith(
                 'term',
-                jasmine.anything(),
-                jasmine.anything(),
+                undefined,
+                undefined,
                 jasmine.anything()
             );
 
