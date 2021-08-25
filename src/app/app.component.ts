@@ -6,8 +6,4 @@ import { ActivatedRoute } from '@angular/router';
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-    ngOnInit() {}
-
-    title = 'ahangify';
-}
+export class AppComponent {}
