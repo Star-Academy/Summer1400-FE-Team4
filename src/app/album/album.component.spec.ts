@@ -13,8 +13,8 @@ describe('albumComponent', () => {
     const dummySong = { id: 3, name: 'drei' } as Song;
 
     beforeEach(() => {
-        mockSongService = jasmine.createSpyObj('mockSongService', ['getSong']);
         sharedCommon = new SharedCommonService();
+        mockSongService = jasmine.createSpyObj<SongService>(['getSong']);
         mockRouteParamMap = new Subject<ParamMap>();
         mockRoute = { paramMap: mockRouteParamMap.asObservable() } as ActivatedRoute;
 
