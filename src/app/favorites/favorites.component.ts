@@ -17,7 +17,7 @@ export class FavoritesComponent implements OnInit {
         this.favs.songs.subscribe((songs) => {
             if (songs === undefined) {
                 this.songs = [];
-                this.loaded = false;
+                this.loaded = true;
             } else {
                 this.songs = songs;
                 this.loaded = true;
